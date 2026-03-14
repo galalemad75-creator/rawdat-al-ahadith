@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>روضة الأحاديث — Rawdat Al-Ahadith</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --bg:#FDF6E3;--bg2:#F5EDD4;--text:#2C1810;--text2:#5A4030;
+  --card:#FFFFFF;--gold:#C9A84C;--gold2:#E8C55A;
+  --hbg:linear-gradient(135deg,#1B5E4A 0%,#0D1B2A 100%);
+  --herobg:transparent;
+  --ftrbg:#1B5E4A;--bdr:rgba(201,168,76,.28);
+  --sh:0 4px 22px rgba(0,0,0,.09);--tr:all .3s cubic-bezier(.4,0,.2,1);
+  --far:'Amiri',serif;--fen:'Lato',sans-serif;--hs:24px;
+}
+body.night{
+  --bg:#0D1B2A;--bg2:#0A1520;--text:#F5F0E8;--text2:#C4B59A;
+  --card:#1A2A3A;--gold:#FFD700;--gold2:#FFE44D;
+  --bdr:rgba(255,215,0,.18);--sh:0 4px 22px rgba(0,0,0,.42);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:transparent}
+body{background:transparent;color:var(--text);font-family:var(--far);transition:color .3s;overflow-x:hidden;min-height:100vh}
+body.ltr{direction:ltr;font-family:var(--fen)}
+/* ═══ ISLAMIC BACKGROUND ═══ */
+#islamic-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:transparent}
+
+/* Deep dark teal base gradient */
+#islamic-bg .bg-base{position:absolute;inset:0;background:linear-gradient(160deg,#0a1f2e 0%,#0d2535 40%,#0a1a28 70%,#061219 100%);opacity:1}
+
+/* bg-pattern removed */
+
+/* Corner large geometric ornaments */
+#islamic-bg .corner-tl,#islamic-bg .corner-tr,#islamic-bg .corner-bl,#islamic-bg .corner-br{position:absolute;width:280px;height:280px;opacity:0.07}
+#islamic-bg .corner-tl{top:-40px;left:-40px}
+#islamic-bg .corner-tr{top:-40px;right:-40px;transform:scaleX(-1)}
+#islamic-bg .corner-bl{bottom:-40px;left:-40px;transform:scaleY(-1)}
+#islamic-bg .corner-br{bottom:-40px;right:-40px;transform:scale(-1)}
+
+/* Golden shimmer overlay */
+#islamic-bg .bg-shimmer{position:absolute;inset:0;background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 70%)}
+
+/* Lanterns container at top */
+#islamic-bg .lanterns{position:absolute;top:0;left:0;right:0;height:220px;display:flex;justify-content:space-around;align-items:flex-start;padding:0 5%}
+.lantern-wrap{display:flex;flex-direction:column;align-items:center;transform-origin:top center}
+.lantern-wrap:nth-child(1){animation:swing1 6s ease-in-out infinite;margin-top:-8px}
+.lantern-wrap:nth-child(2){animation:swing2 7s ease-in-out infinite 1s;margin-top:-4px}
+.lantern-wrap:nth-child(3){animation:swing1 8s ease-in-out infinite 0.5s;margin-top:-6px}
+.lantern-wrap:nth-child(4){animation:swing2 6.5s ease-in-out infinite 1.5s;margin-top:-5px}
+.lantern-wrap:nth-child(5){animation:swing1 7.5s ease-in-out infinite 2s;margin-top:-3px}
+@keyframes swing1{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes swing2{0%,100%{transform:rotate(3deg)}50%{transform:rotate(-3deg)}}
+
+/* Lantern rope */
+.l-rope{width:1.5px;height:45px;background:linear-gradient(to bottom,rgba(201,168,76,0.9),rgba(201,168,76,0.5));margin:0 auto}
+
+/* Lantern SVG glow */
+.l-glow{position:absolute;width:60px;height:60px;background:radial-gradient(circle,rgba(255,200,50,0.22) 0%,transparent 70%);border-radius:50%;top:40px;left:50%;transform:translateX(-50%);pointer-events:none}
+
+/* Small floating stars */
+#islamic-bg .stars{position:absolute;inset:0}
+.star{position:absolute;background:#C9A84C;border-radius:50%;animation:twinkle var(--dur,3s) ease-in-out infinite var(--del,0s)}
+@keyframes twinkle{0%,100%{opacity:0.15;transform:scale(1)}50%{opacity:0.6;transform:scale(1.4)}}
+
+/* Bottom border ornament */
+#islamic-bg .bot-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),rgba(201,168,76,0.6),rgba(201,168,76,0.3),transparent)}
+
+body{position:relative}
+#islamic-bg{z-index:0 !important}
+#main{padding-top:72px;position:relative;z-index:1;background:transparent}
+#hero,#ng,#bc{background:transparent !important}
+
+
+/* INTRO */
+#intro{display:none !important}
+.i-moon{font-size:70px;color:#FFD700;animation:flt 3s ease-in-out infinite}
+#i-b{font-family:var(--far);font-size:38px;color:#FFD700;opacity:0;animation:fio 2.5s ease .4s forwards;text-align:center}
+#i-t{font-family:var(--far);font-size:32px;color:#FFD700;opacity:0;animation:fio 2s ease 2.6s forwards;text-align:center}
+#i-s{font-family:var(--far);font-size:16px;color:#C9A84C;opacity:0;animation:fin 1.5s ease 4.1s forwards;text-align:center;padding:0 20px}
+.skip-btn{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);background:transparent;border:1px solid #C9A84C;color:#C9A84C;padding:8px 24px;border-radius:50px;cursor:pointer;font-family:var(--far);font-size:14px;transition:var(--tr)}
+.skip-btn:hover{background:#C9A84C;color:#000}
+@keyframes fio{0%{opacity:0;transform:translateY(16px)}30%{opacity:1;transform:none}70%{opacity:1}100%{opacity:0}}
+@keyframes fin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+
+/* PROGRESS */
+#pgb{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--gold),#FFD700);z-index:1001;width:0;transition:width .1s linear}
+
+/* HEADER */
+#hdr{position:fixed;top:4px;left:0;right:0;height:68px;background:var(--hbg);display:flex;align-items:center;justify-content:space-between;padding:0 18px;z-index:900;border-bottom:2px solid var(--gold);box-shadow:0 2px 16px rgba(0,0,0,.32)}
+.hlogo{font-family:var(--far);font-size:21px;font-weight:700;color:var(--gold);cursor:pointer;flex:1;text-align:center}
+body.ltr .hlogo{font-family:var(--fen);font-size:16px}
+.hctrl{display:flex;align-items:center;gap:7px}
+
+.fsc{display:flex;gap:3px}
+.fsc button{background:rgba(255,255,255,.1);border:1px solid rgba(201,168,76,.28);color:#fff;border-radius:6px;padding:4px 8px;cursor:pointer;font-family:var(--fen);font-size:11px;transition:var(--tr)}
+.fsc button:hover,.fsc button.act{background:var(--gold);color:#1B5E4A}
+.hicn{background:rgba(255,255,255,.1);border:1px solid rgba(201,168,76,.28);color:#fff;border-radius:8px;width:37px;height:37px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:var(--tr);position:relative}
+.hicn:hover{background:var(--gold);color:#1B5E4A}
+.fbdg{position:absolute;top:-4px;right:-4px;background:#E91E63;color:#fff;border-radius:50%;font-size:9px;width:15px;height:15px;display:none;align-items:center;justify-content:center;font-family:var(--fen)}
+#nbtn{font-size:18px;padding:0 6px}
+#lbtn{font-size:11px;font-family:var(--fen);padding:0 8px;font-weight:700;letter-spacing:.5px}
+#main{padding-top:72px;position:relative;z-index:1;background:transparent}
+
+/* HERO */
+#hero{background:transparent;padding:140px 18px 50px;text-align:center;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+#hero::before{display:none}
+.hmoon{font-size:56px;color:var(--gold);animation:flt 4s ease-in-out infinite;text-shadow:0 0 40px rgba(201,168,76,.7)}
+.htit{font-family:var(--far);font-size:68px;font-weight:700;color:var(--gold);line-height:1.3;text-shadow:0 2px 32px rgba(201,168,76,.6),0 0 80px rgba(201,168,76,.2)}
+.hsub{font-family:var(--far);font-size:22px;color:rgba(201,168,76,.9);max-width:600px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.hvers{font-family:var(--far);font-size:17px;color:rgba(255,255,255,.75);font-style:italic;border-top:1px solid rgba(201,168,76,.3);padding-top:14px;max-width:600px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.swrap{width:100%;max-width:520px;position:relative;margin-top:5px}
+.swrap i{position:absolute;top:50%;transform:translateY(-50%);right:16px;color:var(--gold);font-size:16px;pointer-events:none}
+body.ltr .swrap i{right:auto;left:16px}
+#srch{width:100%;padding:14px 48px 14px 16px;border-radius:50px;border:2px solid var(--gold);background:rgba(255,255,255,.1);color:#fff;font-family:var(--far);font-size:16px;outline:none;backdrop-filter:blur(8px);transition:var(--tr)}
+body.ltr #srch{padding:14px 16px 14px 48px;font-family:var(--fen)}
+#srch::placeholder{color:rgba(255,255,255,.42)}
+#srch:focus{border-color:#FFD700;background:rgba(255,255,255,.14)}
+#scnt{color:var(--gold);font-family:var(--far);font-size:13px;min-height:17px}
+body.ltr #scnt{font-family:var(--fen)}
+@media(max-width:767px){#hero{min-height:340px;padding:120px 12px 36px}.htit{font-size:38px}.hsub{font-size:16px}.hvers{font-size:14px}}
+
+/* BREADCRUMB */
+#bc{display:none;padding:8px 20px;background:var(--bg2);border-bottom:1px solid var(--bdr);font-size:13px;color:var(--text2);align-items:center;gap:8px}
+#bc.vis{display:flex}
+#bc a{color:var(--gold);cursor:pointer;text-decoration:none;font-family:var(--far)}
+body.ltr #bc a{font-family:var(--fen)}
+#bc a:hover{text-decoration:underline}
+#bc-c{font-family:var(--far)}
+body.ltr #bc-c{font-family:var(--fen)}
+
+/* NAV GRID */
+#ng{padding:34px 18px;max-width:1200px;margin:0 auto;background:transparent}
+.ntit{text-align:center;font-family:var(--far);font-size:25px;color:var(--text);margin-bottom:24px;position:relative}
+body.ltr .ntit{font-family:var(--fen)}
+.ntit::after{content:'';display:block;width:68px;height:3px;background:var(--gold);margin:8px auto 0;border-radius:2px}
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1023px){.cgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.cgrid{grid-template-columns:1fr}}
+.cc{border-radius:14px;padding:20px 13px 16px;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:148px;justify-content:center;background:var(--card);box-shadow:var(--sh);animation:cfi .5s ease both;border:2px solid var(--bdr)}
+.cc:nth-child(1){animation-delay:.05s}.cc:nth-child(2){animation-delay:.10s}.cc:nth-child(3){animation-delay:.15s}.cc:nth-child(4){animation-delay:.20s}.cc:nth-child(5){animation-delay:.25s}.cc:nth-child(6){animation-delay:.30s}.cc:nth-child(7){animation-delay:.35s}.cc:nth-child(8){animation-delay:.40s}
+@keyframes cfi{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cc:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 9px 32px rgba(0,0,0,.17)}
+.cemoji{font-size:32px;line-height:1}
+.cnar{font-family:var(--far);font-size:16px;font-weight:700;text-align:center}
+.cnen{font-family:var(--fen);font-size:10px;text-align:center;opacity:.72}
+.cbdg{position:absolute;top:9px;left:9px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;font-family:var(--fen);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+body.ltr .cbdg{left:auto;right:9px}
+.cbar{position:absolute;bottom:0;left:0;right:0;height:5px;border-radius:0 0 12px 12px}
+/* category border colors */
+.c1{border-color:rgba(27,94,74,.28)}.c1 .cbar{background:#1B5E4A}.c1 .cnar{color:#1B5E4A}
+.c2{border-color:rgba(26,35,126,.28)}.c2 .cbar{background:#1A237E}.c2 .cnar{color:#1A237E}
+.c3{border-color:rgba(74,20,140,.28)}.c3 .cbar{background:#4A148C}.c3 .cnar{color:#4A148C}
+.c4{border-color:rgba(245,127,23,.28)}.c4 .cbar{background:#F57F17}.c4 .cnar{color:#F57F17}
+.c5{border-color:rgba(0,96,100,.28)}.c5 .cbar{background:#006064}.c5 .cnar{color:#006064}
+.c6{border-color:rgba(51,105,30,.28)}.c6 .cbar{background:#33691E}.c6 .cnar{color:#33691E}
+.c7{border-color:rgba(136,14,79,.28)}.c7 .cbar{background:#880E4F}.c7 .cnar{color:#880E4F}
+.c8{border-color:rgba(183,28,28,.28)}.c8 .cbar{background:#B71C1C}.c8 .cnar{color:#B71C1C}
+body.night .c1 .cnar{color:#4CAF85}body.night .c2 .cnar{color:#7986CB}body.night .c3 .cnar{color:#CE93D8}body.night .c4 .cnar{color:#FFB74D}body.night .c5 .cnar{color:#4DD0E1}body.night .c6 .cnar{color:#AED581}body.night .c7 .cnar{color:#F48FB1}body.night .c8 .cnar{color:#EF9A9A}
+
+/* SECTION */
+.csec{display:none;padding:20px;max-width:900px;margin:0 auto}
+.csec.act{display:block;animation:fin .4s ease}
+.shdr{text-align:center;margin-bottom:22px;padding:28px 18px;border-radius:14px;color:#fff}
+.shdr h2{font-family:var(--far);font-size:32px;font-weight:700;margin-bottom:4px}
+.shdr p{font-family:var(--fen);font-size:14px;opacity:.82}
+.bbtn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:50px;border:none;color:#fff;font-family:var(--far);font-size:14px;cursor:pointer;transition:var(--tr);box-shadow:var(--sh);margin:8px 0}
+body.ltr .bbtn{font-family:var(--fen)}
+.bbtn:hover{transform:translateY(-2px);opacity:.88}
+
+/* HADITH CARD */
+.hc{background:var(--card);border-radius:14px;box-shadow:var(--sh);border-right:5px solid var(--gold);margin-bottom:24px;overflow:hidden;animation:sir .4s ease both;transition:box-shadow .3s}
+body.ltr .hc{border-right:none;border-left:5px solid var(--gold);animation-name:sil}
+.hc:hover{box-shadow:0 6px 28px rgba(0,0,0,.15)}
+@keyframes sir{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes sil{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.hhd{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--bdr);background:var(--bg2)}
+.hnum{font-family:var(--fen);font-size:11px;font-weight:700;color:var(--text2);background:var(--bg);padding:2px 9px;border-radius:50px;border:1px solid var(--bdr)}
+.hfav{background:none;border:none;cursor:pointer;font-size:18px;color:#bbb;transition:var(--tr);padding:2px;line-height:1}
+.hfav.act,.hfav:hover{color:#E91E63}
+.hbdy{padding:20px 24px 0}
+.hintro{font-family:var(--far);font-size:13px;color:var(--text2);margin-bottom:11px;opacity:.78}
+.htxt{font-family:var(--far);font-size:var(--hs);line-height:2.2;color:var(--text);direction:rtl;unicode-bidi:embed;padding:0 5px}
+.htxt mark{background:rgba(201,168,76,.3);color:var(--text);border-radius:3px;padding:1px 2px}
+.hmeta{padding:12px 24px;border-top:1px solid var(--bdr);margin-top:17px;display:flex;flex-direction:column;gap:5px}
+/* narrator — shown in BOTH languages since Arabic text stays Arabic */
+.hnar,.hsrc{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:6px;flex-wrap:wrap}
+.hnar-ar{font-family:var(--far)}
+.hnar-en{font-family:var(--fen);display:none}
+.hsrc-ar{font-family:var(--far)}
+.hsrc-en{font-family:var(--fen);display:none}
+body.ltr .hnar-ar{display:none}body.ltr .hnar-en{display:block}
+body.ltr .hsrc-ar{display:none}body.ltr .hsrc-en{display:block}
+.hlbl-ar{font-family:var(--far)}
+.hlbl-en{font-family:var(--fen);display:none}
+body.ltr .hlbl-ar{display:none}body.ltr .hlbl-en{display:block}
+
+/* NOTE line (✨ or ⏰ lines) */
+.hnote{display:none}
+
+/* KEY PHRASE BOX */
+.kpb{margin:0 16px 13px;padding:12px 16px;border-radius:8px;border:2px solid;direction:rtl}
+.kplbl{font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:4px}
+.kplbl-ar{font-family:var(--far)}
+.kplbl-en{font-family:var(--fen);display:none}
+body.ltr .kplbl-ar{display:none}body.ltr .kplbl-en{display:block}
+.kptxt{font-family:var(--far);font-size:15px;line-height:1.9}
+
+
+/* KP color variants */
+.kp1{border-color:#1B5E4A;background:rgba(27,94,74,.06);color:#1B5E4A}body.night .kp1{background:rgba(27,94,74,.13);color:#4CAF85}
+.kp2{border-color:#1A237E;background:rgba(26,35,126,.06);color:#1A237E}body.night .kp2{background:rgba(26,35,126,.13);color:#7986CB}
+.kp3{border-color:#4A148C;background:rgba(74,20,140,.06);color:#4A148C}body.night .kp3{background:rgba(74,20,140,.13);color:#CE93D8}
+.kp4{border-color:#F57F17;background:rgba(245,127,23,.06);color:#F57F17}body.night .kp4{background:rgba(245,127,23,.13);color:#FFB74D}
+.kp5{border-color:#006064;background:rgba(0,96,100,.06);color:#006064}body.night .kp5{background:rgba(0,96,100,.13);color:#4DD0E1}
+.kp6{border-color:#33691E;background:rgba(51,105,30,.06);color:#33691E}body.night .kp6{background:rgba(51,105,30,.13);color:#AED581}
+.kp7{border-color:#880E4F;background:rgba(136,14,79,.06);color:#880E4F}body.night .kp7{background:rgba(136,14,79,.13);color:#F48FB1}
+.kp7r{border-color:#C9A84C;background:rgba(201,168,76,.07);color:#8B6914}body.night .kp7r{background:rgba(201,168,76,.13);color:#FFD700}
+.kp8{border-color:#B71C1C;background:rgba(183,28,28,.06);color:#B71C1C}body.night .kp8{background:rgba(183,28,28,.13);color:#EF9A9A}
+
+/* SHARE ROW */
+.srow{padding:11px 16px 16px;display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid var(--bdr)}
+.sbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:50px;border:none;cursor:pointer;font-size:11px;font-family:var(--fen);transition:var(--tr);font-weight:600;color:#fff}
+.sbtn:hover{transform:translateY(-2px);opacity:.87}
+.sw{background:#25D366}.sf{background:#1877F2}.stw{background:#000}.stg{background:#0088CC}.sc{background:#607D8B}.si{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+
+/* SECTION TITLE — bilingual */
+.shdr-ar{font-family:var(--far)}
+.shdr-en{display:none;font-family:var(--fen);font-size:18px}
+body.ltr .shdr-ar{display:none}body.ltr .shdr-en{display:block}
+
+/* BACK BUTTON text */
+.btar{font-family:var(--far)}
+.bten{display:none;font-family:var(--fen)}
+body.ltr .btar{display:none}body.ltr .bten{display:block}
+
+/* FAV SECTION */
+#fsec{display:none;padding:20px;max-width:900px;margin:0 auto}
+#fsec.act{display:block;animation:fin .4s ease}
+.efav{text-align:center;padding:52px 16px;color:var(--text2)}
+.efav i{font-size:52px;color:var(--bdr);margin-bottom:12px;display:block}
+.efav p{font-size:18px}
+.efav-ar{font-family:var(--far)}.efav-en{display:none;font-family:var(--fen)}
+body.ltr .efav-ar{display:none}body.ltr .efav-en{display:block}
+
+/* SEARCH SECTION */
+#ssec{display:none;padding:20px;max-width:900px;margin:0 auto}
+#ssec.act{display:block}
+.stitle{font-size:18px;color:var(--text);margin-bottom:16px;text-align:center;padding:10px;background:var(--bg2);border-radius:8px}
+.stitle-ar{font-family:var(--far)}.stitle-en{display:none;font-family:var(--fen)}
+body.ltr .stitle-ar{display:none}body.ltr .stitle-en{display:block}
+.nores{text-align:center;padding:36px;color:var(--text2)}
+.nores-ar{font-family:var(--far);font-size:18px}.nores-en{display:none;font-family:var(--fen);font-size:16px}
+body.ltr .nores-ar{display:none}body.ltr .nores-en{display:block}
+
+/* GOLD DIVIDER */
+.gdiv{text-align:center;padding:10px 0;color:var(--gold);font-size:18px;letter-spacing:6px;opacity:.5}
+
+/* FAB */
+#fab{position:fixed;bottom:24px;left:24px;width:46px;height:46px;border-radius:50%;background:var(--gold);color:#fff;border:none;font-size:17px;cursor:pointer;box-shadow:0 3px 16px rgba(0,0,0,.22);display:none;align-items:center;justify-content:center;transition:var(--tr);z-index:800}
+body.ltr #fab{left:auto;right:24px}
+#fab:hover{transform:translateY(-3px)}
+#fab.vis{display:flex}
+
+/* FOOTER */
+#ftr{background:var(--ftrbg);padding:42px 18px 28px;text-align:center;margin-top:52px;position:relative}
+#ftr::before{content:'❧ ✦ ❧ ✦ ❧ ✦ ❧ ✦ ❧';display:block;color:var(--gold);font-size:16px;letter-spacing:5px;margin-bottom:20px}
+.ft-ar{font-family:var(--far)}.ft-en{display:none;font-family:var(--fen)}
+body.ltr .ft-ar{display:none}body.ltr .ft-en{display:block}
+.ft1{font-size:26px;font-weight:700;color:var(--gold);margin-bottom:6px}
+.ft2{font-size:15px;color:rgba(255,255,255,.8);margin-bottom:12px}
+.ft3{font-size:14px;color:rgba(255,255,255,.56);font-style:italic}
+.ft4{font-size:12px;color:rgba(255,255,255,.4);margin-top:18px}
+
+/* FONT SIZE */
+body.fsl .htxt{font-size:calc(var(--hs) + 5px)}
+body.fsxl .htxt{font-size:calc(var(--hs) + 10px)}
+@media(max-width:767px){:root{--hs:19px}.hbdy{padding:13px 13px 0}.hmeta{padding:9px 13px}.shdr h2{font-size:22px}.csec{padding:9px}}
+
+body.night #islamic-bg .bg-base{background:linear-gradient(160deg,#050f18 0%,#071520 40%,#050e18 70%,#030a10 100%)}
+body.night #islamic-bg .bg-shimmer{background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(255,215,0,0.05) 0%,transparent 70%)}
+
+/* English translation in card */
+.hintro-en{display:none}
+body.ltr .hintro-ar{display:none}
+body.ltr .hintro-en{display:inline}
+.slbl-en{display:none}
+body.ltr .slbl-ar{display:none}
+body.ltr .slbl-en{display:inline}
+</style>
+</head>
+<body>
+<div id="islamic-bg" aria-hidden="true">
+  <div class="bg-base"></div>
+  <div class="bg-shimmer"></div>
+  <div class="corner-tl"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280' width='280' height='280'><g fill='none' stroke='%23C9A84C' stroke-width='1'><path d='M0,0 L120,0 L120,20 L20,20 L20,120 L0,120 Z' opacity='0.6'/><path d='M0,0 L80,0 L80,10 L10,10 L10,80 L0,80 Z' opacity='0.4'/><circle cx='0' cy='0' r='60' stroke-width='0.8' opacity='0.3'/><circle cx='0' cy='0' r='90' stroke-width='0.6' opacity='0.2'/><circle cx='0' cy='0' r='120' stroke-width='0.5' opacity='0.15'/><path d='M0,40 Q40,40 40,0' stroke-width='1' opacity='0.5'/><path d='M0,80 Q80,80 80,0' stroke-width='0.8' opacity='0.35'/><polygon points='30,0 40,10 30,20 20,10' fill='%23C9A84C' opacity='0.3'/><polygon points='0,30 10,40 20,30 10,20' fill='%23C9A84C' opacity='0.3'/></g></svg>" width="280" height="280" alt=""></div>
+  <div class="corner-tr"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280' width='280' height='280'><g fill='none' stroke='%23C9A84C' stroke-width='1'><path d='M0,0 L120,0 L120,20 L20,20 L20,120 L0,120 Z' opacity='0.6'/><path d='M0,0 L80,0 L80,10 L10,10 L10,80 L0,80 Z' opacity='0.4'/><circle cx='0' cy='0' r='60' stroke-width='0.8' opacity='0.3'/><circle cx='0' cy='0' r='90' stroke-width='0.6' opacity='0.2'/><circle cx='0' cy='0' r='120' stroke-width='0.5' opacity='0.15'/><path d='M0,40 Q40,40 40,0' stroke-width='1' opacity='0.5'/><path d='M0,80 Q80,80 80,0' stroke-width='0.8' opacity='0.35'/><polygon points='30,0 40,10 30,20 20,10' fill='%23C9A84C' opacity='0.3'/><polygon points='0,30 10,40 20,30 10,20' fill='%23C9A84C' opacity='0.3'/></g></svg>" width="280" height="280" alt=""></div>
+  <div class="corner-bl"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280' width='280' height='280'><g fill='none' stroke='%23C9A84C' stroke-width='1'><path d='M0,0 L120,0 L120,20 L20,20 L20,120 L0,120 Z' opacity='0.6'/><path d='M0,0 L80,0 L80,10 L10,10 L10,80 L0,80 Z' opacity='0.4'/><circle cx='0' cy='0' r='60' stroke-width='0.8' opacity='0.3'/><circle cx='0' cy='0' r='90' stroke-width='0.6' opacity='0.2'/><circle cx='0' cy='0' r='120' stroke-width='0.5' opacity='0.15'/><path d='M0,40 Q40,40 40,0' stroke-width='1' opacity='0.5'/><path d='M0,80 Q80,80 80,0' stroke-width='0.8' opacity='0.35'/><polygon points='30,0 40,10 30,20 20,10' fill='%23C9A84C' opacity='0.3'/><polygon points='0,30 10,40 20,30 10,20' fill='%23C9A84C' opacity='0.3'/></g></svg>" width="280" height="280" alt=""></div>
+  <div class="corner-br"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280' width='280' height='280'><g fill='none' stroke='%23C9A84C' stroke-width='1'><path d='M0,0 L120,0 L120,20 L20,20 L20,120 L0,120 Z' opacity='0.6'/><path d='M0,0 L80,0 L80,10 L10,10 L10,80 L0,80 Z' opacity='0.4'/><circle cx='0' cy='0' r='60' stroke-width='0.8' opacity='0.3'/><circle cx='0' cy='0' r='90' stroke-width='0.6' opacity='0.2'/><circle cx='0' cy='0' r='120' stroke-width='0.5' opacity='0.15'/><path d='M0,40 Q40,40 40,0' stroke-width='1' opacity='0.5'/><path d='M0,80 Q80,80 80,0' stroke-width='0.8' opacity='0.35'/><polygon points='30,0 40,10 30,20 20,10' fill='%23C9A84C' opacity='0.3'/><polygon points='0,30 10,40 20,30 10,20' fill='%23C9A84C' opacity='0.3'/></g></svg>" width="280" height="280" alt=""></div>
+  <div class="stars" id="bgStars"></div>
+  <div class="lanterns">
+    <div class="lantern-wrap"><div class="l-rope"></div><div style="position:relative"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80' width='40' height='80'><defs><linearGradient id='lg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23E8C55A'/><stop offset='50%' stop-color='%23C9A84C'/><stop offset='100%' stop-color='%23A07830'/></linearGradient><linearGradient id='lg2' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' stop-color='%23FFD700' stop-opacity='0.3'/><stop offset='100%' stop-color='%23C9A84C' stop-opacity='0.05'/></linearGradient></defs><!-- top cap --><rect x='14' y='0' width='12' height='4' rx='2' fill='url(%23lg)'/><!-- chain loops --><circle cx='20' cy='6' r='2.5' fill='none' stroke='%23C9A84C' stroke-width='1.2'/><circle cx='20' cy='11' r='2' fill='none' stroke='%23C9A84C' stroke-width='1'/><rect x='13' y='13' width='14' height='3' rx='1.5' fill='url(%23lg)'/><!-- body frame --><path d='M13 16 Q6 28 6 42 Q6 58 13 64 L27 64 Q34 58 34 42 Q34 28 27 16 Z' fill='url(%23lg2)' stroke='%23C9A84C' stroke-width='1.2'/><!-- vertical ribs --><line x1='20' y1='16' x2='20' y2='64' stroke='%23C9A84C' stroke-width='0.6' opacity='0.7'/><!-- horizontal bands --><line x1='7.5' y1='28' x2='32.5' y2='28' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='6.5' y1='40' x2='33.5' y2='40' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='7.5' y1='52' x2='32.5' y2='52' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><!-- star pattern on body --><polygon points='20,22 21.5,26 26,26 22.5,28.5 24,33 20,30.5 16,33 17.5,28.5 14,26 18.5,26' fill='%23C9A84C' opacity='0.6'/><!-- diamond pattern --><rect x='17' y='43' width='6' height='6' rx='0.5' transform='rotate(45 20 46)' fill='none' stroke='%23C9A84C' stroke-width='0.7' opacity='0.7'/><!-- bottom cap --><path d='M13 64 Q10 68 12 72 L28 72 Q30 68 27 64 Z' fill='url(%23lg)'/><!-- bottom tassel --><line x1='20' y1='72' x2='20' y2='78' stroke='%23C9A84C' stroke-width='1.5'/><circle cx='20' cy='79' r='1.5' fill='%23C9A84C'/></svg>" width="36" height="72" alt=""><div class="l-glow"></div></div></div>
+    <div class="lantern-wrap"><div class="l-rope" style="height:60px"></div><div style="position:relative"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80' width='40' height='80'><defs><linearGradient id='lg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23E8C55A'/><stop offset='50%' stop-color='%23C9A84C'/><stop offset='100%' stop-color='%23A07830'/></linearGradient><linearGradient id='lg2' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' stop-color='%23FFD700' stop-opacity='0.3'/><stop offset='100%' stop-color='%23C9A84C' stop-opacity='0.05'/></linearGradient></defs><!-- top cap --><rect x='14' y='0' width='12' height='4' rx='2' fill='url(%23lg)'/><!-- chain loops --><circle cx='20' cy='6' r='2.5' fill='none' stroke='%23C9A84C' stroke-width='1.2'/><circle cx='20' cy='11' r='2' fill='none' stroke='%23C9A84C' stroke-width='1'/><rect x='13' y='13' width='14' height='3' rx='1.5' fill='url(%23lg)'/><!-- body frame --><path d='M13 16 Q6 28 6 42 Q6 58 13 64 L27 64 Q34 58 34 42 Q34 28 27 16 Z' fill='url(%23lg2)' stroke='%23C9A84C' stroke-width='1.2'/><!-- vertical ribs --><line x1='20' y1='16' x2='20' y2='64' stroke='%23C9A84C' stroke-width='0.6' opacity='0.7'/><!-- horizontal bands --><line x1='7.5' y1='28' x2='32.5' y2='28' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='6.5' y1='40' x2='33.5' y2='40' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='7.5' y1='52' x2='32.5' y2='52' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><!-- star pattern on body --><polygon points='20,22 21.5,26 26,26 22.5,28.5 24,33 20,30.5 16,33 17.5,28.5 14,26 18.5,26' fill='%23C9A84C' opacity='0.6'/><!-- diamond pattern --><rect x='17' y='43' width='6' height='6' rx='0.5' transform='rotate(45 20 46)' fill='none' stroke='%23C9A84C' stroke-width='0.7' opacity='0.7'/><!-- bottom cap --><path d='M13 64 Q10 68 12 72 L28 72 Q30 68 27 64 Z' fill='url(%23lg)'/><!-- bottom tassel --><line x1='20' y1='72' x2='20' y2='78' stroke='%23C9A84C' stroke-width='1.5'/><circle cx='20' cy='79' r='1.5' fill='%23C9A84C'/></svg>" width="44" height="88" alt=""><div class="l-glow" style="width:70px;height:70px;top:55px;left:50%;transform:translateX(-50%)"></div></div></div>
+    <div class="lantern-wrap"><div class="l-rope" style="height:35px"></div><div style="position:relative"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80' width='40' height='80'><defs><linearGradient id='lg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23E8C55A'/><stop offset='50%' stop-color='%23C9A84C'/><stop offset='100%' stop-color='%23A07830'/></linearGradient><linearGradient id='lg2' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' stop-color='%23FFD700' stop-opacity='0.3'/><stop offset='100%' stop-color='%23C9A84C' stop-opacity='0.05'/></linearGradient></defs><!-- top cap --><rect x='14' y='0' width='12' height='4' rx='2' fill='url(%23lg)'/><!-- chain loops --><circle cx='20' cy='6' r='2.5' fill='none' stroke='%23C9A84C' stroke-width='1.2'/><circle cx='20' cy='11' r='2' fill='none' stroke='%23C9A84C' stroke-width='1'/><rect x='13' y='13' width='14' height='3' rx='1.5' fill='url(%23lg)'/><!-- body frame --><path d='M13 16 Q6 28 6 42 Q6 58 13 64 L27 64 Q34 58 34 42 Q34 28 27 16 Z' fill='url(%23lg2)' stroke='%23C9A84C' stroke-width='1.2'/><!-- vertical ribs --><line x1='20' y1='16' x2='20' y2='64' stroke='%23C9A84C' stroke-width='0.6' opacity='0.7'/><!-- horizontal bands --><line x1='7.5' y1='28' x2='32.5' y2='28' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='6.5' y1='40' x2='33.5' y2='40' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='7.5' y1='52' x2='32.5' y2='52' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><!-- star pattern on body --><polygon points='20,22 21.5,26 26,26 22.5,28.5 24,33 20,30.5 16,33 17.5,28.5 14,26 18.5,26' fill='%23C9A84C' opacity='0.6'/><!-- diamond pattern --><rect x='17' y='43' width='6' height='6' rx='0.5' transform='rotate(45 20 46)' fill='none' stroke='%23C9A84C' stroke-width='0.7' opacity='0.7'/><!-- bottom cap --><path d='M13 64 Q10 68 12 72 L28 72 Q30 68 27 64 Z' fill='url(%23lg)'/><!-- bottom tassel --><line x1='20' y1='72' x2='20' y2='78' stroke='%23C9A84C' stroke-width='1.5'/><circle cx='20' cy='79' r='1.5' fill='%23C9A84C'/></svg>" width="30" height="60" alt=""><div class="l-glow" style="width:48px;height:48px"></div></div></div>
+    <div class="lantern-wrap"><div class="l-rope" style="height:55px"></div><div style="position:relative"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80' width='40' height='80'><defs><linearGradient id='lg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23E8C55A'/><stop offset='50%' stop-color='%23C9A84C'/><stop offset='100%' stop-color='%23A07830'/></linearGradient><linearGradient id='lg2' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' stop-color='%23FFD700' stop-opacity='0.3'/><stop offset='100%' stop-color='%23C9A84C' stop-opacity='0.05'/></linearGradient></defs><!-- top cap --><rect x='14' y='0' width='12' height='4' rx='2' fill='url(%23lg)'/><!-- chain loops --><circle cx='20' cy='6' r='2.5' fill='none' stroke='%23C9A84C' stroke-width='1.2'/><circle cx='20' cy='11' r='2' fill='none' stroke='%23C9A84C' stroke-width='1'/><rect x='13' y='13' width='14' height='3' rx='1.5' fill='url(%23lg)'/><!-- body frame --><path d='M13 16 Q6 28 6 42 Q6 58 13 64 L27 64 Q34 58 34 42 Q34 28 27 16 Z' fill='url(%23lg2)' stroke='%23C9A84C' stroke-width='1.2'/><!-- vertical ribs --><line x1='20' y1='16' x2='20' y2='64' stroke='%23C9A84C' stroke-width='0.6' opacity='0.7'/><!-- horizontal bands --><line x1='7.5' y1='28' x2='32.5' y2='28' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='6.5' y1='40' x2='33.5' y2='40' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='7.5' y1='52' x2='32.5' y2='52' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><!-- star pattern on body --><polygon points='20,22 21.5,26 26,26 22.5,28.5 24,33 20,30.5 16,33 17.5,28.5 14,26 18.5,26' fill='%23C9A84C' opacity='0.6'/><!-- diamond pattern --><rect x='17' y='43' width='6' height='6' rx='0.5' transform='rotate(45 20 46)' fill='none' stroke='%23C9A84C' stroke-width='0.7' opacity='0.7'/><!-- bottom cap --><path d='M13 64 Q10 68 12 72 L28 72 Q30 68 27 64 Z' fill='url(%23lg)'/><!-- bottom tassel --><line x1='20' y1='72' x2='20' y2='78' stroke='%23C9A84C' stroke-width='1.5'/><circle cx='20' cy='79' r='1.5' fill='%23C9A84C'/></svg>" width="48" height="96" alt=""><div class="l-glow" style="width:76px;height:76px;top:60px"></div></div></div>
+    <div class="lantern-wrap"><div class="l-rope" style="height:42px"></div><div style="position:relative"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80' width='40' height='80'><defs><linearGradient id='lg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23E8C55A'/><stop offset='50%' stop-color='%23C9A84C'/><stop offset='100%' stop-color='%23A07830'/></linearGradient><linearGradient id='lg2' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' stop-color='%23FFD700' stop-opacity='0.3'/><stop offset='100%' stop-color='%23C9A84C' stop-opacity='0.05'/></linearGradient></defs><!-- top cap --><rect x='14' y='0' width='12' height='4' rx='2' fill='url(%23lg)'/><!-- chain loops --><circle cx='20' cy='6' r='2.5' fill='none' stroke='%23C9A84C' stroke-width='1.2'/><circle cx='20' cy='11' r='2' fill='none' stroke='%23C9A84C' stroke-width='1'/><rect x='13' y='13' width='14' height='3' rx='1.5' fill='url(%23lg)'/><!-- body frame --><path d='M13 16 Q6 28 6 42 Q6 58 13 64 L27 64 Q34 58 34 42 Q34 28 27 16 Z' fill='url(%23lg2)' stroke='%23C9A84C' stroke-width='1.2'/><!-- vertical ribs --><line x1='20' y1='16' x2='20' y2='64' stroke='%23C9A84C' stroke-width='0.6' opacity='0.7'/><!-- horizontal bands --><line x1='7.5' y1='28' x2='32.5' y2='28' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='6.5' y1='40' x2='33.5' y2='40' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><line x1='7.5' y1='52' x2='32.5' y2='52' stroke='%23C9A84C' stroke-width='0.8' opacity='0.8'/><!-- star pattern on body --><polygon points='20,22 21.5,26 26,26 22.5,28.5 24,33 20,30.5 16,33 17.5,28.5 14,26 18.5,26' fill='%23C9A84C' opacity='0.6'/><!-- diamond pattern --><rect x='17' y='43' width='6' height='6' rx='0.5' transform='rotate(45 20 46)' fill='none' stroke='%23C9A84C' stroke-width='0.7' opacity='0.7'/><!-- bottom cap --><path d='M13 64 Q10 68 12 72 L28 72 Q30 68 27 64 Z' fill='url(%23lg)'/><!-- bottom tassel --><line x1='20' y1='72' x2='20' y2='78' stroke='%23C9A84C' stroke-width='1.5'/><circle cx='20' cy='79' r='1.5' fill='%23C9A84C'/></svg>" width="32" height="64" alt=""><div class="l-glow" style="width:52px;height:52px"></div></div></div>
+  </div>
+  <div class="bot-line"></div>
+</div>
+<script>
+(function(){
+  var stars=document.getElementById('bgStars');
+  var positions=[
+    [10,20],[85,15],[25,45],[70,35],[45,60],[90,55],[15,75],[60,70],[35,85],[78,80],
+    [5,50],[50,10],[92,30],[20,65],[65,90],[40,25],[80,60],[12,88],[55,40],[30,72]
+  ];
+  positions.forEach(function(p,i){
+    var s=document.createElement('div');
+    s.className='star';
+    var size=(Math.random()*3+1.5).toFixed(1);
+    s.style.cssText='left:'+p[0]+'%;top:'+p[1]+'%;width:'+size+'px;height:'+size+'px;--dur:'+(3+Math.random()*4).toFixed(1)+'s;--del:-'+(Math.random()*4).toFixed(1)+'s';
+    stars.appendChild(s);
+  });
+})();
+</script>
+
+
+<div id="pgb"></div>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="i-moon">☽</div>
+  <div id="i-b">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <div id="i-t">روضة الأحاديث</div>
+  <div id="i-s">صدقة جارية عن أمي وكل أموات المسلمين</div>
+  <button class="skip-btn" onclick="skipIntro()">تخطى ←</button>
+</div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div style="display:flex;gap:6px;align-items:center">
+    <button class="hicn" onclick="showHome()" title="الرئيسية / Home"><i class="fas fa-home"></i></button>
+    <button class="hicn" onclick="showFavs()" title="المفضلة / Favourites" id="favbtn">
+      <i class="fas fa-heart" style="color:#E91E63"></i>
+      <span class="fbdg" id="fbdg">0</span>
+    </button>
+  </div>
+  <div class="hlogo" onclick="showHome()" id="hlogo">روضة الأحاديث</div>
+  <div class="hctrl">
+    <div class="fsc">
+      <button onclick="setFs('n')" id="fsn" class="act">A</button>
+      <button onclick="setFs('l')" id="fsl">+A</button>
+      <button onclick="setFs('x')" id="fsx">++A</button>
+    </div>
+    <button class="hicn" onclick="togNight()" id="nbtn" title="ليل/نهار">🌙</button>
+    <button class="hicn" onclick="togLang()" id="lbtn" title="اللغة">🇬🇧 EN</button>
+  </div>
+</header>
+
+<div id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hmoon">☽</div>
+    <h1 class="htit" id="htit">روضة الأحاديث</h1>
+    <p class="hsub" id="hsub">صدقة جارية عن أمي وكل أموات المسلمين</p>
+    <p class="hvers" id="hvers">﴿إِنَّا نَحْنُ نُحْيِ المَوْتَى وَنَكْتُبُ مَا قَدَّمُوا وَآثَارَهُمْ﴾ — سورة يس: ١٢</p>
+    <div class="swrap">
+      <i class="fas fa-search"></i>
+      <input type="text" id="srch" placeholder="ابحث في الأحاديث..." oninput="doSearch(this.value)">
+    </div>
+    <div id="scnt"></div>
+  </section>
+
+  <!-- BREADCRUMB -->
+  <div id="bc">
+    <a onclick="showHome()"><i class="fas fa-home"></i> <span id="bch">الرئيسية</span></a>
+    <span>←</span>
+    <span id="bc-c"></span>
+  </div>
+
+  <!-- NAV GRID -->
+  <section id="ng">
+    <h2 class="ntit" id="ntit">أبواب الموسوعة</h2>
+    <div class="cgrid" id="cgrid"></div>
+  </section>
+
+  <!-- SEARCH -->
+  <div id="ssec">
+    <div class="stitle">
+      <span class="stitle-ar" id="stitle-ar"></span>
+      <span class="stitle-en" id="stitle-en"></span>
+    </div>
+    <div id="sres"></div>
+  </div>
+
+  <!-- FAVOURITES -->
+  <div id="fsec">
+    <div class="shdr" style="background:linear-gradient(135deg,#880E4F,#4A148C)">
+      <h2>
+        <span class="shdr-ar">❤️ الأحاديث المفضلة</span>
+        <span class="shdr-en">❤️ Favourite Hadiths</span>
+      </h2>
+      <p id="fav-p">أحاديثك المحفوظة — Your Bookmarked Hadiths</p>
+    </div>
+    <div id="fcon"></div>
+  </div>
+
+  <!-- CATEGORY SECTIONS -->
+  <div id="secs"></div>
+
+  <div class="gdiv">❧ ✦ ❧ ✦ ❧ ✦ ❧ ✦ ❧</div>
+</div>
+
+<!-- FOOTER -->
+<footer id="ftr">
+  <div class="ft1 ft-ar">روضة الأحاديث</div>
+  <div class="ft1 ft-en">Rawdat Al-Ahadith</div>
+  <div class="ft2 ft-ar">صدقة جارية عن أمي وكل أموات المسلمين</div>
+  <div class="ft2 ft-en">A Perpetual Charity for My Mother and All Deceased Muslims</div>
+  <div class="ft3 ft-ar">﴿وَنَكْتُبُ مَا قَدَّمُوا وَآثَارَهُمْ﴾</div>
+  <div class="ft3 ft-en">﴿And We record what they put forth and their traces﴾</div>
+  <div class="ft4 ft-ar">جميع الأحاديث من المصادر الصحيحة المعتمدة</div>
+  <div class="ft4 ft-en">All hadiths are from authenticated sources</div>
+</footer>
+
+<button id="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+/* =============================================================
+   DATABASE — أضف الأبواب الجديدة هنا
+   ============================================================= */
+const DB = [
+
+/* ══════════════════════════════════════════════════════════════
+   CHAPTER 1 — جزاؤها الجنة  (placeholder — 3 samples)
+   ══════════════════════════════════════════════════════════════ */
+{
+  id:'jannah', n:1, emoji:'🏡',
+  ar:'جزاؤها الجنة', en:'Deeds Rewarded with Paradise',
+  color:'#1B5E4A', grad:'linear-gradient(135deg,#1B5E4A,#2E7D52)',
+  cc:'c1', kpc:'kp1',
+  kplar:'🏡 وعد الجنة', kplen:'🏡 Promise of Paradise',
+  hadiths:[
+    {id:1,t:'مَنْ بَنَى مَسْجِدًا يَبْتَغِي بِهِ وَجْهَ اللَّهِ، بَنَى اللَّهُ لَهُ مِثْلَهُ فِي الجَنَّةِ.',nar:'عثمان بن عفان ـ رضي الله عنه',ennar:"'Uthman ibn 'Affan (RA)",src:'صحيح البخاري (450) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (450) | Sahih Muslim',num:'533',ennum:'533',kp:'بَنَى اللَّهُ لَهُ مِثْلَهُ فِي الجَنَّةِ',note:'🏡 من بنى مسجداً ولو كمفحص قطاة',en:'Whoever builds a mosque seeking Allah&#39;s pleasure, Allah will build for him a similar house in Paradise.'},
+    {id:2,t:'مَنْ صَلَّى فِي يَوْمٍ وَلَيْلَةٍ اثْنَتَيْ عَشْرَةَ رَكْعَةً بُنِيَ لَهُ بَيْتٌ فِي الجَنَّةِ: أَرْبَعًا قَبْلَ الظُّهْرِ وَرَكْعَتَيْنِ بَعْدَهَا، وَرَكْعَتَيْنِ بَعْدَ المَغْرِبِ، وَرَكْعَتَيْنِ بَعْدَ العِشَاءِ، وَرَكْعَتَيْنِ قَبْلَ الفَجْرِ.',nar:'أم حبيبة ـ رضي الله عنها',ennar:'Umm Habibah (RA)',src:'صحيح مسلم (728) | سنن الترمذي',ensrc:'Sahih Muslim (728) | Sahih Al-Tirmidhi',num:'415',ennum:'415',kp:'بُنِيَ لَهُ بَيْتٌ فِي الجَنَّةِ',note:'🏡 بيت في الجنة بـ ١٢ ركعة يومياً',en:'Whoever prays twelve voluntary rak&#39;ahs daily, Allah will build for him a house in Paradise.'},
+    {id:3,t:'مَنْ قَرَأَ قُلْ هُوَ اللَّهُ أَحَدٌ عَشْرَ مَرَّاتٍ بَنَى اللَّهُ لَهُ قَصْرًا فِي الجَنَّةِ.',nar:'معاذ بن أنس ـ رضي الله عنه',ennar:'Mu\'adh ibn Anas (RA)',src:'مسند أحمد | صحيح الترغيب',ensrc:'Musnad Ahmad | Sahih Al-Targhib',num:'600',ennum:'600',kp:'بَنَى اللَّهُ لَهُ قَصْرًا فِي الجَنَّةِ',note:'🏡 قصر في الجنة بعشر قراءات لسورة الإخلاص',en:'Whoever recites Surah Al-Ikhlas ten times, Allah will build for him a palace in Paradise.'},
+    {id:4,t:'مَنْ صَلَّى البَرْدَيْنِ دَخَلَ الجَنَّةَ.',nar:'أبو موسى الأشعري ـ رضي الله عنه',ennar:"Abu Musa Al-Ash'ari (RA)",src:'صحيح البخاري (574) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (574) | Sahih Muslim',num:'635',ennum:'635',kp:'مَنْ صَلَّى البَرْدَيْنِ دَخَلَ الجَنَّةَ',note:'🏡 صلاة الفجر والعصر تضمن دخول الجنة',en:'Whoever prays the two cool prayers (Fajr and Asr) will enter Paradise.'},
+    {id:5,t:'مَنْ أَذَّنَ مُحْتَسِبًا اثْنَيْ عَشَرَ سَنَةً وَجَبَتْ لَهُ الجَنَّةُ، وَكُتِبَ لَهُ بِتَأْذِينِهِ فِي كُلِّ يَوْمٍ سِتُّونَ حَسَنَةً.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'سنن ابن ماجه',ensrc:'Sahih Ibn Majah',num:'727',ennum:'727',kp:'وَجَبَتْ لَهُ الجَنَّةُ',note:'🏡 المؤذن المحتسب يُبنى له بيت في الجنة',en:'Whoever calls the adhan for twelve years, Paradise is guaranteed for him.'},
+    {id:6,t:'أَنَا زَعِيمٌ بِبَيْتٍ فِي رَبَضِ الجَنَّةِ لِمَنْ تَرَكَ المِرَاءَ وَإِنْ كَانَ مُحِقًّا، وَبِبَيْتٍ فِي وَسَطِ الجَنَّةِ لِمَنْ تَرَكَ الكَذِبَ وَإِنْ كَانَ مَازِحًا، وَبِبَيْتٍ فِي أَعْلَى الجَنَّةِ لِمَنْ حَسَّنَ خُلُقَهُ.',nar:'أبو أمامة ـ رضي الله عنه',ennar:'Abu Umamah (RA)',src:'سنن أبي داود',ensrc:'Sahih Abi Dawud',num:'4800',ennum:'4800',kp:'أَنَا زَعِيمٌ بِبَيْتٍ فِي رَبَضِ الجَنَّةِ — وَوَسَطِ الجَنَّةِ — وَأَعْلَى الجَنَّةِ',note:'🏡 ثلاثة بيوت في ثلاث درجات من الجنة',en:'I guarantee a house in the highest part of Paradise for one who abandons argument even if he is right, abandons lying even in jest, and perfects his character.'},
+    {id:7,t:'أَنَا وَكَافِلُ اليَتِيمِ فِي الجَنَّةِ هَكَذَا — وَأَشَارَ بِالسَّبَّابَةِ وَالوُسْطَى وَفَرَّجَ بَيْنَهُمَا شَيْئًا.',nar:'سهل بن سعد الساعدي ـ رضي الله عنه',ennar:"Sahl ibn Sa'd Al-Sa'idi (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'5304',ennum:'5304',kp:'أَنَا وَكَافِلُ اليَتِيمِ فِي الجَنَّةِ هَكَذَا',note:'🏡 كافل اليتيم مع النبي ﷺ في الجنة',en:'I and the one who sponsors an orphan will be like these two in Paradise — (gesturing with his index and middle fingers).'},
+    {id:8,t:'مَا مِنْكُمْ مِنْ أَحَدٍ يَتَوَضَّأُ فَيُبْلِغُ أَوْ فَيُسْبِغُ الوُضُوءَ ثُمَّ يَقُولُ: أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا عَبْدُ اللَّهِ وَرَسُولُهُ، إِلَّا فُتِحَتْ لَهُ أَبْوَابُ الجَنَّةِ الثَّمَانِيَةُ يَدْخُلُ مِنْ أَيِّهَا شَاءَ.',nar:'عقبة بن عامر ـ رضي الله عنه',ennar:"'Uqbah ibn 'Amir (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'234',ennum:'234',kp:'فُتِحَتْ لَهُ أَبْوَابُ الجَنَّةِ الثَّمَانِيَةُ يَدْخُلُ مِنْ أَيِّهَا شَاءَ',note:'🏡 ثمانية أبواب الجنة تُفتح له',en:'Whoever perfects his wudu, all eight gates of Paradise will be opened for him to enter through whichever he wishes.'},
+    {id:9,t:'مَنْ كَانَ آخِرُ كَلَامِهِ لَا إِلَهَ إِلَّا اللَّهُ دَخَلَ الجَنَّةَ.',nar:'معاذ بن جبل ـ رضي الله عنه',ennar:"Mu'adh ibn Jabal (RA)",src:'سنن أبي داود',ensrc:'Sahih Abi Dawud',num:'3116',ennum:'3116',kp:'مَنْ كَانَ آخِرُ كَلَامِهِ لَا إِلَهَ إِلَّا اللَّهُ دَخَلَ الجَنَّةَ',note:'🏡 خاتمة الحياة بالشهادة = الجنة',en:'Whoever&#39;s last words are &#39;There is no god but Allah&#39; will enter Paradise.'},
+    {id:10,t:'أَيُّهَا النَّاسُ أَفْشُوا السَّلَامَ، وَأَطْعِمُوا الطَّعَامَ، وَصَلُّوا الأَرْحَامَ، وَصَلُّوا بِاللَّيْلِ وَالنَّاسُ نِيَامٌ، تَدْخُلُوا الجَنَّةَ بِسَلَامٍ.',nar:'عبد الله بن سلام ـ رضي الله عنه',ennar:'Abdullah ibn Salam (RA)',src:'سنن الترمذي (2485) | صحيح ابن ماجه',ensrc:'Sahih Al-Tirmidhi (2485) | Sahih Ibn Majah',num:'2485',ennum:'2485',kp:'تَدْخُلُوا الجَنَّةَ بِسَلَامٍ',note:'🏡 أربعة أعمال تُدخل الجنة بسلام',en:'You will enter Paradise in peace if you do four things: spread peace, feed the hungry, maintain family ties, and pray at night while people sleep.'},
+    {id:11,t:'مَنْ حَجَّ فَلَمْ يَرْفُثْ وَلَمْ يَفْسُقْ رَجَعَ كَيَوْمِ وَلَدَتْهُ أُمُّهُ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (1521) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (1521) | Sahih Muslim',num:'1350',ennum:'1350',kp:'رَجَعَ كَيَوْمِ وَلَدَتْهُ أُمُّهُ — الحَجُّ المَبْرُورُ جَزَاؤُهُ الجَنَّةُ',note:'🏡 الحج المبرور جزاؤه الجنة لا غير',en:'Whoever performs an accepted Hajj will return as sinless as the day his mother bore him.'},
+    {id:12,t:'اضْمَنُوا لِي سِتًّا مِنْ أَنْفُسِكُمْ أَضْمَنْ لَكُمُ الجَنَّةَ: اصْدُقُوا إِذَا حَدَّثْتُمْ، وَأَوْفُوا إِذَا وَعَدْتُمْ، وَأَدُّوا إِذَا اؤْتُمِنْتُمْ، وَاحْفَظُوا فُرُوجَكُمْ، وَغُضُّوا أَبْصَارَكُمْ، وَكُفُّوا أَيْدِيَكُمْ.',nar:'عبادة بن الصامت ـ رضي الله عنه',ennar:"'Ubadah ibn Al-Samit (RA)",src:'مسند أحمد | صحيح الجامع | صحيح الألباني',ensrc:"Musnad Ahmad | Sahih Al-Jami'",num:'—',ennum:'—',kp:'أَضْمَنْ لَكُمُ الجَنَّةَ',note:'🏡 النبي ﷺ يضمن الجنة مقابل ست خصال',en:'I guarantee Paradise for whoever upholds six qualities: speak truthfully, fulfill promises, give back trusts, guard chastity, lower the gaze, and restrain the hand.'},
+    {id:13,t:'مَنْ قَالَ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ مِائَةَ مَرَّةٍ بُنِيَ لَهُ بَيْتٌ فِي الجَنَّةِ.',nar:'جابر بن عبد الله ـ رضي الله عنه',ennar:'Jabir ibn Abdullah (RA)',src:'المعجم الأوسط للطبراني | صحيح الجامع',ensrc:"Al-Mu'jam Al-Awsat | Sahih Al-Jami'",num:'—',ennum:'—',kp:'بُنِيَ لَهُ بَيْتٌ فِي الجَنَّةِ',note:'🏡 بيت في الجنة بمئة تسبيحة',en:'Whoever says &#39;Subhan Allah&#39; a hundred times in a day, a palm tree is planted for him in Paradise.'},
+    {id:14,t:'مَنْ قَالَ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، غُرِسَتْ لَهُ نَخْلَةٌ فِي الجَنَّةِ.',nar:'جابر بن عبد الله ـ رضي الله عنه',ennar:'Jabir ibn Abdullah (RA)',src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'3464',ennum:'3464',kp:'غُرِسَتْ لَهُ نَخْلَةٌ فِي الجَنَّةِ',note:'🏡 كل تسبيحة تغرس شجرة في الجنة',en:'Whoever says &#39;Subhan Allah wa bihamdihi&#39; a hundred times, his sins are forgiven even if they are as the foam of the sea.'},
+    {id:15,t:'مَنْ صَامَ رَمَضَانَ ثُمَّ أَتْبَعَهُ سِتًّا مِنْ شَوَّالٍ كَانَ كَصِيَامِ الدَّهْرِ.',nar:'أبو أيوب الأنصاري ـ رضي الله عنه',ennar:"Abu Ayyub Al-Ansari (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'1164',ennum:'1164',kp:'كَانَ كَصِيَامِ الدَّهْرِ',note:'🏡 صيام الدهر كله يبني بيتاً في الجنة',en:'Whoever fasts Ramadan and follows it with six days of Shawwal, it is as if he fasted the entire year.'},
+    {id:16,t:'مَنْ حَافَظَ عَلَيْهَا كَانَتْ لَهُ نُورًا وَبُرْهَانًا وَنَجَاةً يَوْمَ القِيَامَةِ، وَمَنْ لَمْ يُحَافِظْ عَلَيْهَا لَمْ يَكُنْ لَهُ نُورٌ وَلَا بُرْهَانٌ وَلَا نَجَاةٌ، وَكَانَ يَوْمَ القِيَامَةِ مَعَ قَارُونَ وَفِرْعَوْنَ وَهَامَانَ وَأُبَيِّ بْنِ خَلَفٍ.',nar:'عبد الله بن عمرو ـ رضي الله عنهما',ennar:"Ibn 'Amr (RA)",src:'مسند أحمد | صحيح الترغيب | صحيح الألباني',ensrc:'Musnad Ahmad | Sahih Al-Targhib',num:'—',ennum:'—',kp:'كَانَتْ لَهُ نُورًا وَبُرْهَانًا وَنَجَاةً يَوْمَ القِيَامَةِ',note:'🏡 المحافظة على الصلاة نور وبرهان ونجاة',en:'Whoever guards his prayers, they will be a light, a proof, and salvation for him on the Day of Resurrection.'},
+    {id:17,t:'مَنْ عَادَ مَرِيضًا أَوْ زَارَ أَخًا لَهُ فِي اللَّهِ نَادَاهُ مُنَادٍ: أَنْ طِبْتَ وَطَابَ مَمْشَاكَ وَتَبَوَّأْتَ مِنَ الجَنَّةِ مَنْزِلًا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'2008',ennum:'2008',kp:'تَبَوَّأْتَ مِنَ الجَنَّةِ مَنْزِلًا',note:'🏡 منزل في الجنة مقابل زيارة أخ في الله',en:'Whoever visits his brother for Allah&#39;s sake, a caller announces to him: you have done well and your walking was blessed, and you have taken a dwelling in Paradise.'},
+    {id:18,t:'مَنْ بَنَى لِلَّهِ مَسْجِدًا، وَلَوْ كَمَفْحَصِ قَطَاةٍ أَوْ أَصْغَرَ، بَنَى اللَّهُ لَهُ بَيْتًا فِي الجَنَّةِ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'مسند أحمد | سنن ابن ماجه',ensrc:'Musnad Ahmad | Sahih Ibn Majah',num:'738',ennum:'738',kp:'بَنَى اللَّهُ لَهُ بَيْتًا فِي الجَنَّةِ وَلَوْ كَمَفْحَصِ قَطَاةٍ',note:'🏡 ولو كان المسجد صغيراً كعش الطائر',en:'Whoever builds a mosque for Allah, even as small as a bird&#39;s nesting place, Allah will build him a house in Paradise.'},
+    {id:19,t:'مَنْ كَظَمَ غَيْظًا وَهُوَ قَادِرٌ عَلَى أَنْ يُنْفِذَهُ، دَعَاهُ اللَّهُ يَوْمَ القِيَامَةِ عَلَى رُؤُوسِ الخَلَائِقِ حَتَّى يُخَيِّرَهُ مِنَ الحُورِ العِينِ مَا شَاءَ.',nar:'معاذ بن أنس ـ رضي الله عنه',ennar:'Mu\'adh ibn Anas (RA)',src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'2021',ennum:'2021',kp:'يُخَيِّرَهُ مِنَ الحُورِ العِينِ مَا شَاءَ',note:'🏡 كظم الغيظ يُخيَّر صاحبه من الحور العين',en:'Whoever restrains his anger, Allah will reward him with a beautiful maiden of Paradise of his choosing.'},
+    {id:20,t:'مَنْ أَنْفَقَ زَوْجَيْنِ فِي سَبِيلِ اللَّهِ نُودِيَ مِنْ أَبْوَابِ الجَنَّةِ: يَا عَبْدَ اللَّهِ هَذَا خَيْرٌ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (2841) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (2841) | Sahih Muslim',num:'1027',ennum:'1027',kp:'نُودِيَ مِنْ أَبْوَابِ الجَنَّةِ: يَا عَبْدَ اللَّهِ هَذَا خَيْرٌ',note:'🏡 الإنفاق في سبيل الله يُنادى عليه من أبواب الجنة',en:'Whoever spends in charity two of anything in Allah&#39;s cause will be called from all eight gates of Paradise.'},
+    {id:21,t:'مَنْ أَعْتَقَ رَقَبَةً مُؤْمِنَةً أَعْتَقَ اللَّهُ بِكُلِّ عُضْوٍ مِنْهُ عُضْوًا مِنَ النَّارِ، حَتَّى يَعْتِقَ فَرْجَهُ بِفَرْجِهِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (2517) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (2517) | Sahih Muslim',num:'1509',ennum:'1509',kp:'أَعْتَقَ اللَّهُ بِكُلِّ عُضْوٍ مِنْهُ عُضْوًا مِنَ النَّارِ',note:'🏡 عتق رقبة = عتق كامل من النار',en:'Whoever frees a Muslim slave, Allah will free every limb of his from Hellfire in return for each of the slave&#39;s limbs.'},
+    {id:22,t:'مَنْ قَرَأَ آيَةَ الكُرْسِيِّ دُبُرَ كُلِّ صَلَاةٍ مَكْتُوبَةٍ، لَمْ يَمْنَعْهُ مِنْ دُخُولِ الجَنَّةِ إِلَّا أَنْ يَمُوتَ.',nar:'أبو أمامة ـ رضي الله عنه',ennar:'Abu Umamah (RA)',src:'صحيح النسائي | صحيح الألباني',ensrc:"Sahih Al-Nasa'i | Sahih Al-Albani",num:'—',ennum:'—',kp:'لَمْ يَمْنَعْهُ مِنْ دُخُولِ الجَنَّةِ إِلَّا أَنْ يَمُوتَ',note:'🏡 لا يمنعه من الجنة إلا الموت',en:'Whoever recites Ayat Al-Kursi after every obligatory prayer, nothing prevents him from entering Paradise except death.'},
+    {id:23,t:'مَنْ غَدَا إِلَى المَسْجِدِ أَوْ رَاحَ، أَعَدَّ اللَّهُ لَهُ فِي الجَنَّةِ نُزُلًا كُلَّمَا غَدَا أَوْ رَاحَ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (662) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (662) | Sahih Muslim',num:'669',ennum:'669',kp:'أَعَدَّ اللَّهُ لَهُ فِي الجَنَّةِ نُزُلًا كُلَّمَا غَدَا أَوْ رَاحَ',note:'🏡 نزل في الجنة مع كل ذهاب وإياب للمسجد',en:'Whoever is always coming and going to the mosque, Allah prepares a place of honour in Paradise for him each time.'},
+    {id:24,t:'مَنْ صَلَّى عَلَيَّ صَلَاةً وَاحِدَةً صَلَّى اللَّهُ عَلَيْهِ عَشْرَ صَلَوَاتٍ، وَحُطَّتْ عَنْهُ عَشْرُ سَيِّئَاتٍ، وَرُفِعَتْ لَهُ عَشْرُ دَرَجَاتٍ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح النسائي',ensrc:"Sahih Al-Nasa'i",num:'1297',ennum:'1297',kp:'رُفِعَتْ لَهُ عَشْرُ دَرَجَاتٍ',note:'🏡 رفع عشر درجات في الجنة بصلاة واحدة',en:'Whoever sends one blessing upon the Prophet, Allah sends ten blessings upon him and raises him ten degrees.'},
+    {id:25,t:'مَنْ قَالَ حِينَ يَسْمَعُ النِّدَاءَ: اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلَاةِ القَائِمَةِ، آتِ مُحَمَّدًا الوَسِيلَةَ وَالفَضِيلَةَ وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ، حَلَّتْ لَهُ شَفَاعَتِي يَوْمَ القِيَامَةِ.',nar:'جابر بن عبد الله ـ رضي الله عنه',ennar:'Jabir ibn Abdullah (RA)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'614',ennum:'614',kp:'حَلَّتْ لَهُ شَفَاعَتِي يَوْمَ القِيَامَةِ',note:'🏡 شفاعة النبي ﷺ يوم القيامة',en:'Whoever learns the supplication for after the adhan, my intercession will be guaranteed for him on the Day of Resurrection.'},
+    {id:26,t:'مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الجَنَّةِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2699',ennum:'2699',kp:'سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الجَنَّةِ',note:'🏡 طريق العلم يؤدي مباشرة إلى الجنة',en:'Whoever takes a path seeking knowledge, Allah will ease for him a path to Paradise.'},
+    {id:27,t:'مَا مِنِ امْرِئٍ مُسْلِمٍ تَحْضُرُهُ صَلَاةٌ مَكْتُوبَةٌ فَيُحْسِنُ وُضُوءَهَا وَخُشُوعَهَا وَرُكُوعَهَا إِلَّا كَانَتْ كَفَّارَةً لِمَا قَبْلَهَا مِنَ الذُّنُوبِ مَا لَمْ يُؤْتِ كَبِيرَةً، وَذَلِكَ الدَّهْرَ كُلَّهُ.',nar:'عثمان بن عفان ـ رضي الله عنه',ennar:"'Uthman ibn 'Affan (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'228',ennum:'228',kp:'كَانَتْ كَفَّارَةً لِمَا قَبْلَهَا مِنَ الذُّنُوبِ — وَذَلِكَ الدَّهْرَ كُلَّهُ',note:'🏡 تكفير الذنوب في كل صلاة طوال العمر',en:'Whoever perfects his ablution, his sins are expiated and his prayers carry him to Paradise.'},
+    {id:28,t:'مَنْ صَامَ يَوْمًا فِي سَبِيلِ اللَّهِ، بَعَّدَ اللَّهُ وَجْهَهُ عَنِ النَّارِ سَبْعِينَ خَرِيفًا.',nar:'أبو سعيد الخدري ـ رضي الله عنه',ennar:"Abu Sa'id Al-Khudri (RA)",src:'صحيح البخاري (2840) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (2840) | Sahih Muslim',num:'1153',ennum:'1153',kp:'بَعَّدَ اللَّهُ وَجْهَهُ عَنِ النَّارِ سَبْعِينَ خَرِيفًا',note:'🏡 يوم صيام واحد يُبعده عن النار ٧٠ عاماً',en:'Whoever fasts one day purely for Allah&#39;s sake, Allah will distance his face from Hellfire by seventy years.'},
+    {id:29,t:'أَكْمَلُ المُؤْمِنِينَ إِيمَانًا أَحْسَنُهُمْ خُلُقًا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'سنن أبي داود (4682) | سنن الترمذي',ensrc:'Sunan Abi Dawud (4682) | Sahih Al-Tirmidhi',num:'1162',ennum:'1162',kp:'أَكْمَلُ المُؤْمِنِينَ إِيمَانًا أَحْسَنُهُمْ خُلُقًا',note:'🏡 حسن الخلق يبلغ أعلى درجات الجنة',en:'The most complete believers in faith are those with the best character.'},
+    {id:30,t:'رَكْعَتَا الفَجْرِ خَيْرٌ مِنَ الدُّنْيَا وَمَا فِيهَا.',nar:'عائشة أم المؤمنين ـ رضي الله عنها',ennar:"A'ishah Umm Al-Mu'minin (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'725',ennum:'725',kp:'رَكْعَتَا الفَجْرِ خَيْرٌ مِنَ الدُّنْيَا وَمَا فِيهَا',note:'🏡 ركعتان = أثقل في الميزان من الدنيا كلها',en:'The two rak&#39;ahs before Fajr are better than this world and all it contains.'}
+  ]
+},
+
+/* ══════════════════════════════════════════════════════════════
+   CHAPTER 2 — اللهم أسألك  (placeholder — 3 samples)
+   ══════════════════════════════════════════════════════════════ */
+{
+  id:'dua', n:2, emoji:'🤲',
+  ar:'اللهم أسألك', en:'Prophetic Supplications',
+  color:'#1A237E', grad:'linear-gradient(135deg,#1A237E,#283593)',
+  cc:'c2', kpc:'kp2',
+  kplar:'🤲 صيغة الدعاء', kplen:'🤲 Supplication Formula',
+  hadiths:[
+    {id:1,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:'Ibn Umar (RA)',src:'صحيح البخاري (6327) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6327) | Sahih Muslim',num:'2697',ennum:'2697',kp:'أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ',note:''},
+    {id:2,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الهُدَى وَالتُّقَى، وَالعَفَافَ وَالغِنَى.',nar:'عبد الله بن مسعود ـ رضي الله عنه',ennar:"Ibn Mas'ud (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2721',ennum:'2721',kp:'أَسْأَلُكَ الهُدَى وَالتُّقَى وَالعَفَافَ وَالغِنَى',note:''},
+    {id:3,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح أبي داود | أصله في صحيح مسلم',ensrc:'Sahih Abi Dawud | Sahih Muslim',num:'976',ennum:'976',kp:'أَسْأَلُكَ الجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ',note:''},
+    {id:4,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنَ الخَيْرِ كُلِّهِ، عَاجِلِهِ وَآجِلِهِ، مَا عَلِمْتُ مِنْهُ وَمَا لَمْ أَعْلَمْ.',nar:'عائشة أم المؤمنين ـ رضي الله عنها',ennar:"A'ishah (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2680',ennum:'2680',kp:'أَسْأَلُكَ مِنَ الخَيْرِ كُلِّهِ عَاجِلِهِ وَآجِلِهِ',note:''},
+    {id:5,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ فِعْلَ الخَيْرَاتِ، وَتَرْكَ المُنْكَرَاتِ، وَحُبَّ المَسَاكِينِ، وَأَنْ تَغْفِرَ لِي وَتَرْحَمَنِي، وَإِذَا أَرَدْتَ فِتْنَةً فِي قَوْمٍ فَتَوَفَّنِي غَيْرَ مَفْتُونٍ.',nar:'معاذ بن جبل ـ رضي الله عنه',ennar:"Mu'adh ibn Jabal (RA)",src:'صحيح الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'3235',ennum:'3235',kp:'فِعْلَ الخَيْرَاتِ وَتَرْكَ المُنْكَرَاتِ وَحُبَّ المَسَاكِينِ',note:''},
+    {id:6,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الثَّبَاتَ فِي الأَمْرِ، وَالعَزِيمَةَ عَلَى الرُّشْدِ، وَأَسْأَلُكَ شُكْرَ نِعْمَتِكَ وَحُسْنَ عِبَادَتِكَ، وَأَسْأَلُكَ قَلْبًا سَلِيمًا وَلِسَانًا صَادِقًا، وَأَسْأَلُكَ مِنْ خَيْرِ مَا تَعْلَمُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا تَعْلَمُ، وَأَسْتَغْفِرُكَ لِمَا تَعْلَمُ.',nar:'شداد بن أوس ـ رضي الله عنه',ennar:'Shaddad ibn Aws (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2723',ennum:'2723',kp:'أَسْأَلُكَ قَلْبًا سَلِيمًا وَلِسَانًا صَادِقًا',note:''},
+    {id:7,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا.',nar:'أم سلمة ـ رضي الله عنها',ennar:'Umm Salamah (RA)',src:'صحيح مسلم (2726) | سنن ابن ماجه',ensrc:'Sahih Muslim (2726) | Ibn Majah',num:'925',ennum:'925',kp:'أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا',note:''},
+    {id:8,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ رَحْمَةً مِنْ عِنْدِكَ تَهْدِي بِهَا قَلْبِي، وَتَجْمَعُ بِهَا أَمْرِي، وَتَلُمُّ بِهَا شَعَثِي، وَتُصْلِحُ بِهَا غَائِبِي، وَتَرْفَعُ بِهَا شَاهِدِي، وَتُزَكِّي بِهَا عَمَلِي.',nar:'عبد الله بن مسعود ـ رضي الله عنه',ennar:"Ibn Mas'ud (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2727',ennum:'2727',kp:'أَسْأَلُكَ رَحْمَةً مِنْ عِنْدِكَ تَهْدِي بِهَا قَلْبِي',note:''},
+    {id:9,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الجَنَّةَ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ، وَأَعُوذُ بِكَ مِنَ النَّارِ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ.',nar:'أبو أمامة الباهلي ـ رضي الله عنه',ennar:'Abu Umamah Al-Bahili (RA)',src:'صحيح ابن ماجه | أصله في صحيح مسلم',ensrc:'Sahih Ibn Majah | Sahih Muslim',num:'2679',ennum:'2679',kp:'أَسْأَلُكَ الجَنَّةَ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ',note:''},
+    {id:10,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ يَا اللهُ الأَحَدُ الصَّمَدُ، الَّذِي لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ، أَنْ تَغْفِرَ لِي ذُنُوبِي، إِنَّكَ أَنْتَ الغَفُورُ الرَّحِيمُ.',nar:'بريدة ـ رضي الله عنه',ennar:'Buraydah (RA)',src:'صحيح أبي داود (985) | صحيح النسائي',ensrc:"Sahih Abi Dawud (985) | Sahih Al-Nasa'i",num:'985',ennum:'985',kp:'يَا اللهُ الأَحَدُ الصَّمَدُ الَّذِي لَمْ يَلِدْ وَلَمْ يُولَدْ',note:''},
+    {id:11,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ بِأَنَّكَ أَنْتَ اللهُ، لَا إِلَهَ إِلَّا أَنْتَ، الأَحَدُ الصَّمَدُ، الَّذِي لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ.',nar:'بريدة ـ رضي الله عنه',ennar:'Buraydah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'577',ennum:'577',kp:'أَسْأَلُكَ بِأَنَّكَ أَنْتَ اللهُ لَا إِلَهَ إِلَّا أَنْتَ الأَحَدُ الصَّمَدُ',note:''},
+    {id:12,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ بِأَنَّ لَكَ الحَمْدُ، لَا إِلَهَ إِلَّا أَنْتَ وَحْدَكَ لَا شَرِيكَ لَكَ، المَنَّانُ، يَا بَدِيعَ السَّمَوَاتِ وَالأَرْضِ، يَا ذَا الجَلَالِ وَالإِكْرَامِ، يَا حَيُّ يَا قَيُّومُ، إِنِّي أَسْأَلُكَ الجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح أبي داود (1495) | صحيح ابن ماجه',ensrc:'Sahih Abi Dawud (1495) | Sahih Ibn Majah',num:'3858',ennum:'3858',kp:'يَا بَدِيعَ السَّمَوَاتِ وَالأَرْضِ يَا ذَا الجَلَالِ وَالإِكْرَامِ',note:''},
+    {id:13,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2723',ennum:'2723',kp:'أَسْأَلُكَ خَيْرَ هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا',note:''},
+    {id:14,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ المَسْأَلَةِ، وَخَيْرَ الدُّعَاءِ، وَخَيْرَ النَّجَاحِ، وَخَيْرَ العَمَلِ، وَخَيْرَ الثَّوَابِ، وَخَيْرَ الحَيَاةِ، وَخَيْرَ المَمَاتِ، وَثَبِّتْنِي وَثَقِّلْ مَوَازِينِي، وَحَقِّقْ إِيمَانِي، وَارْفَعْ دَرَجَتِي.',nar:'عائشة أم المؤمنين ـ رضي الله عنها',ennar:"A'ishah (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2680',ennum:'2680',kp:'خَيْرَ الحَيَاةِ وَخَيْرَ المَمَاتِ وَثَبِّتْنِي وَثَقِّلْ مَوَازِينِي',note:''},
+    {id:15,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الصِّحَّةَ وَالعِفَّةَ وَالأَمَانَةَ وَحُسْنَ الخُلُقِ وَالرِّضَا بِالقَدَرِ.',nar:'عبد الله بن عمرو ـ رضي الله عنهما',ennar:"Ibn 'Amr (RA)",src:'الأدب المفرد للبخاري | صحيح الألباني',ensrc:'Al-Adab Al-Mufrad | Sahih Al-Albani',num:'—',ennum:'—',kp:'أَسْأَلُكَ الصِّحَّةَ وَالعِفَّةَ وَالأَمَانَةَ وَحُسْنَ الخُلُقِ',note:''},
+    {id:16,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ يَا مُقَلِّبَ القُلُوبِ أَنْ تُثَبِّتَ قَلْبِي عَلَى دِينِكَ.',nar:'أم سلمة ـ رضي الله عنها',ennar:'Umm Salamah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2654',ennum:'2654',kp:'يَا مُقَلِّبَ القُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ',note:''},
+    {id:17,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ حُبَّكَ وَحُبَّ مَنْ يُحِبُّكَ وَحُبَّ عَمَلٍ يُقَرِّبُنِي إِلَى حُبِّكَ.',nar:'معاذ بن جبل ـ رضي الله عنه',ennar:"Mu'adh ibn Jabal (RA)",src:'صحيح الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'3490',ennum:'3490',kp:'أَسْأَلُكَ حُبَّكَ وَحُبَّ مَنْ يُحِبُّكَ',note:''},
+    {id:18,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ القَصْدَ فِي الفَقْرِ وَالغِنَى.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح النسائي',ensrc:"Sahih Al-Nasa'i",num:'1305',ennum:'1305',kp:'أَسْأَلُكَ القَصْدَ فِي الفَقْرِ وَالغِنَى',note:''},
+    {id:19,t:'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح البخاري (6389) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6389) | Sahih Muslim',num:'2690',ennum:'2690',kp:'آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ',note:''},
+    {id:20,t:'اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا، وَفِي لِسَانِي نُورًا، وَفِي سَمْعِي نُورًا، وَفِي بَصَرِي نُورًا، وَمِنْ فَوْقِي نُورًا، وَمِنْ تَحْتِي نُورًا، وَعَنْ يَمِينِي نُورًا، وَعَنْ شِمَالِي نُورًا، وَمِنْ أَمَامِي نُورًا، وَمِنْ خَلْفِي نُورًا، وَاجْعَلْ لِي نُورًا.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح البخاري (6316) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6316) | Sahih Muslim',num:'763',ennum:'763',kp:'اجْعَلْ فِي قَلْبِي نُورًا وَفِي لِسَانِي نُورًا',note:''},
+    {id:21,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الجَنَّةَ — ثَلَاثَ مَرَّاتٍ — فَقَالَتِ الجَنَّةُ: اللَّهُمَّ أَدْخِلْهُ إِيَّايَ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح الترمذي (2572) | وأصله في الصحيحين',ensrc:'Sahih Al-Tirmidhi (2572) | Agreed Upon',num:'2572',ennum:'2572',kp:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الجَنَّةَ — فَقَالَتِ الجَنَّةُ: اللَّهُمَّ أَدْخِلْهُ إِيَّايَ',note:''},
+    {id:22,t:'اللَّهُمَّ أَصْلِحْ لِي دِينِيَ الَّذِي هُوَ عِصْمَةُ أَمْرِي، وَأَصْلِحْ لِي دُنْيَايَ الَّتِي فِيهَا مَعَاشِي، وَأَصْلِحْ لِي آخِرَتِي الَّتِي إِلَيْهَا مَعَادِي، وَاجْعَلِ الحَيَاةَ زِيَادَةً لِي فِي كُلِّ خَيْرٍ، وَاجْعَلِ المَوْتَ رَاحَةً لِي مِنْ كُلِّ شَرٍّ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2720',ennum:'2720',kp:'اجْعَلِ الحَيَاةَ زِيَادَةً لِي فِي كُلِّ خَيْرٍ وَاجْعَلِ المَوْتَ رَاحَةً لِي مِنْ كُلِّ شَرٍّ',note:''},
+    {id:23,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ.',nar:'عبد الله بن مسعود ـ رضي الله عنه',ennar:"Ibn Mas'ud (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'715',ennum:'715',kp:'اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ',note:''},
+    {id:24,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ الهُدَى وَالسَّدَادَ.',nar:'علي بن أبي طالب ـ رضي الله عنه',ennar:"'Ali ibn Abi Talib (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2725',ennum:'2725',kp:'أَسْأَلُكَ الهُدَى وَالسَّدَادَ',note:''},
+    {id:25,t:'اللَّهُمَّ لَكَ أَسْلَمْتُ، وَبِكَ آمَنْتُ، وَعَلَيْكَ تَوَكَّلْتُ، وَإِلَيْكَ أَنَبْتُ، وَبِكَ خَاصَمْتُ، اللَّهُمَّ إِنِّي أَعُوذُ بِعِزَّتِكَ أَنْ تُضِلَّنِي.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح البخاري (7383) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (7383) | Sahih Muslim',num:'2717',ennum:'2717',kp:'لَكَ أَسْلَمْتُ وَبِكَ آمَنْتُ وَعَلَيْكَ تَوَكَّلْتُ',note:''},
+    {id:26,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الوَادِي وَخَيْرَ أَهْلِهِ وَخَيْرَ مَا فِيهِ، وَأَعُوذُ بِكَ مِنْ شَرِّهِ وَشَرِّ أَهْلِهِ وَشَرِّ مَا فِيهِ.',nar:'صهيب ـ رضي الله عنه',ennar:'Suhayb (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2718',ennum:'2718',kp:'أَسْأَلُكَ خَيْرَ هَذَا الوَادِي وَخَيْرَ أَهْلِهِ وَخَيْرَ مَا فِيهِ',note:''},
+    {id:27,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ العَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ.',nar:'أبو بكر الصديق ـ رضي الله عنه',ennar:'Abu Bakr Al-Siddiq (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2697',ennum:'2697',kp:'أَسْأَلُكَ العَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ',note:''},
+    {id:28,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ وَرَحْمَتِكَ، فَإِنَّهُ لَا يَمْلِكُهَا إِلَّا أَنْتَ، رَبِّ إِنِّي لِمَا أَنْزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ، فَأَغْنِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَبِطَاعَتِكَ عَنْ مَعْصِيَتِكَ، وَبِفَضْلِكَ عَمَّنْ سِوَاكَ.',nar:'دعاء قرآني مأثور — سورة النساء (32) وسورة القصص (24)',ennar:'Quranic Supplication — Al-Nisa (32) & Al-Qasas (24)',src:'مستوحى من القرآن الكريم',ensrc:'Derived from the Holy Quran',num:'—',ennum:'—',kp:'أَغْنِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَبِطَاعَتِكَ عَنْ مَعْصِيَتِكَ',note:''},
+    {id:29,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ نُورًا يَمْشِي بِهِ قَلْبِي، وَنُورًا يُضِيءُ بِهِ بَصَرِي، وَنُورًا يَهْدِي بِهِ أَمْرِي، وَتُبْ عَلَيْنَا تَوْبَةً نَصُوحًا، وَاجْعَلْ لَنَا نُورَنَا يَسْعَى بَيْنَ أَيْدِينَا وَبِأَيْمَانِنَا، وَاغْفِرْ لَنَا إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.',nar:'دعاء قرآني مأثور — سورة الأنعام (122) وسورة التحريم (8)',ennar:"Quranic Supplication — Al-An'am (122) & Al-Tahrim (8)",src:'مستوحى من القرآن الكريم',ensrc:'Derived from the Holy Quran',num:'—',ennum:'—',kp:'نُورًا يَمْشِي بِهِ قَلْبِي وَنُورًا يُضِيءُ بِهِ بَصَرِي',note:''},
+    {id:30,t:'اللَّهُمَّ إِنِّي أَسْأَلُكَ أَنْ تُؤْتِيَنِي مِنْ فَضْلِكَ، فَأَنْتَ تُؤْتِي المُلْكَ مَنْ تَشَاءُ، وَتَنْزِعُ المُلْكَ مِمَّنْ تَشَاءُ، وَتُعِزُّ مَنْ تَشَاءُ وَتُذِلُّ مَنْ تَشَاءُ، بِيَدِكَ الخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، فَارْزُقْنِي رِزْقًا حَلَالًا وَاسِعًا بِغَيْرِ حِسَابٍ، فَأَنْتَ خَيْرُ الرَّازِقِينَ.',nar:'دعاء قرآني مأثور — سورة آل عمران (26-27) وسورة يوسف (101)',ennar:"Quranic Supplication — Al 'Imran (26-27) & Yusuf (101)",src:'مستوحى من القرآن الكريم',ensrc:'Derived from the Holy Quran',num:'—',ennum:'—',kp:'بِيَدِكَ الخَيْرُ — فَارْزُقْنِي رِزْقًا حَلَالًا وَاسِعًا بِغَيْرِ حِسَابٍ',note:''}
+  ]
+},
+
+/* ══════════════════════════════════════════════════════════════
+   CHAPTER 3 — اللهم أعوذ بك  (placeholder — 3 samples)
+   ══════════════════════════════════════════════════════════════ */
+{
+  id:'refuge', n:3, emoji:'🛡️',
+  ar:'اللهم أعوذ بك', en:'Seeking Refuge with Allah',
+  color:'#4A148C', grad:'linear-gradient(135deg,#4A148C,#6A1B9A)',
+  cc:'c3', kpc:'kp3',
+  kplar:'🛡️ صيغة الاستعاذة', kplen:'🛡️ Refuge Formula',
+  hadiths:[
+    {id:1,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الهَمِّ وَالحَزَنِ، وَالعَجْزِ وَالكَسَلِ، وَالجُبْنِ وَالبُخْلِ، وَضَلَعِ الدَّيْنِ، وَغَلَبَةِ الرِّجَالِ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح البخاري (6369) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6369) | Sahih Muslim',num:'2706',ennum:'2706',kp:'أَعُوذُ بِكَ مِنَ الهَمِّ وَالحَزَنِ وَالعَجْزِ وَالكَسَلِ وَالجُبْنِ وَالبُخْلِ وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ',note:''},
+    {id:2,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ العَجْزِ وَالكَسَلِ، وَالجُبْنِ وَالبُخْلِ، وَالهَرَمِ وَعَذَابِ القَبْرِ، اللَّهُمَّ آتِ نَفْسِي تَقْوَاهَا، وَزَكِّهَا أَنْتَ خَيْرُ مَنْ زَكَّاهَا، أَنْتَ وَلِيُّهَا وَمَوْلَاهَا، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عِلْمٍ لَا يَنْفَعُ، وَمِنْ قَلْبٍ لَا يَخْشَعُ، وَمِنْ نَفْسٍ لَا تَشْبَعُ، وَمِنْ دَعْوَةٍ لَا يُسْتَجَابُ لَهَا.',nar:'زيد بن أرقم ـ رضي الله عنه',ennar:'Zayd ibn Arqam (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2722',ennum:'2722',kp:'أَعُوذُ بِكَ مِنْ عِلْمٍ لَا يَنْفَعُ وَقَلْبٍ لَا يَخْشَعُ وَنَفْسٍ لَا تَشْبَعُ',note:''},
+    {id:3,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ البُخْلِ، وَأَعُوذُ بِكَ مِنَ الجُبْنِ، وَأَعُوذُ بِكَ مِنْ أَنْ أُرَدَّ إِلَى أَرْذَلِ العُمُرِ، وَأَعُوذُ بِكَ مِنْ فِتْنَةِ الدُّنْيَا، وَأَعُوذُ بِكَ مِنْ عَذَابِ القَبْرِ.',nar:'سعد بن أبي وقاص ـ رضي الله عنه',ennar:"Sa'd ibn Abi Waqqas (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'6390',ennum:'6390',kp:'أَعُوذُ بِكَ مِنَ البُخْلِ وَالجُبْنِ وَأَرْذَلِ العُمُرِ وَفِتْنَةِ الدُّنْيَا وَعَذَابِ القَبْرِ',note:''},
+    {id:4,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الكَسَلِ وَالهَرَمِ، وَالمَأْثَمِ وَالمَغْرَمِ، وَمِنْ فِتْنَةِ القَبْرِ وَعَذَابِ القَبْرِ، وَمِنْ فِتْنَةِ النَّارِ وَعَذَابِ النَّارِ، وَمِنْ شَرِّ فِتْنَةِ الغِنَى، وَأَعُوذُ بِكَ مِنْ فِتْنَةِ الفَقْرِ، وَأَعُوذُ بِكَ مِنْ فِتْنَةِ المَسِيحِ الدَّجَّالِ، اللَّهُمَّ اغْسِلْ عَنِّي خَطَايَايَ بِمَاءِ الثَّلْجِ وَالبَرَدِ، وَنَقِّ قَلْبِي مِنَ الخَطَايَا كَمَا يُنَقَّى الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ، وَبَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ المَشْرِقِ وَالمَغْرِبِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (6375) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6375) | Sahih Muslim',num:'589',ennum:'589',kp:'اغْسِلْ عَنِّي خَطَايَايَ بِمَاءِ الثَّلْجِ وَالبَرَدِ وَنَقِّ قَلْبِي كَمَا يُنَقَّى الثَّوْبُ الأَبْيَضُ',note:''},
+    {id:5,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ القَبْرِ، وَمِنْ فِتْنَةِ المَحْيَا وَالمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ المَسِيحِ الدَّجَّالِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (1377) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (1377) | Sahih Muslim',num:'588',ennum:'588',kp:'أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ وَعَذَابِ القَبْرِ وَفِتْنَةِ المَحْيَا وَالمَمَاتِ وَفِتْنَةِ المَسِيحِ الدَّجَّالِ',note:''},
+    {id:6,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ مَا عَمِلْتُ، وَمِنْ شَرِّ مَا لَمْ أَعْمَلْ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2716',ennum:'2716',kp:'أَعُوذُ بِكَ مِنْ شَرِّ مَا عَمِلْتُ وَمِنْ شَرِّ مَا لَمْ أَعْمَلْ',note:''},
+    {id:7,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ، وَتَحَوُّلِ عَافِيَتِكَ، وَفَجْأَةِ نِقْمَتِكَ، وَجَمِيعِ سَخَطِكَ.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:"Ibn 'Umar (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2739',ennum:'2739',kp:'أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ وَتَحَوُّلِ عَافِيَتِكَ وَفَجْأَةِ نِقْمَتِكَ',note:''},
+    {id:8,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِرِضَاكَ مِنْ سَخَطِكَ، وَبِمُعَافَاتِكَ مِنْ عُقُوبَتِكَ، وَأَعُوذُ بِكَ مِنْكَ، لَا أُحْصِي ثَنَاءً عَلَيْكَ، أَنْتَ كَمَا أَثْنَيْتَ عَلَى نَفْسِكَ.',nar:'عائشة أم المؤمنين ـ رضي الله عنها',ennar:"A'ishah Umm Al-Mu'minin (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'486',ennum:'486',kp:'أَعُوذُ بِرِضَاكَ مِنْ سَخَطِكَ وَبِمُعَافَاتِكَ مِنْ عُقُوبَتِكَ وَأَعُوذُ بِكَ مِنْكَ',note:''},
+    {id:9,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَهْدِ البَلَاءِ، وَدَرَكِ الشَّقَاءِ، وَسُوءِ القَضَاءِ، وَشَمَاتَةِ الأَعْدَاءِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (6347) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6347) | Sahih Muslim',num:'2707',ennum:'2707',kp:'أَعُوذُ بِكَ مِنْ جَهْدِ البَلَاءِ وَدَرَكِ الشَّقَاءِ وَسُوءِ القَضَاءِ وَشَمَاتَةِ الأَعْدَاءِ',note:''},
+    {id:10,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ سَمْعِي، وَمِنْ شَرِّ بَصَرِي، وَمِنْ شَرِّ لِسَانِي، وَمِنْ شَرِّ قَلْبِي، وَمِنْ شَرِّ مَنِيِّي.',nar:'شكل بن حميد ـ رضي الله عنه',ennar:'Shakl ibn Humayd (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2720',ennum:'2720',kp:'أَعُوذُ بِكَ مِنْ شَرِّ سَمْعِي وَبَصَرِي وَلِسَانِي وَقَلْبِي',note:''},
+    {id:11,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِعِزَّتِكَ، لَا إِلَهَ إِلَّا أَنْتَ، أَنْ تُضِلَّنِي، أَنْتَ الحَيُّ الَّذِي لَا يَمُوتُ، وَالجِنُّ وَالإِنْسُ يَمُوتُونَ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2717',ennum:'2717',kp:'أَعُوذُ بِعِزَّتِكَ أَنْ تُضِلَّنِي — أَنْتَ الحَيُّ الَّذِي لَا يَمُوتُ',note:''},
+    {id:12,t:'اللَّهُمَّ رَبَّ السَّمَوَاتِ وَرَبَّ الأَرْضِ، وَرَبَّ العَرْشِ العَظِيمِ، رَبَّنَا وَرَبَّ كُلِّ شَيْءٍ، فَالِقَ الحَبِّ وَالنَّوَى، مُنْزِلَ التَّوْرَاةِ وَالإِنْجِيلِ وَالفُرْقَانِ، أَعُوذُ بِكَ مِنْ شَرِّ كُلِّ شَيْءٍ أَنْتَ آخِذٌ بِنَاصِيَتِهِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2713',ennum:'2713',kp:'أَعُوذُ بِكَ مِنْ شَرِّ كُلِّ شَيْءٍ أَنْتَ آخِذٌ بِنَاصِيَتِهِ',note:''},
+    {id:13,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الهَرَمِ، وَأَعُوذُ بِكَ مِنَ الهَدْمِ، وَأَعُوذُ بِكَ مِنَ الغَرَقِ وَالحَرَقِ، وَأَعُوذُ بِكَ أَنْ يَتَخَبَّطَنِي الشَّيْطَانُ عِنْدَ المَوْتِ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'6367',ennum:'6367',kp:'أَعُوذُ بِكَ مِنَ الهَرَمِ وَالهَدْمِ وَالغَرَقِ وَالحَرَقِ وَأَنْ يَتَخَبَّطَنِي الشَّيْطَانُ عِنْدَ المَوْتِ',note:''},
+    {id:14,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الشِّقَاقِ وَالنِّفَاقِ، وَسُوءِ الأَخْلَاقِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'6372',ennum:'6372',kp:'أَعُوذُ بِكَ مِنَ الشِّقَاقِ وَالنِّفَاقِ وَسُوءِ الأَخْلَاقِ',note:''},
+    {id:15,t:'أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ.',nar:'خولة بنت حكيم ـ رضي الله عنها',ennar:'Khawlah bint Hakim (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2708',ennum:'2708',kp:'أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ',note:''},
+    {id:16,t:'أَعُوذُ بِعِزَّةِ اللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ.',nar:'عثمان بن أبي العاص ـ رضي الله عنه',ennar:"'Uthman ibn Abi Al-'As (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2202',ennum:'2202',kp:'أَعُوذُ بِعِزَّةِ اللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ',note:''},
+    {id:17,t:'ضَعْ يَدَكَ عَلَى الَّذِي تَأَلَّمُ مِنْ جَسَدِكَ وَقُلْ: بِسْمِ اللهِ ثَلَاثًا، وَقُلْ سَبْعَ مَرَّاتٍ: أَعُوذُ بِعِزَّةِ اللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ.',nar:'عثمان بن أبي العاص ـ رضي الله عنه',ennar:"'Uthman ibn Abi Al-'As (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2202',ennum:'2202',kp:'ضَعْ يَدَكَ وَقُلْ سَبْعَ مَرَّاتٍ: أَعُوذُ بِعِزَّةِ اللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ',note:''},
+    {id:18,t:'إِذَا أَوَى أَحَدُكُمْ إِلَى فِرَاشِهِ فَلْيَقُلْ: أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ غَضَبِهِ وَعِقَابِهِ، وَشَرِّ عِبَادِهِ، وَمِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَنْ يَحْضُرُونِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'3292',ennum:'3292',kp:'أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ غَضَبِهِ وَعِقَابِهِ وَشَرِّ عِبَادِهِ وَهَمَزَاتِ الشَّيَاطِينِ',note:''},
+    {id:19,t:'تَعَوَّذُوا بِاللهِ مِنْ جَهْدِ البَلَاءِ، وَدَرَكِ الشَّقَاءِ، وَسُوءِ القَضَاءِ، وَشَمَاتَةِ الأَعْدَاءِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (6616) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6616) | Sahih Muslim',num:'2707',ennum:'2707',kp:'تَعَوَّذُوا بِاللهِ مِنْ جَهْدِ البَلَاءِ وَدَرَكِ الشَّقَاءِ',note:''},
+    {id:20,t:'تَعَوَّذُوا بِاللهِ مِنَ الفِتَنِ، مَا ظَهَرَ مِنْهَا وَمَا بَطَنَ.',nar:'زيد بن ثابت ـ رضي الله عنه',ennar:'Zayd ibn Thabit (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2867',ennum:'2867',kp:'تَعَوَّذُوا بِاللهِ مِنَ الفِتَنِ مَا ظَهَرَ مِنْهَا وَمَا بَطَنَ',note:''},
+    {id:21,t:'تَعَوَّذُوا بِاللهِ مِنْ عَذَابِ القَبْرِ، تَعَوَّذُوا بِاللهِ مِنْ عَذَابِ النَّارِ، تَعَوَّذُوا بِاللهِ مِنْ فِتْنَةِ المَسِيحِ الدَّجَّالِ، تَعَوَّذُوا بِاللهِ مِنْ فِتْنَةِ المَحْيَا وَالمَمَاتِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'588',ennum:'588',kp:'تَعَوَّذُوا بِاللهِ مِنْ عَذَابِ القَبْرِ وَعَذَابِ النَّارِ وَفِتْنَةِ الدَّجَّالِ وَفِتْنَةِ المَحْيَا وَالمَمَاتِ',note:''},
+    {id:22,t:'إِذَا تَشَهَّدَ أَحَدُكُمْ فَلْيَتَعَوَّذْ بِاللهِ مِنْ أَرْبَعٍ: مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ القَبْرِ، وَمِنْ فِتْنَةِ المَحْيَا وَالمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ المَسِيحِ الدَّجَّالِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'588',ennum:'588',kp:'إِذَا تَشَهَّدَ فَلْيَتَعَوَّذْ مِنْ أَرْبَعٍ — يُقَالُ فِي آخِرِ التَّشَهُّدِ',note:''},
+    {id:23,t:'إِذَا سَمِعْتُمْ نَهِيقَ الحِمَارِ فَتَعَوَّذُوا بِاللهِ مِنَ الشَّيْطَانِ، فَإِنَّهُ رَأَى شَيْطَانًا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (3303) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (3303) | Sahih Muslim',num:'2729',ennum:'2729',kp:'إِذَا سَمِعْتُمْ نَهِيقَ الحِمَارِ فَتَعَوَّذُوا بِاللهِ مِنَ الشَّيْطَانِ',note:''},
+    {id:24,t:'إِذَا رَأَى أَحَدُكُمْ رُؤْيَا يَكْرَهُهَا فَلْيَسْتَعِذْ بِاللهِ مِنْ شَرِّهَا وَمِنْ شَرِّ الشَّيْطَانِ.',nar:'أبو قتادة ـ رضي الله عنه',ennar:"Abu Qatadah (RA)",src:'صحيح البخاري (7045) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (7045) | Sahih Muslim',num:'2261',ennum:'2261',kp:'إِذَا رَأَى رُؤْيَا يَكْرَهُهَا فَلْيَسْتَعِذْ بِاللهِ مِنْ شَرِّهَا وَمِنْ شَرِّ الشَّيْطَانِ',note:''},
+    {id:25,t:'إِذَا غَضِبَ أَحَدُكُمْ فَلْيَقُلْ: أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيمِ.',nar:'سليمان بن صُرَد ـ رضي الله عنه',ennar:'Sulayman ibn Surad (RA)',src:'صحيح البخاري (6115) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6115) | Sahih Muslim',num:'2610',ennum:'2610',kp:'إِذَا غَضِبَ فَلْيَقُلْ: أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيمِ',note:''},
+    {id:26,t:'إِذَا دَخَلَ أَحَدُكُمُ المَسْجِدَ فَلْيَقُلِ: اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ، وَإِذَا خَرَجَ فَلْيَقُلِ: اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الشَّيْطَانِ الرَّجِيمِ.',nar:'أبو حُمَيد أو أبو أُسَيد ـ رضي الله عنه',ennar:'Abu Humayd or Abu Usayd (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'713',ennum:'713',kp:'عِنْدَ دُخُولِ المَسْجِدِ — اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ',note:''},
+    {id:27,t:'كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ جَمَعَ كَفَّيْهِ ثُمَّ نَفَثَ فِيهِمَا فَقَرَأَ فِيهِمَا: ﴿قُلْ هُوَ اللهُ أَحَدٌ﴾ وَ﴿قُلْ أَعُوذُ بِرَبِّ الفَلَقِ﴾ وَ﴿قُلْ أَعُوذُ بِرَبِّ النَّاسِ﴾، ثُمَّ يَمْسَحُ بِهِمَا مَا اسْتَطَاعَ مِنْ جَسَدِهِ.',nar:'عائشة أم المؤمنين ـ رضي الله عنها',ennar:"A'ishah Umm Al-Mu'minin (RA)",src:'صحيح البخاري (5017) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (5017) | Sahih Muslim',num:'2192',ennum:'2192',kp:'قِرَاءَةُ المُعَوِّذَتَيْنِ وَسُورَةِ الإِخْلَاصِ عِنْدَ النَّوْمِ ثُمَّ مَسْحُ الجَسَدِ',note:''},
+    {id:28,t:'قُلْ هُوَ اللهُ أَحَدٌ، وَالمُعَوِّذَتَيْنِ حِينَ تُمْسِي وَحِينَ تُصْبِحُ ثَلَاثَ مَرَّاتٍ، تَكْفِيكَ مِنْ كُلِّ شَيْءٍ.',nar:'عقبة بن عامر ـ رضي الله عنه',ennar:"'Uqbah ibn 'Amir (RA)",src:'صحيح البخاري (5017) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (5017) | Sahih Muslim',num:'814',ennum:'814',kp:'الإِخْلَاصُ وَالمُعَوِّذَتَانِ ثَلَاثَ مَرَّاتٍ صَبَاحًا وَمَسَاءً تَكْفِيكَ مِنْ كُلِّ شَيْءٍ',note:''},
+    {id:29,t:'كَانَ إِذَا رَأَى مَا يَكْرَهُ قَالَ: أَعُوذُ بِاللهِ مِنْ شَرِّ هَذَا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2261',ennum:'2261',kp:'كَانَ النَّبِيُّ ﷺ إِذَا رَأَى مَا يَكْرَهُ قَالَ: أَعُوذُ بِاللهِ مِنْ شَرِّ هَذَا',note:''},
+    {id:30,t:'اسْتَعِيذُوا بِاللهِ مِنَ النَّارِ — قَالَهَا ثَلَاثًا.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2979',ennum:'2979',kp:'اسْتَعِيذُوا بِاللهِ مِنَ النَّارِ — ثَلَاثًا',note:''}
+  ]
+},
+
+/* ══════════════════════════════════════════════════════════════
+   CHAPTER 4 — فضائل الأعمال  ✅ COMPLETE — 30 hadiths
+   ══════════════════════════════════════════════════════════════ */
+{
+  id:'fadail', n:4, emoji:'⭐',
+  ar:'فضائل الأعمال', en:'Virtues of Good Deeds',
+  color:'#F57F17', grad:'linear-gradient(135deg,#F57F17,#F9A825)',
+  cc:'c4', kpc:'kp4',
+  kplar:'⭐ الأجر العظيم', kplen:'⭐ The Great Reward',
+  hadiths:[
+    {id:1,t:'إِنَّ اللَّهَ كَتَبَ الحَسَنَاتِ وَالسَّيِّئَاتِ، فَمَنْ هَمَّ بِحَسَنَةٍ فَلَمْ يَعْمَلْهَا كَتَبَهَا اللَّهُ لَهُ عِنْدَهُ حَسَنَةً كَامِلَةً، فَإِنْ هُوَ هَمَّ بِهَا فَعَمِلَهَا كَتَبَهَا اللَّهُ لَهُ عَشْرَ حَسَنَاتٍ إِلَى سَبْعِمِائَةِ ضِعْفٍ إِلَى أَضْعَافٍ كَثِيرَةٍ.',nar:'ابن عباس',ennar:"Ibn Abbas (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٤٩١',ennum:'6491',kp:'حَسَنَةً إِلَى سَبْعِمِائَةِ ضِعْفٍ إِلَى أَضْعَافٍ كَثِيرَةٍ',note:'✨ حسنة بمجرد النية — وعشر إلى سبعمائة بالعمل'},
+    {id:2,t:'مَنْ قَالَ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، فِي يَوْمٍ مِائَةَ مَرَّةٍ، حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ البَحْرِ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٤٠٥',ennum:'6405',kp:'حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ البَحْرِ',note:'✨ محو السيئات بكلمتين خفيفتين'},
+    {id:3,t:'مَنْ قَالَ: لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، فِي يَوْمٍ مِائَةَ مَرَّةٍ، كَانَتْ لَهُ عَدْلَ عَشْرِ رِقَابٍ، وَكُتِبَتْ لَهُ مِائَةُ حَسَنَةٍ، وَمُحِيَتْ عَنْهُ مِائَةُ سَيِّئَةٍ، وَكَانَتْ لَهُ حِرْزًا مِنَ الشَّيْطَانِ يَوْمَهُ ذَلِكَ حَتَّى يُمْسِيَ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٤٠٣',ennum:'6403',kp:'مِائَةُ حَسَنَةٍ وَمُحِيَتْ عَنْهُ مِائَةُ سَيِّئَةٍ',note:'✨ مئة حسنة ومحو مئة سيئة بكلمات قليلة'},
+    {id:4,t:'سَأَلْتُ النَّبِيَّ ﷺ: أَيُّ العَمَلِ أَحَبُّ إِلَى اللَّهِ؟ قَالَ: الصَّلَاةُ عَلَى وَقْتِهَا، قَالَ: ثُمَّ أَيٌّ؟ قَالَ: ثُمَّ بِرُّ الوَالِدَيْنِ، قَالَ: ثُمَّ أَيٌّ؟ قَالَ: ثُمَّ الجِهَادُ فِي سَبِيلِ اللَّهِ.',nar:'عبدالله بن مسعود',ennar:"Ibn Mas'ud (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٥٢٧',ennum:'527',kp:'الصَّلَاةُ عَلَى وَقْتِهَا',note:'✨ أحب الأعمال إلى الله — وهي يومية'},
+    {id:5,t:'مَنْ صَلَّى البَرْدَيْنِ دَخَلَ الجَنَّةَ.',nar:'أبو موسى الأشعري',ennar:"Abu Musa Al-Ash'ari (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٥٧٤',ennum:'574',kp:'مَنْ صَلَّى البَرْدَيْنِ دَخَلَ الجَنَّةَ',note:'✨ صلاة الفجر والعصر — ضمان دخول الجنة'},
+    {id:6,t:'مَنْ بَنَى مَسْجِدًا يَبْتَغِي بِهِ وَجْهَ اللَّهِ، بَنَى اللَّهُ لَهُ مِثْلَهُ فِي الجَنَّةِ.',nar:'عثمان بن عفان',ennar:"'Uthman ibn 'Affan (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٤٥٠',ennum:'450',kp:'بَنَى اللَّهُ لَهُ مِثْلَهُ فِي الجَنَّةِ',note:'✨ قصر في الجنة مقابل مسجد في الدنيا'},
+    {id:7,t:'الصِّيَامُ جُنَّةٌ، فَإِذَا كَانَ يَوْمُ صَوْمِ أَحَدِكُمْ فَلَا يَرْفُثْ وَلَا يَصْخَبْ، فَإِنْ سَابَّهُ أَحَدٌ أَوْ قَاتَلَهُ فَلْيَقُلْ: إِنِّي امْرُؤٌ صَائِمٌ، وَالَّذِي نَفْسِي بِيَدِهِ لَخُلُوفُ فَمِ الصَّائِمِ أَطْيَبُ عِنْدَ اللَّهِ مِنْ رِيحِ المِسْكِ، يَتْرُكُ طَعَامَهُ وَشَرَابَهُ وَشَهْوَتَهُ مِنْ أَجْلِي، الصِّيَامُ لِي وَأَنَا أَجْزِي بِهِ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'١٨٩٤',ennum:'1894',kp:'الصِّيَامُ لِي وَأَنَا أَجْزِي بِهِ',note:'✨ الله يجزي عليه بلا حساب'},
+    {id:8,t:'مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا، غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٣٨',ennum:'38',kp:'غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ',note:'✨ مغفرة ذنوب سنة كاملة'},
+    {id:9,t:'مَنْ قَامَ لَيْلَةَ القَدْرِ إِيمَانًا وَاحْتِسَابًا، غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'١٩٠١',ennum:'1901',kp:'غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ',note:'✨ ليلة واحدة = خير من ألف شهر'},
+    {id:10,t:'أَيُّهَا النَّاسُ أَفْشُوا السَّلَامَ، وَأَطْعِمُوا الطَّعَامَ، وَصَلُّوا وَالنَّاسُ نِيَامٌ، تَدْخُلُوا الجَنَّةَ بِسَلَامٍ.',nar:'عبدالله بن سلام',ennar:'Abdullah ibn Salam (RA)',src:'صحيح الترمذي | صحيح ابن ماجه',ensrc:'Sahih Al-Tirmidhi | Sahih Ibn Majah',num:'٢٤٨٥',ennum:'2485',kp:'تَدْخُلُوا الجَنَّةَ بِسَلَامٍ',note:'✨ ثلاثة أعمال خفيفة تضمن الجنة'},
+    {id:11,t:'سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِي ظِلِّهِ يَوْمَ لَا ظِلَّ إِلَّا ظِلُّهُ: إِمَامٌ عَادِلٌ، وَشَابٌّ نَشَأَ فِي عِبَادَةِ رَبِّهِ، وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِي المَسَاجِدِ، وَرَجُلَانِ تَحَابَّا فِي اللَّهِ اجْتَمَعَا عَلَيْهِ وَتَفَرَّقَا عَلَيْهِ، وَرَجُلٌ طَلَبَتْهُ امْرَأَةٌ ذَاتُ مَنْصِبٍ وَجَمَالٍ فَقَالَ إِنِّي أَخَافُ اللَّهَ، وَرَجُلٌ تَصَدَّقَ أَخْفَى حَتَّى لَا تَعْلَمَ شِمَالُهُ مَا تُنْفِقُ يَمِينُهُ، وَرَجُلٌ ذَكَرَ اللَّهَ خَالِيًا فَفَاضَتْ عَيْنَاهُ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٦٠',ennum:'660',kp:'سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِي ظِلِّهِ',note:'✨ ظل الله يوم القيامة'},
+    {id:12,t:'مَنْ حَجَّ فَلَمْ يَرْفُثْ وَلَمْ يَفْسُقْ رَجَعَ كَيَوْمِ وَلَدَتْهُ أُمُّهُ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'١٥٢١',ennum:'1521',kp:'رَجَعَ كَيَوْمِ وَلَدَتْهُ أُمُّهُ',note:'✨ طهارة كاملة من الذنوب'},
+    {id:13,t:'إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'١٦٣١',ennum:'1631',kp:'صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ',note:'✨ حسنات لا تنقطع بعد الموت'},
+    {id:14,t:'مَنْ تَطَهَّرَ فِي بَيْتِهِ، ثُمَّ مَشَى إِلَى بَيْتٍ مِنْ بُيُوتِ اللَّهِ لِيَقْضِيَ فَرِيضَةً مِنْ فَرَائِضِ اللَّهِ، كَانَتْ خَطْوَتَاهُ إِحْدَاهُمَا تَحُطُّ خَطِيئَةً، وَالأُخْرَى تَرْفَعُ دَرَجَةً.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٦٦٦',ennum:'666',kp:'كُلُّ خَطْوَةٍ تَحُطُّ خَطِيئَةً أَوْ تَرْفَعُ دَرَجَةً',note:'✨ كل خطوة = رفع درجة أو حط خطيئة'},
+    {id:15,t:'أَلَا أَدُلُّكُمْ عَلَى مَا يَمْحُو اللَّهُ بِهِ الخَطَايَا وَيَرْفَعُ بِهِ الدَّرَجَاتِ: إِسْبَاغُ الوُضُوءِ عَلَى المَكَارِهِ، وَكَثْرَةُ الخُطَى إِلَى المَسَاجِدِ، وَانْتِظَارُ الصَّلَاةِ بَعْدَ الصَّلَاةِ، فَذَلِكُمُ الرِّبَاطُ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٥١',ennum:'251',kp:'إِسْبَاغُ الوُضُوءِ وَكَثْرَةُ الخُطَى وَانْتِظَارُ الصَّلَاةِ',note:'✨ محو الخطايا ورفع الدرجات بعمل يومي'},
+    {id:16,t:'مَنْ سَبَّحَ اللَّهَ دُبُرَ كُلِّ صَلَاةٍ ثَلَاثًا وَثَلَاثِينَ، وَحَمِدَ اللَّهَ ثَلَاثًا وَثَلَاثِينَ، وَكَبَّرَ اللَّهَ ثَلَاثًا وَثَلَاثِينَ، فَتِلْكَ تِسْعَةٌ وَتِسْعُونَ، ثُمَّ قَالَ تَمَامَ المِائَةِ: لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، غُفِرَتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ البَحْرِ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٥٩٧',ennum:'597',kp:'غُفِرَتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ البَحْرِ',note:'✨ مغفرة ذنوب بعد كل صلاة بدقيقتين'},
+    {id:17,t:'مَنْ قَرَأَ آيَةَ الكُرْسِيِّ دُبُرَ كُلِّ صَلَاةٍ مَكْتُوبَةٍ، لَمْ يَمْنَعْهُ مِنْ دُخُولِ الجَنَّةِ إِلَّا أَنْ يَمُوتَ.',nar:'أبو أمامة الباهلي',ennar:'Abu Umamah Al-Bahili (RA)',src:'صحيح النسائي',ensrc:"Sahih Al-Nasa'i",num:'٩٩٢٨',ennum:'9928',kp:'لَمْ يَمْنَعْهُ مِنْ دُخُولِ الجَنَّةِ إِلَّا أَنْ يَمُوتَ',note:'✨ طريق الجنة بعد كل صلاة بآية واحدة'},
+    {id:18,t:'قُلْ هُوَ اللَّهُ أَحَدٌ تَعْدِلُ ثُلُثَ القُرْآنِ.',nar:'أبو الدرداء',ennar:"Abu Al-Darda' (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٨١١',ennum:'811',kp:'قُلْ هُوَ اللَّهُ أَحَدٌ تَعْدِلُ ثُلُثَ القُرْآنِ',note:'✨ ثلث القرآن في سورة قصيرة'},
+    {id:19,t:'رَكْعَتَانِ قَبْلَ صَلَاةِ الفَجْرِ خَيْرٌ مِنَ الدُّنْيَا وَمَا فِيهَا.',nar:'عائشة أم المؤمنين',ennar:"'A'ishah (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٧٢٥',ennum:'725',kp:'خَيْرٌ مِنَ الدُّنْيَا وَمَا فِيهَا',note:'✨ ركعتان = خير من الدنيا كلها'},
+    {id:20,t:'يُصْبِحُ عَلَى كُلِّ سُلَامَى مِنْ أَحَدِكُمْ صَدَقَةٌ، فَكُلُّ تَسْبِيحَةٍ صَدَقَةٌ، وَكُلُّ تَحْمِيدَةٍ صَدَقَةٌ، وَكُلُّ تَهْلِيلَةٍ صَدَقَةٌ، وَكُلُّ تَكْبِيرَةٍ صَدَقَةٌ، وَأَمْرٌ بِالمَعْرُوفِ صَدَقَةٌ، وَنَهْيٌ عَنِ المُنْكَرِ صَدَقَةٌ، وَيُجْزِئُ مِنْ ذَلِكَ رَكْعَتَانِ يَرْكَعُهُمَا مِنَ الضُّحَى.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٧٢٠',ennum:'720',kp:'رَكْعَتَانِ مِنَ الضُّحَى تُجْزِئُ عَنْ ٣٦٠ صَدَقَةً',note:'✨ ركعتان تعدل ٣٦٠ صدقة يومياً'},
+    {id:21,t:'الصَّلَوَاتُ الخَمْسُ، وَالجُمُعَةُ إِلَى الجُمُعَةِ، وَرَمَضَانُ إِلَى رَمَضَانَ، مُكَفِّرَاتٌ مَا بَيْنَهُنَّ إِذَا اجْتَنَبَ الكَبَائِرَ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٣٣',ennum:'233',kp:'مُكَفِّرَاتٌ مَا بَيْنَهُنَّ',note:'✨ تكفير الذنوب تلقائياً بالمحافظة على الفرائض'},
+    {id:22,t:'صَلَاةُ الجَمَاعَةِ أَفْضَلُ مِنْ صَلَاةِ الفَذِّ بِسَبْعٍ وَعِشْرِينَ دَرَجَةً.',nar:'عبدالله بن عمر',ennar:"Ibn 'Umar (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٤٥',ennum:'645',kp:'أَفْضَلُ بِسَبْعٍ وَعِشْرِينَ دَرَجَةً',note:'✨ مضاعفة الأجر ٢٧ مرة'},
+    {id:23,t:'الطُّهُورُ شَطْرُ الإِيمَانِ، وَالحَمْدُ لِلَّهِ تَمْلَأُ المِيزَانَ، وَسُبْحَانَ اللَّهِ وَالحَمْدُ لِلَّهِ تَمْلَآنِ أَوْ تَمْلَأُ مَا بَيْنَ السَّمَوَاتِ وَالأَرْضِ.',nar:'أبو مالك الأشعري',ennar:"Abu Malik Al-Ash'ari (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٢٣',ennum:'223',kp:'الحَمْدُ لِلَّهِ تَمْلَأُ المِيزَانَ',note:'✨ كلمة واحدة تملأ الميزان'},
+    {id:24,t:'كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ، ثَقِيلَتَانِ فِي المِيزَانِ، حَبِيبَتَانِ إِلَى الرَّحْمَنِ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ العَظِيمِ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٤٠٦',ennum:'6406',kp:'حَبِيبَتَانِ إِلَى الرَّحْمَنِ',note:'✨ أثقل شيء في الميزان بأخف الكلام'},
+    {id:25,t:'مَنْ عَادَ مَرِيضًا أَوْ زَارَ أَخًا لَهُ فِي اللَّهِ، نَادَاهُ مُنَادٍ: أَنْ طِبْتَ وَطَابَ مَمْشَاكَ، وَتَبَوَّأْتَ مِنَ الجَنَّةِ مَنْزِلًا.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'٢٠٠٨',ennum:'2008',kp:'تَبَوَّأْتَ مِنَ الجَنَّةِ مَنْزِلًا',note:'✨ زيارة واحدة تبوئ منزلاً في الجنة'},
+    {id:26,t:'بَيْنَمَا رَجُلٌ يَمْشِي بِطَرِيقٍ وَجَدَ غُصْنَ شَوْكٍ عَلَى الطَّرِيقِ فَأَخَّرَهُ، فَشَكَرَ اللَّهُ لَهُ فَغَفَرَ لَهُ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٥٢',ennum:'652',kp:'شَكَرَ اللَّهُ لَهُ فَغَفَرَ لَهُ',note:'✨ مغفرة بإزالة أذى من الطريق'},
+    {id:27,t:'تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ.',nar:'أبو ذر الغفاري',ennar:"Abu Dharr Al-Ghifari (RA)",src:'صحيح الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'١٩٥٦',ennum:'1956',kp:'تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ',note:'✨ صدقة بلا مال — مجرد ابتسامة'},
+    {id:28,t:'مَنْ دَلَّ عَلَى خَيْرٍ فَلَهُ مِثْلُ أَجْرِ فَاعِلِهِ.',nar:'أبو مسعود الأنصاري',ennar:"Abu Mas'ud Al-Ansari (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'١٨٩٣',ennum:'1893',kp:'مَنْ دَلَّ عَلَى خَيْرٍ فَلَهُ مِثْلُ أَجْرِ فَاعِلِهِ',note:'✨ نفس الأجر بدون أي جهد إضافي'},
+    {id:29,t:'مَنْ قَالَ فِي السُّوقِ: لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ حَيٌّ لَا يَمُوتُ، بِيَدِهِ الخَيْرُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، كَتَبَ اللَّهُ لَهُ أَلْفَ أَلْفِ حَسَنَةٍ.',nar:'عمر بن الخطاب',ennar:"'Umar ibn Al-Khattab (RA)",src:'صحيح الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'٣٤٢٨',ennum:'3428',kp:'كَتَبَ اللَّهُ لَهُ أَلْفَ أَلْفِ حَسَنَةٍ',note:'✨ مليون حسنة بكلمات في السوق'},
+    {id:30,t:'مَنْ بَاتَ طَاهِرًا بَاتَ فِي شِعَارِهِ مَلَكٌ، فَلَا يَسْتَيْقِظُ إِلَّا قَالَ المَلَكُ: اللَّهُمَّ اغْفِرْ لِعَبْدِكَ فُلَانٍ، فَإِنَّهُ بَاتَ طَاهِرًا.',nar:'ابن عمر',ennar:"Ibn 'Umar (RA)",src:'صحيح ابن حبان',ensrc:'Sahih Ibn Hibban',num:'١٠٥١',ennum:'1051',kp:'مَلَكٌ يَسْتَغْفِرُ لَهُ طُولَ اللَّيْلِ',note:'✨ ملك يستغفر لك طول الليل أثناء نومك'}
+  ]
+},
+
+/* ══════════════════════════════════════════════════════════════
+   CHAPTER 5 — تفريج الكروب  (placeholder — 3 samples)
+   ══════════════════════════════════════════════════════════════ */
+{
+  id:'karb', n:5, emoji:'💚',
+  ar:'تفريج الكروب', en:'Relief from Distress & Debt',
+  color:'#006064', grad:'linear-gradient(135deg,#006064,#00838F)',
+  cc:'c5', kpc:'kp5',
+  kplar:'💚 وعد التفريج', kplen:'💚 Promise of Relief',
+  hadiths:[
+    {id:1,t:'لَا إِلَهَ إِلَّا اللَّهُ العَظِيمُ الحَلِيمُ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ العَرْشِ العَظِيمِ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَوَاتِ وَرَبُّ الأَرْضِ وَرَبُّ العَرْشِ الكَرِيمِ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح البخاري (6346) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6346) | Sahih Muslim',num:'2730',ennum:'2730',kp:'كَانَ النَّبِيُّ ﷺ يَقُولُهَا عِنْدَ الكَرْبِ الشَّدِيدِ',note:'✨ كان النبي ﷺ يقولها عند الكرب الشديد'},
+    {id:2,t:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الهَمِّ وَالحَزَنِ، وَأَعُوذُ بِكَ مِنَ العَجْزِ وَالكَسَلِ، وَأَعُوذُ بِكَ مِنَ الجُبْنِ وَالبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'6369',ennum:'6369',kp:'أَعُوذُ بِكَ مِنَ الهَمِّ وَالحَزَنِ وَمِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ',note:'✨ يجمع تفريج الهم وسداد الدين وقهر الرجال'},
+    {id:3,t:'يَا حَيُّ يَا قَيُّومُ، بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ، وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'المستدرك | صحيح الجامع',ensrc:"Al-Mustadrak | Sahih Al-Jami'",num:'4/183',ennum:'4/183',kp:'أَصْلِحْ لِي شَأْنِي كُلَّهُ وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ',note:'✨ إصلاح الشأن كله دفعة واحدة'},
+    {id:4,t:'دَعْوَةُ ذِي النُّونِ إِذْ دَعَا وَهُوَ فِي بَطْنِ الحُوتِ: لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ، فَإِنَّهُ لَمْ يَدْعُ بِهَا رَجُلٌ مُسْلِمٌ فِي شَيْءٍ قَطُّ إِلَّا اسْتَجَابَ اللَّهُ لَهُ.',nar:'سعد بن أبي وقاص ـ رضي الله عنه',ennar:"Sa'd ibn Abi Waqqas (RA)",src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'3505',ennum:'3505',kp:'لَمْ يَدْعُ بِهَا رَجُلٌ مُسْلِمٌ فِي شَيْءٍ قَطُّ إِلَّا اسْتَجَابَ اللَّهُ لَهُ',note:'✨ لم يدع بها مسلم قط إلا استجاب الله له — بلا استثناء'},
+    {id:5,t:'مَا أَصَابَ أَحَدًا قَطُّ هَمٌّ وَلَا حَزَنٌ فَقَالَ: اللَّهُمَّ إِنِّي عَبْدُكَ، وَابْنُ عَبْدِكَ، وَابْنُ أَمَتِكَ، نَاصِيَتِي بِيَدِكَ، مَاضٍ فِيَّ حُكْمُكَ، عَدْلٌ فِيَّ قَضَاؤُكَ، أَسْأَلُكَ بِكُلِّ اسْمٍ هُوَ لَكَ سَمَّيْتَ بِهِ نَفْسَكَ أَوْ عَلَّمْتَهُ أَحَدًا مِنْ خَلْقِكَ أَوْ أَنْزَلْتَهُ فِي كِتَابِكَ أَوِ اسْتَأْثَرْتَ بِهِ فِي عِلْمِ الغَيْبِ عِنْدَكَ، أَنْ تَجْعَلَ القُرْآنَ رَبِيعَ قَلْبِي، وَنُورَ صَدْرِي، وَجَلَاءَ حُزْنِي، وَذَهَابَ هَمِّي، إِلَّا أَذْهَبَ اللَّهُ هَمَّهُ وَحُزْنَهُ وَأَبْدَلَهُ مَكَانَهُ فَرَجًا.',nar:'عبد الله بن مسعود ـ رضي الله عنه',ennar:"Ibn Mas'ud (RA)",src:'مسند أحمد | صحيح ابن حبان | صحيح الألباني',ensrc:'Musnad Ahmad | Sahih Ibn Hibban | Sahih Al-Albani',num:'—',ennum:'—',kp:'أَذْهَبَ اللَّهُ هَمَّهُ وَحُزْنَهُ وَأَبْدَلَهُ مَكَانَهُ فَرَجًا',note:'✨ ضمان إذهاب الهم واستبداله فرجاً'},
+    {id:6,t:'قَالَ أُبَيُّ بْنُ كَعْبٍ: يَا رَسُولَ اللَّهِ إِنِّي أُكْثِرُ الصَّلَاةَ عَلَيْكَ فَكَمْ أَجْعَلُ لَكَ مِنْ صَلَاتِي؟ فَقَالَ: مَا شِئْتَ، قَالَ: الرُّبُعَ؟ قَالَ: مَا شِئْتَ وَإِنْ زِدْتَ فَهُوَ خَيْرٌ، قَالَ: النِّصْفَ؟ قَالَ: مَا شِئْتَ وَإِنْ زِدْتَ فَهُوَ خَيْرٌ، قَالَ: الثُّلُثَيْنِ؟ قَالَ: مَا شِئْتَ وَإِنْ زِدْتَ فَهُوَ خَيْرٌ، قَالَ: أَجْعَلُ لَكَ صَلَاتِي كُلَّهَا؟ قَالَ: إِذًا تُكْفَى هَمَّكَ وَيُغْفَرُ لَكَ ذَنْبُكَ.',nar:'أُبي بن كعب ـ رضي الله عنه',ennar:"Ubayy ibn Ka'b (RA)",src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'2457',ennum:'2457',kp:'إِذًا تُكْفَى هَمَّكَ وَيُغْفَرُ لَكَ ذَنْبُكَ',note:'✨ الصلاة على النبي ﷺ تكفي الهم كله وتغفر الذنوب'},
+    {id:7,t:'مَنْ لَزِمَ الاسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ ضِيقٍ مَخْرَجًا، وَمِنْ كُلِّ هَمٍّ فَرَجًا، وَرَزَقَهُ مِنْ حَيْثُ لَا يَحْتَسِبُ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'سنن أبي داود',ensrc:'Sunan Abi Dawud',num:'1518',ennum:'1518',kp:'مِنْ كُلِّ ضِيقٍ مَخْرَجًا وَمِنْ كُلِّ هَمٍّ فَرَجًا وَرَزَقَهُ مِنْ حَيْثُ لَا يَحْتَسِبُ',note:'✨ من كل ضيق مخرج — من كل هم فرج — رزق من حيث لا يحتسب'},
+    {id:8,t:'اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ.',nar:'علي بن أبي طالب ـ رضي الله عنه',ennar:"'Ali ibn Abi Talib (RA)",src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'3563',ennum:'3563',kp:'اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ',note:'✨ يؤدي الله عنك الدين ولو كان مثل جبل صبير'},
+    {id:9,t:'اللَّهُمَّ أَنْتَ الأَوَّلُ فَلَيْسَ قَبْلَكَ شَيْءٌ، وَأَنْتَ الآخِرُ فَلَيْسَ بَعْدَكَ شَيْءٌ، وَأَنْتَ الظَّاهِرُ فَلَيْسَ فَوْقَكَ شَيْءٌ، وَأَنْتَ البَاطِنُ فَلَيْسَ دُونَكَ شَيْءٌ، اقْضِ عَنَّا الدَّيْنَ وَأَغْنِنَا مِنَ الفَقْرِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2713',ennum:'2713',kp:'اقْضِ عَنَّا الدَّيْنَ وَأَغْنِنَا مِنَ الفَقْرِ',note:'✨ يطلب سداد الدين والغنى من الأول والآخر'},
+    {id:10,t:'اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ، وَأَصْلِحْ لِي شَأْنِي كُلَّهُ، لَا إِلَهَ إِلَّا أَنْتَ.',nar:'أبو بكر الصديق ـ رضي الله عنه',ennar:'Abu Bakr Al-Siddiq (RA)',src:'صحيح ابن حبان | صحيح الجامع',ensrc:"Sahih Ibn Hibban | Sahih Al-Jami'",num:'970',ennum:'970',kp:'أَصْلِحْ لِي شَأْنِي كُلَّهُ لَا إِلَهَ إِلَّا أَنْتَ',note:'✨ إصلاح الشأن كله بطلب الرحمة'},
+    {id:11,t:'مَا يُصِيبُ المُسْلِمَ مِنْ نَصَبٍ وَلَا وَصَبٍ وَلَا هَمٍّ وَلَا حُزْنٍ وَلَا أَذًى وَلَا غَمٍّ، حَتَّى الشَّوْكَةِ يُشَاكُهَا، إِلَّا كَفَّرَ اللَّهُ بِهَا مِنْ خَطَايَاهُ.',nar:'أبو سعيد الخدري وأبو هريرة ـ رضي الله عنهما',ennar:'Abu Sa\'id Al-Khudri & Abu Hurayrah (RA)',src:'صحيح البخاري (5641) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (5641) | Sahih Muslim',num:'2573',ennum:'2573',kp:'حَتَّى الشَّوْكَةِ يُشَاكُهَا إِلَّا كَفَّرَ اللَّهُ بِهَا مِنْ خَطَايَاهُ',note:'✨ حتى شوكة واحدة تكفر الخطايا'},
+    {id:12,t:'لَوْ أَنَّكُمْ كُنْتُمْ تَوَكَّلُونَ عَلَى اللَّهِ حَقَّ تَوَكُّلِهِ لَرَزَقَكُمْ كَمَا يَرْزُقُ الطَّيْرَ، تَغْدُو خِمَاصًا وَتَرُوحُ بِطَانًا.',nar:'عمر بن الخطاب ـ رضي الله عنه',ennar:"'Umar ibn Al-Khattab (RA)",src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'2344',ennum:'2344',kp:'التَّوَكُّلُ الحَقُّ يَضْمَنُ الرِّزْقَ كَالطَّيْرِ بِلَا هَمٍّ',note:'✨ التوكل الحق يضمن الرزق كالطير بلا هم'},
+    {id:13,t:'وَاعْلَمْ أَنَّ النَّصْرَ مَعَ الصَّبْرِ، وَأَنَّ الفَرَجَ مَعَ الكَرْبِ، وَأَنَّ مَعَ العُسْرِ يُسْرًا.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'مسند أحمد | صحيح الترمذي',ensrc:'Musnad Ahmad | Sahih Al-Tirmidhi',num:'2516',ennum:'2516',kp:'الفَرَجَ مَعَ الكَرْبِ — وَأَنَّ مَعَ العُسْرِ يُسْرًا',note:'✨ وعد نبوي قاطع: الفرج مع الكرب لا بعده'},
+    {id:14,t:'إِنَّ اللَّهَ عَزَّ وَجَلَّ يَبْسُطُ يَدَهُ بِاللَّيْلِ لِيَتُوبَ مُسِيءُ النَّهَارِ، وَيَبْسُطُ يَدَهُ بِالنَّهَارِ لِيَتُوبَ مُسِيءُ اللَّيْلِ، حَتَّى تَطْلُعَ الشَّمْسُ مِنْ مَغْرِبِهَا.',nar:'أبو موسى الأشعري ـ رضي الله عنه',ennar:"Abu Musa Al-Ash'ari (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2759',ennum:'2759',kp:'اللهُ يَبْسُطُ يَدَهُ كُلَّ لَيْلٍ وَنَهَارٍ لِلتَّائِبِ',note:'✨ الله يمد يده كل ليل ونهار للتائب'},
+    {id:15,t:'الدُّعَاءُ سِلَاحُ المُؤْمِنِ، وَعِمَادُ الدِّينِ، وَنُورُ السَّمَوَاتِ وَالأَرْضِ.',nar:'علي بن أبي طالب ـ رضي الله عنه',ennar:"'Ali ibn Abi Talib (RA)",src:'مستدرك الحاكم | صحيح الجامع',ensrc:"Al-Mustadrak | Sahih Al-Jami'",num:'—',ennum:'—',kp:'الدُّعَاءُ سِلَاحُ المُؤْمِنِ وَعِمَادُ الدِّينِ وَنُورُ السَّمَوَاتِ وَالأَرْضِ',note:'✨ الدعاء سلاح يُقلب به الهم سروراً'},
+    {id:16,t:'مَنْ نَفَّسَ عَنْ مُؤْمِنٍ كُرْبَةً مِنْ كُرَبِ الدُّنْيَا، نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ القِيَامَةِ، وَمَنْ يَسَّرَ عَلَى مُعْسِرٍ، يَسَّرَ اللَّهُ عَلَيْهِ فِي الدُّنْيَا وَالآخِرَةِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2699',ennum:'2699',kp:'نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ القِيَامَةِ',note:'✨ تفريج كربة واحدة = تفريج كربة يوم القيامة'},
+    {id:17,t:'مَنْ أَنْظَرَ مُعْسِرًا أَوْ وَضَعَ عَنْهُ، أَظَلَّهُ اللَّهُ فِي ظِلِّهِ يَوْمَ لَا ظِلَّ إِلَّا ظِلُّهُ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'3006',ennum:'3006',kp:'أَظَلَّهُ اللَّهُ فِي ظِلِّهِ يَوْمَ لَا ظِلَّ إِلَّا ظِلُّهُ',note:'✨ إنظار معسر = ظل الله يوم القيامة'},
+    {id:18,t:'انْطَلَقَ ثَلَاثَةُ رَهْطٍ مِمَّنْ كَانَ قَبْلَكُمْ... فَقَالَ كُلُّ وَاحِدٍ مِنْهُمْ: اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنِّي فَعَلْتُ ذَلِكَ ابْتِغَاءَ وَجْهِكَ، فَافْرُجْ عَنَّا مَا نَحْنُ فِيهِ، فَانْفَرَجَتِ الصَّخْرَةُ.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:"Ibn 'Umar (RA)",src:'صحيح البخاري (2272) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (2272) | Sahih Muslim',num:'2743',ennum:'2743',kp:'اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنِّي فَعَلْتُهُ ابْتِغَاءَ وَجْهِكَ فَافْرُجْ عَنَّا',note:'✨ الدعاء بالعمل الصالح يفرج أشد الكروب'},
+    {id:19,t:'عَلَيْكُمْ بِقِيَامِ اللَّيْلِ، فَإِنَّهُ دَأَبُ الصَّالِحِينَ قَبْلَكُمْ، وَهُوَ قُرْبَةٌ إِلَى رَبِّكُمْ، وَمُكَفِّرَةٌ لِلسَّيِّئَاتِ، وَمَنْهَاةٌ عَنِ الإِثْمِ.',nar:'بلال ـ رضي الله عنه',ennar:'Bilal (RA)',src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'3549',ennum:'3549',kp:'قِيَامُ اللَّيْلِ مُكَفِّرَةٌ لِلسَّيِّئَاتِ وَمَنْهَاةٌ عَنِ الإِثْمِ',note:'✨ يكفر السيئات وينهى عن الإثم'},
+    {id:20,t:'الصَّدَقَةُ تُطْفِئُ الخَطِيئَةَ كَمَا يُطْفِئُ المَاءُ النَّارَ.',nar:'معاذ بن جبل ـ رضي الله عنه',ennar:"Mu'adh ibn Jabal (RA)",src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'2616',ennum:'2616',kp:'الصَّدَقَةُ تُطْفِئُ الخَطِيئَةَ كَمَا يُطْفِئُ المَاءُ النَّارَ',note:'✨ الصدقة تطفئ الذنوب كما يطفئ الماء النار تماماً'},
+    {id:21,t:'اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ.',nar:'علي بن أبي طالب ـ رضي الله عنه',ennar:"'Ali ibn Abi Talib (RA)",src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'3563',ennum:'3563',kp:'اكْفِنِي بِحَلَالِكَ — يُؤَدِّي اللهُ الدَّيْنَ وَلَوْ كَانَ مِثْلَ جَبَلِ صَبِيرٍ',note:'✨ يؤدي الله الدين ولو كان مثل جبل صبير'},
+    {id:22,t:'ادْعُوا اللَّهَ وَأَنْتُمْ مُوقِنُونَ بِالإِجَابَةِ، وَاعْلَمُوا أَنَّ اللَّهَ لَا يَسْتَجِيبُ دُعَاءً مِنْ قَلْبٍ غَافِلٍ لَاهٍ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'3479',ennum:'3479',kp:'ادْعُوا اللَّهَ وَأَنْتُمْ مُوقِنُونَ بِالإِجَابَةِ',note:'✨ اليقين بالإجابة شرط الاستجابة'},
+    {id:23,t:'لَا إِلَهَ إِلَّا اللَّهُ الحَلِيمُ الكَرِيمُ، سُبْحَانَ اللَّهِ وَتَبَارَكَ اللَّهُ رَبُّ العَرْشِ العَظِيمِ، وَالحَمْدُ لِلَّهِ رَبِّ العَالَمِينَ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح الجامع | صحيح الألباني',ensrc:"Sahih Al-Jami' | Sahih Al-Albani",num:'—',ennum:'—',kp:'كَانَ النَّبِيُّ ﷺ يَلْجَأُ إِلَيْهَا عِنْدَ اشْتِدَادِ الأَمْرِ',note:'✨ كان النبي ﷺ يلجأ إليها عند اشتداد الأمر'},
+    {id:24,t:'أَقْرَبُ مَا يَكُونُ العَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ، فَأَكْثِرُوا الدُّعَاءَ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'482',ennum:'482',kp:'أَقْرَبُ مَا يَكُونُ العَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ فَأَكْثِرُوا الدُّعَاءَ',note:'✨ أقرب لحظات الاستجابة في السجود'},
+    {id:25,t:'يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الآخِرُ يَقُولُ: مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ؟ مَنْ يَسْأَلُنِي فَأُعْطِيَهُ؟ مَنْ يَسْتَغْفِرُنِي فَأَغْفِرَ لَهُ؟',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (1145) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (1145) | Sahih Muslim',num:'758',ennum:'758',kp:'مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ — فِي الثُّلُثِ الأَخِيرِ مِنَ اللَّيْلِ',note:'✨ الله يسأل: من يدعوني؟ من يسألني؟ — في الثلث الأخير'},
+    {id:26,t:'حَسْبِيَ اللَّهُ وَنِعْمَ الوَكِيلُ، قَالَهَا إِبْرَاهِيمُ حِينَ أُلْقِيَ فِي النَّارِ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'4564',ennum:'4564',kp:'حَسْبِيَ اللَّهُ وَنِعْمَ الوَكِيلُ — أَنْقَذَتْ إِبْرَاهِيمَ مِنَ النَّارِ',note:'✨ كلمة أنقذت إبراهيم من النار — تنقذ من كل كرب'},
+    {id:27,t:'الصِّيَامُ جُنَّةٌ مِنَ النَّارِ كَجُنَّةِ أَحَدِكُمْ مِنَ القِتَالِ.',nar:'عثمان بن أبي العاص ـ رضي الله عنه',ennar:"'Uthman ibn Abi Al-'As (RA)",src:'سنن النسائي | صحيح ابن ماجه',ensrc:"Sahih Al-Nasa'i | Sahih Ibn Majah",num:'—',ennum:'—',kp:'الصِّيَامُ جُنَّةٌ مِنَ النَّارِ كَجُنَّةِ أَحَدِكُمْ مِنَ القِتَالِ',note:'✨ الصيام درع من الهم والغم والنار'},
+    {id:28,t:'مَنْ أَصْبَحَ مِنْكُمْ آمِنًا فِي سِرْبِهِ، مُعَافًى فِي جَسَدِهِ، عِنْدَهُ قُوتُ يَوْمِهِ، فَكَأَنَّمَا حِيزَتْ لَهُ الدُّنْيَا بِحَذَافِيرِهَا.',nar:'عبيد الله بن محصن ـ رضي الله عنه',ennar:'Ubaydullah ibn Mihsan (RA)',src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'2346',ennum:'2346',kp:'فَكَأَنَّمَا حِيزَتْ لَهُ الدُّنْيَا بِحَذَافِيرِهَا',note:'✨ تذكير بالنعم يقطع جذور الهم'},
+    {id:29,t:'لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا.',nar:'أبو بكر الصديق ـ رضي الله عنه',ennar:'Abu Bakr Al-Siddiq (RA)',src:'صحيح البخاري (4663) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (4663) | Sahih Muslim',num:'—',ennum:'—',kp:'لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا',note:'✨ أقوى رد على الهم: الله معك'},
+    {id:30,t:'مَنْ قَرَأَ آيَةَ الكُرْسِيِّ كُلَّ لَيْلَةٍ لَمْ يَزَلْ عَلَيْهِ مِنَ اللَّهِ حَافِظٌ، وَلَا يَقْرَبُهُ شَيْطَانٌ حَتَّى يُصْبِحَ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'2311',ennum:'2311',kp:'لَمْ يَزَلْ عَلَيْهِ مِنَ اللَّهِ حَافِظٌ حَتَّى يُصْبِحَ',note:'✨ حفظ إلهي مستمر طول الليل'}
+  ]
+},
+
+/* ══════════════════════════════════════════════════════════════
+   CHAPTER 6 — الاستغفار والتوبة  ✅ COMPLETE — 33 hadiths
+   ══════════════════════════════════════════════════════════════ */
+{
+  id:'tawba', n:6, emoji:'🌿',
+  ar:'الاستغفار والتوبة', en:'Forgiveness and Repentance',
+  color:'#33691E', grad:'linear-gradient(135deg,#33691E,#558B2F)',
+  cc:'c6', kpc:'kp6',
+  kplar:'🌿 وعد المغفرة', kplen:'🌿 Promise of Forgiveness',
+  hadiths:[
+    {id:1,t:'اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ.',nar:'شداد بن أوس',ennar:"Shaddad ibn Aws (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'٦٣٠٦',ennum:'6306',kp:'لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ',note:'⏰ من قالها من النهار موقناً بها فمات من يومه فهو من أهل الجنة'},
+    {id:2,t:'لَلَّهُ أَشَدُّ فَرَحًا بِتَوْبَةِ عَبْدِهِ حِينَ يَتُوبُ إِلَيْهِ مِنْ أَحَدِكُمْ كَانَ عَلَى رَاحِلَتِهِ بِأَرْضِ فَلَاةٍ، فَانْفَلَتَتْ مِنْهُ وَعَلَيْهَا طَعَامُهُ وَشَرَابُهُ، فَأَيِسَ مِنْهَا، فَأَتَى شَجَرَةً فَاضْطَجَعَ فِي ظِلِّهَا قَدْ أَيِسَ مِنْ رَاحِلَتِهِ، فَبَيْنَمَا هُوَ كَذَلِكَ إِذَا هُوَ بِهَا قَائِمَةً عِنْدَهُ، فَأَخَذَ بِخِطَامِهَا، ثُمَّ قَالَ مِنْ شِدَّةِ الفَرَحِ: اللَّهُمَّ أَنْتَ عَبْدِي وَأَنَا رَبُّكَ، أَخْطَأَ مِنْ شِدَّةِ الفَرَحِ.',nar:'أنس بن مالك',ennar:'Anas ibn Malik (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٣٠٩',ennum:'6309',kp:'لَلَّهُ أَشَدُّ فَرَحًا بِتَوْبَةِ عَبْدِهِ',note:''},
+    {id:3,t:'وَاللَّهِ إِنِّي لَأَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ فِي اليَوْمِ أَكْثَرَ مِنْ سَبْعِينَ مَرَّةً.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'٦٣٠٧',ennum:'6307',kp:'أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ أَكْثَرَ مِنْ سَبْعِينَ مَرَّةً',note:''},
+    {id:4,t:'مَنْ لَزِمَ الاسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ ضِيقٍ مَخْرَجًا، وَمِنْ كُلِّ هَمٍّ فَرَجًا، وَرَزَقَهُ مِنْ حَيْثُ لَا يَحْتَسِبُ.',nar:'عبدالله بن عباس',ennar:"Ibn Abbas (RA)",src:'سنن أبي داود',ensrc:"Sunan Abi Dawud",num:'١٥١٨',ennum:'1518',kp:'مَنْ لَزِمَ الاسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ ضِيقٍ مَخْرَجًا',note:''},
+    {id:5,t:'مَنْ قَالَ: أَسْتَغْفِرُ اللَّهَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الحَيَّ القَيُّومَ وَأَتُوبُ إِلَيْهِ، غُفِرَتْ ذُنُوبُهُ وَإِنْ كَانَ قَدْ فَرَّ مِنَ الزَّحْفِ.',nar:'عبدالله بن مسعود',ennar:"Ibn Mas'ud (RA)",src:'سنن أبي داود | الترمذي',ensrc:'Sunan Abi Dawud | Al-Tirmidhi',num:'١٥١٧',ennum:'1517',kp:'غُفِرَتْ ذُنُوبُهُ وَإِنْ كَانَ قَدْ فَرَّ مِنَ الزَّحْفِ',note:''},
+    {id:6,t:'إِنْ كُنَّا لَنَعُدُّ لِرَسُولِ اللَّهِ ﷺ فِي المَجْلِسِ الوَاحِدِ مِائَةَ مَرَّةٍ: رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ، إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ.',nar:'عبدالله بن عمر',ennar:"Ibn 'Umar (RA)",src:'سنن أبي داود | الترمذي',ensrc:'Sunan Abi Dawud | Al-Tirmidhi',num:'١٥١٦',ennum:'1516',kp:'رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ',note:''},
+    {id:7,t:'لَوْ أَنَّ لِابْنِ آدَمَ وَادِيًا مِنْ ذَهَبٍ أَحَبَّ أَنْ يَكُونَ لَهُ وَادِيَانِ، وَلَنْ يَمْلَأَ فَاهُ إِلَّا التُّرَابُ، وَيَتُوبُ اللَّهُ عَلَى مَنْ تَابَ.',nar:'أنس بن مالك',ennar:'Anas ibn Malik (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٤٣٩',ennum:'6439',kp:'وَيَتُوبُ اللَّهُ عَلَى مَنْ تَابَ',note:''},
+    {id:8,t:'أَذْنَبَ عَبْدٌ ذَنْبًا، فَقَالَ: اللَّهُمَّ اغْفِرْ لِي ذَنْبِي، فَقَالَ تَبَارَكَ وَتَعَالَى: أَذْنَبَ عَبْدِي ذَنْبًا، فَعَلِمَ أَنَّ لَهُ رَبًّا يَغْفِرُ الذَّنْبَ وَيَأْخُذُ بِالذَّنْبِ، ثُمَّ عَادَ فَأَذْنَبَ، فَقَالَ: أَيْ رَبِّ اغْفِرْ لِي ذَنْبِي، فَقَالَ تَبَارَكَ وَتَعَالَى: عَبْدِي أَذْنَبَ ذَنْبًا، فَعَلِمَ أَنَّ لَهُ رَبًّا يَغْفِرُ الذَّنْبَ وَيَأْخُذُ بِالذَّنْبِ، ثُمَّ عَادَ فَأَذْنَبَ، فَقَالَ: أَيْ رَبِّ اغْفِرْ لِي ذَنْبِي، فَقَالَ تَبَارَكَ وَتَعَالَى: أَذْنَبَ عَبْدِي ذَنْبًا، فَعَلِمَ أَنَّ لَهُ رَبًّا يَغْفِرُ الذَّنْبَ وَيَأْخُذُ بِالذَّنْبِ، اعْمَلْ مَا شِئْتَ فَقَدْ غَفَرْتُ لَكَ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٧٥٠٧',ennum:'7507',kp:'اعْمَلْ مَا شِئْتَ فَقَدْ غَفَرْتُ لَكَ',note:''},
+    {id:9,t:'إِنَّ المُؤْمِنَ يَرَى ذُنُوبَهُ كَأَنَّهُ قَاعِدٌ تَحْتَ جَبَلٍ يَخَافُ أَنْ يَقَعَ عَلَيْهِ، وَإِنَّ الفَاجِرَ يَرَى ذُنُوبَهُ كَذُبَابٍ مَرَّ عَلَى أَنْفِهِ فَقَالَ بِهِ هَكَذَا.',nar:'عبدالله بن مسعود',ennar:"Ibn Mas'ud (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'٦٣٠٨',ennum:'6308',kp:'المُؤْمِنُ يَرَى ذُنُوبَهُ كَجَبَلٍ يَخَافُ أَنْ يَقَعَ عَلَيْهِ',note:''},
+    {id:10,t:'مَنْ جَلَسَ فِي مَجْلِسٍ فَكَثُرَ فِيهِ لَغَطُهُ، فَقَالَ قَبْلَ أَنْ يَقُومَ مِنْ مَجْلِسِهِ ذَلِكَ: سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ، إِلَّا غُفِرَ لَهُ مَا كَانَ فِي مَجْلِسِهِ ذَلِكَ.',nar:'أبو برزة الأسلمي',ennar:"Abu Barzah Al-Aslami (RA)",src:'صحيح الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'٣٤٣٣',ennum:'3433',kp:'غُفِرَ لَهُ مَا كَانَ فِي مَجْلِسِهِ ذَلِكَ',note:''},
+    {id:11,t:'أَنْ يَتُوبَ ثُمَّ لَا يَعُودَ.',nar:'عبدالله بن مسعود',ennar:"Ibn Mas'ud (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'٦٣٠٩',ennum:'6309',kp:'أَنْ يَتُوبَ ثُمَّ لَا يَعُودَ — التوبة النصوح',note:''},
+    {id:12,t:'اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا، وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ، فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ، وَارْحَمْنِي، إِنَّكَ أَنْتَ الغَفُورُ الرَّحِيمُ.',nar:'أبو بكر الصديق',ennar:"Abu Bakr Al-Siddiq (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٨٣٤',ennum:'834',kp:'لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ فَاغْفِرْ لِي',note:''},
+    {id:13,t:'إِنَّ اللَّهَ يَقْبَلُ تَوْبَةَ العَبْدِ مَا لَمْ يُغَرْغِرْ.',nar:'عبدالله بن عمر',ennar:"Ibn 'Umar (RA)",src:'صحيح الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'٣٥٣٧',ennum:'3537',kp:'يَقْبَلُ تَوْبَةَ العَبْدِ مَا لَمْ يُغَرْغِرْ',note:''},
+    {id:14,t:'إِنَّ اللَّهَ عَزَّ وَجَلَّ يَبْسُطُ يَدَهُ بِاللَّيْلِ لِيَتُوبَ مُسِيءُ النَّهَارِ، وَيَبْسُطُ يَدَهُ بِالنَّهَارِ لِيَتُوبَ مُسِيءُ اللَّيْلِ، حَتَّى تَطْلُعَ الشَّمْسُ مِنْ مَغْرِبِهَا.',nar:'أبو موسى الأشعري',ennar:"Abu Musa Al-Ash'ari (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٧٥٩',ennum:'2759',kp:'يَبْسُطُ يَدَهُ بِاللَّيْلِ لِيَتُوبَ مُسِيءُ النَّهَارِ',note:''},
+    {id:15,t:'مَنْ تَابَ قَبْلَ أَنْ تَطْلُعَ الشَّمْسُ مِنْ مَغْرِبِهَا تَابَ اللَّهُ عَلَيْهِ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٧٠٣',ennum:'2703',kp:'تَابَ اللَّهُ عَلَيْهِ',note:''},
+    {id:16,t:'النَّدَمُ تَوْبَةٌ.',nar:'عبدالله بن مسعود',ennar:"Ibn Mas'ud (RA)",src:'صحيح ابن ماجه',ensrc:'Sahih Ibn Majah',num:'٤٢٥٢',ennum:'4252',kp:'النَّدَمُ تَوْبَةٌ',note:''},
+    {id:17,t:'مَنْ أَحْدَثَ فِي أَمْرِنَا هَذَا مَا لَيْسَ مِنْهُ فَهُوَ رَدٌّ.',nar:'عائشة أم المؤمنين',ennar:"'A'ishah (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٢٦٩٧',ennum:'2697',kp:'مَنْ أَحْدَثَ مَا لَيْسَ مِنْهُ فَهُوَ رَدٌّ',note:'📍 يُذكر في سياق قبول التوبة من البدع بتركها'},
+    {id:18,t:'يَا أَيُّهَا النَّاسُ تُوبُوا إِلَى اللَّهِ، فَإِنِّي أَتُوبُ فِي اليَوْمِ إِلَيْهِ مِائَةَ مَرَّةٍ.',nar:'الأغر المزني',ennar:"Al-Agharr Al-Muzani (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٧٠٢',ennum:'2702',kp:'أَتُوبُ فِي اليَوْمِ إِلَيْهِ مِائَةَ مَرَّةٍ',note:''},
+    {id:19,t:'التَّائِبُ مِنَ الذَّنْبِ كَمَنْ لَا ذَنْبَ لَهُ.',nar:'عبدالله بن مسعود',ennar:"Ibn Mas'ud (RA)",src:'صحيح ابن ماجه',ensrc:'Sahih Ibn Majah',num:'٤٢٥٠',ennum:'4250',kp:'التَّائِبُ مِنَ الذَّنْبِ كَمَنْ لَا ذَنْبَ لَهُ',note:''},
+    {id:20,t:'كَانَ رَسُولُ اللَّهِ ﷺ يُكْثِرُ أَنْ يَقُولَ فِي رُكُوعِهِ وَسُجُودِهِ: سُبْحَانَكَ اللَّهُمَّ رَبَّنَا وَبِحَمْدِكَ، اللَّهُمَّ اغْفِرْ لِي.',nar:'عائشة أم المؤمنين',ennar:"'A'ishah (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٨١٧',ennum:'817',kp:'سُبْحَانَكَ اللَّهُمَّ رَبَّنَا وَبِحَمْدِكَ، اللَّهُمَّ اغْفِرْ لِي',note:''},
+    {id:21,t:'مَنْ قَامَ بِعَشْرِ آيَاتٍ لَمْ يُكْتَبْ مِنَ الغَافِلِينَ، وَمَنْ قَامَ بِمِائَةِ آيَةٍ كُتِبَ مِنَ القَانِتِينَ، وَمَنْ قَامَ بِأَلْفِ آيَةٍ كُتِبَ مِنَ المُقَنْطِرِينَ.',nar:'عبدالله بن عمرو',ennar:"Ibn 'Amr (RA)",src:'صحيح أبي داود',ensrc:'Sahih Abi Dawud',num:'١٣٩٨',ennum:'1398',kp:'مَنْ قَامَ بِعَشْرِ آيَاتٍ لَمْ يُكْتَبْ مِنَ الغَافِلِينَ',note:''},
+    {id:22,t:'مَا أَصَرَّ مَنِ اسْتَغْفَرَ، وَلَوْ عَادَ فِي اليَوْمِ سَبْعِينَ مَرَّةً.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح أبي داود | الترمذي',ensrc:'Sahih Abi Dawud | Al-Tirmidhi',num:'١٥١٤',ennum:'1514',kp:'مَا أَصَرَّ مَنِ اسْتَغْفَرَ',note:''},
+    {id:23,t:'وَأَتْبِعِ السَّيِّئَةَ الحَسَنَةَ تَمْحُهَا، وَخَالِقِ النَّاسَ بِخُلُقٍ حَسَنٍ.',nar:'أبو ذر الغفاري',ennar:"Abu Dharr Al-Ghifari (RA)",src:'صحيح الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'١٩٨٧',ennum:'1987',kp:'أَتْبِعِ السَّيِّئَةَ الحَسَنَةَ تَمْحُهَا',note:''},
+    {id:24,t:'مَنِ اسْتَغْفَرَ لِلْمُؤْمِنِينَ وَالمُؤْمِنَاتِ كَتَبَ اللَّهُ لَهُ بِكُلِّ مُؤْمِنٍ وَمُؤْمِنَةٍ حَسَنَةً.',nar:'عبادة بن الصامت',ennar:"'Ubadah ibn Al-Samit (RA)",src:'الطبراني',ensrc:'Al-Tabarani',num:'—',ennum:'—',kp:'بِكُلِّ مُؤْمِنٍ وَمُؤْمِنَةٍ حَسَنَةً',note:''},
+    {id:25,t:'مَا مِنْ عَبْدٍ يُذْنِبُ ذَنْبًا، فَيُحْسِنُ الطُّهُورَ، ثُمَّ يَقُومُ فَيُصَلِّي رَكْعَتَيْنِ، ثُمَّ يَسْتَغْفِرُ اللَّهَ، إِلَّا غَفَرَ اللَّهُ لَهُ.',nar:'أبو بكر الصديق',ennar:"Abu Bakr Al-Siddiq (RA)",src:'صحيح أبي داود | الترمذي',ensrc:'Sahih Abi Dawud | Al-Tirmidhi',num:'١٥٢١',ennum:'1521',kp:'غَفَرَ اللَّهُ لَهُ',note:''},
+    {id:26,t:'كُلُّ ابْنِ آدَمَ خَطَّاءٌ، وَخَيْرُ الخَطَّائِينَ التَّوَّابُونَ.',nar:'أنس بن مالك',ennar:'Anas ibn Malik (RA)',src:'صحيح الترمذي | ابن ماجه',ensrc:'Sahih Al-Tirmidhi | Ibn Majah',num:'٢٤٩٩',ennum:'2499',kp:'خَيْرُ الخَطَّائِينَ التَّوَّابُونَ',note:''},
+    {id:27,t:'وَالَّذِي نَفْسِي بِيَدِهِ، لَوْ لَمْ تُذْنِبُوا لَذَهَبَ اللَّهُ بِكُمْ، وَلَجَاءَ بِقَوْمٍ يُذْنِبُونَ، فَيَسْتَغْفِرُونَ اللَّهَ فَيَغْفِرُ لَهُمْ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٧٤٩',ennum:'2749',kp:'لَوْ لَمْ تُذْنِبُوا لَذَهَبَ اللَّهُ بِكُمْ',note:''},
+    {id:28,t:'مَنْ قَالَ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، فِي يَوْمٍ مِائَةَ مَرَّةٍ، حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ البَحْرِ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٤٠٥',ennum:'6405',kp:'حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ البَحْرِ',note:''},
+    {id:29,t:'الصَّلَوَاتُ الخَمْسُ، وَالجُمُعَةُ إِلَى الجُمُعَةِ، وَرَمَضَانُ إِلَى رَمَضَانَ، مُكَفِّرَاتٌ مَا بَيْنَهُنَّ إِذَا اجْتَنَبَ الكَبَائِرَ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٣٣',ennum:'233',kp:'مُكَفِّرَاتٌ مَا بَيْنَهُنَّ',note:''},
+    {id:30,t:'مَنْ قَالَ: لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، فِي يَوْمٍ مِائَةَ مَرَّةٍ، كَانَتْ لَهُ عَدْلَ عَشْرِ رِقَابٍ، وَكُتِبَتْ لَهُ مِائَةُ حَسَنَةٍ، وَمُحِيَتْ عَنْهُ مِائَةُ سَيِّئَةٍ، وَكَانَتْ لَهُ حِرْزًا مِنَ الشَّيْطَانِ يَوْمَهُ ذَلِكَ حَتَّى يُمْسِيَ، وَلَمْ يَأْتِ أَحَدٌ بِأَفْضَلَ مِمَّا جَاءَ بِهِ، إِلَّا أَحَدٌ عَمِلَ أَكْثَرَ مِنْ ذَلِكَ.',nar:'أبو هريرة',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'٦٤٠٣',ennum:'6403',kp:'مِائَةُ حَسَنَةٍ وَمُحِيَتْ عَنْهُ مِائَةُ سَيِّئَةٍ',note:''},
+    {id:31,t:'اللَّهُمَّ اغْفِرْ لِي مَا قَدَّمْتُ وَمَا أَخَّرْتُ، وَمَا أَسْرَرْتُ وَمَا أَعْلَنْتُ، وَمَا أَسْرَفْتُ وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي، أَنْتَ المُقَدِّمُ وَأَنْتَ المُؤَخِّرُ، لَا إِلَهَ إِلَّا أَنْتَ.',nar:'علي بن أبي طالب',ennar:"'Ali ibn Abi Talib (RA)",src:'صحيح البخاري | صحيح مسلم',ensrc:'Sahih Al-Bukhari | Sahih Muslim',num:'١١٢٠',ennum:'1120',kp:'اغْفِرْ لِي مَا قَدَّمْتُ وَمَا أَخَّرْتُ',note:''},
+    {id:32,t:'اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَاهْدِنِي وَعَافِنِي وَارْزُقْنِي.',nar:'طارق بن أشيم الأشجعي',ennar:"Tariq ibn Ashyam Al-Ashja'i (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'٢٦٩٧',ennum:'2697',kp:'اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَاهْدِنِي وَعَافِنِي وَارْزُقْنِي',note:''},
+    {id:33,t:'اللَّهُمَّ اغْفِرْ لِي ذَنْبِي، وَوَسِّعْ لِي فِي دَارِي، وَبَارِكْ لِي فِي رِزْقِي.',nar:'أبو المنتفق',ennar:"Abu Al-Muntafiq (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'٦٣٦٩',ennum:'6369',kp:'اغْفِرْ لِي ذَنْبِي وَوَسِّعْ لِي فِي دَارِي وَبَارِكْ لِي فِي رِزْقِي',note:''}
+  ]
+},
+
+/* ══════════════════════════════════════════════════════════════
+   CHAPTERS 7 & 8 — placeholders
+   ══════════════════════════════════════════════════════════════ */
+{
+  id:'zawja', n:7, emoji:'💍',
+  ar:'أحاديث الزوجة', en:'Hadiths on the Wife',
+  color:'#880E4F', grad:'linear-gradient(135deg,#880E4F,#AD1457)',
+  cc:'c7', kpc:'kp7',
+  kplar:'💍 أحاديث الزوجة', kplen:'💍 Hadiths on the Wife',
+  hadiths:[
+    {id:1,t:'خَيْرُ النِّسَاءِ الَّتِي تَسُرُّهُ إِذَا نَظَرَ، وَتُطِيعُهُ إِذَا أَمَرَ، وَلَا تُخَالِفُهُ فِي نَفْسِهَا وَمَالِهَا بِمَا يَكْرَهُ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'سنن النسائي (3231) | مسند أحمد',ensrc:"Sunan Al-Nasa'i (3231) | Musnad Ahmad",num:'3231',ennum:'3231',kp:'تَسُرُّهُ إِذَا نَظَرَ وَتُطِيعُهُ إِذَا أَمَرَ وَلَا تُخَالِفُهُ',kpClass:'kp7r',note:'✅ خير النساء ثلاث صفات: تسر وتطيع ولا تخالف'},
+    {id:2,t:'الدُّنْيَا مَتَاعٌ، وَخَيْرُ مَتَاعِ الدُّنْيَا المَرْأَةُ الصَّالِحَةُ.',nar:'عبد الله بن عمرو ـ رضي الله عنهما',ennar:"Ibn 'Amr (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'1467',ennum:'1467',kp:'خَيْرُ مَتَاعِ الدُّنْيَا المَرْأَةُ الصَّالِحَةُ',kpClass:'kp7r',note:'✅ الزوجة الصالحة خير ما في الدنيا كلها'},
+    {id:3,t:'إِذَا دَعَا الرَّجُلُ امْرَأَتَهُ إِلَى فِرَاشِهِ فَأَبَتْ، فَبَاتَ غَضْبَانَ عَلَيْهَا، لَعَنَتْهَا المَلَائِكَةُ حَتَّى تُصْبِحَ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (3237) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (3237) | Sahih Muslim',num:'1436',ennum:'1436',kp:'لَعَنَتْهَا المَلَائِكَةُ حَتَّى تُصْبِحَ',kpClass:'kp8',note:'🔥 لعنة الملائكة طول الليل حتى الصباح'},
+    {id:4,t:'إِذَا صَلَّتِ المَرْأَةُ خَمْسَهَا، وَصَامَتْ شَهْرَهَا، وَحَفِظَتْ فَرْجَهَا، وَأَطَاعَتْ زَوْجَهَا، قِيلَ لَهَا: ادْخُلِي الجَنَّةَ مِنْ أَيِّ أَبْوَابِ الجَنَّةِ شِئْتِ.',nar:'عبد الرحمن بن عوف ـ رضي الله عنه',ennar:"'Abd Al-Rahman ibn 'Awf (RA)",src:'مسند أحمد | صحيح ابن حبان | صحيح الألباني',ensrc:'Musnad Ahmad | Sahih Ibn Hibban',num:'—',ennum:'—',kp:'ادْخُلِي الجَنَّةَ مِنْ أَيِّ أَبْوَابِ الجَنَّةِ شِئْتِ',kpClass:'kp7r',note:'✅ تدخل الجنة من أي باب شاءت'},
+    {id:5,t:'أَيُّمَا امْرَأَةٍ مَاتَتْ وَزَوْجُهَا عَنْهَا رَاضٍ دَخَلَتِ الجَنَّةَ.',nar:'أم سلمة ـ رضي الله عنها',ennar:'Umm Salamah (RA)',src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'1161',ennum:'1161',kp:'وَزَوْجُهَا عَنْهَا رَاضٍ دَخَلَتِ الجَنَّةَ',kpClass:'kp7r',note:'✅ رضا الزوج = دخول الجنة مضمون'},
+    {id:6,t:'لَا تُؤْذِي امْرَأَةٌ زَوْجَهَا فِي الدُّنْيَا إِلَّا قَالَتْ زَوْجَتُهُ مِنَ الحُورِ العِينِ: لَا تُؤْذِيهِ قَاتَلَكِ اللَّهُ، فَإِنَّمَا هُوَ عِنْدَكِ دَخِيلٌ يُوشِكُ أَنْ يُفَارِقَكِ إِلَيْنَا.',nar:'معاذ بن جبل ـ رضي الله عنه',ennar:"Mu'adh ibn Jabal (RA)",src:'سنن الترمذي (1174) | صحيح ابن ماجه',ensrc:'Sahih Al-Tirmidhi (1174) | Sahih Ibn Majah',num:'1174',ennum:'1174',kp:'قَالَتِ الحُورُ العِينِ: لَا تُؤْذِيهِ قَاتَلَكِ اللَّهُ',kpClass:'kp8',note:'🔥 الحور العين تلعنها وتقول: قاتلك الله'},
+    {id:7,t:'أُرِيتُ النَّارَ فَإِذَا أَكْثَرُ أَهْلِهَا النِّسَاءُ، يَكْفُرْنَ، قِيلَ: أَيَكْفُرْنَ بِاللَّهِ؟ قَالَ: يَكْفُرْنَ العَشِيرَ، وَيَكْفُرْنَ الإِحْسَانَ، لَوْ أَحْسَنْتَ إِلَى إِحْدَاهُنَّ الدَّهْرَ ثُمَّ رَأَتْ مِنْكَ شَيْئًا قَالَتْ: مَا رَأَيْتُ مِنْكَ خَيْرًا قَطُّ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح البخاري (29) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (29) | Sahih Muslim',num:'907',ennum:'907',kp:'يَكْفُرْنَ العَشِيرَ — أَكْثَرُ أَهْلِ النَّارِ النِّسَاءُ',kpClass:'kp8',note:'🔥 أكثر أهل النار النساء الكفور لأزواجهن'},
+    {id:8,t:'لَوْ كُنْتُ آمِرًا أَحَدًا أَنْ يَسْجُدَ لِأَحَدٍ، لَأَمَرْتُ المَرْأَةَ أَنْ تَسْجُدَ لِزَوْجِهَا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'1159',ennum:'1159',kp:'لَوْ جَازَ السُّجُودُ لِغَيْرِ اللهِ لَأَمَرْتُ المَرْأَةَ أَنْ تَسْجُدَ لِزَوْجِهَا',kpClass:'kp7r',note:'✅ لو جاز السجود لغير الله لكان الزوج أولى'},
+    {id:9,t:'لَا يَحِلُّ لِلْمَرْأَةِ أَنْ تَصُومَ وَزَوْجُهَا شَاهِدٌ إِلَّا بِإِذْنِهِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (5195) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (5195) | Sahih Muslim',num:'1026',ennum:'1026',kp:'لَا يَحِلُّ لَهَا الصِّيَامُ وَزَوْجُهَا شَاهِدٌ إِلَّا بِإِذْنِهِ',kpClass:'kp8',note:'🔥 الصيام بلا إذن زوجها غير مقبول'},
+    {id:10,t:'ثَلَاثَةٌ لَا تُجَاوِزُ صَلَاتُهُمْ آذَانَهُمْ: العَبْدُ الآبِقُ، وَامْرَأَةٌ بَاتَتْ وَزَوْجُهَا عَلَيْهَا سَاخِطٌ، وَإِمَامُ قَوْمٍ وَهُمْ لَهُ كَارِهُونَ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'360',ennum:'360',kp:'امْرَأَةٌ بَاتَتْ وَزَوْجُهَا سَاخِطٌ — صَلَاتُهَا لَا تُجَاوِزُ أُذُنَيْهَا',kpClass:'kp8',note:'🔥 صلاتها لا تتجاوز أذنيها'},
+    {id:11,t:'خَيْرُ مَا يُكْنَزُ المَرْأَةُ الصَّالِحَةُ: إِذَا نَظَرَ إِلَيْهَا سَرَّتْهُ، وَإِذَا غَابَ عَنْهَا حَفِظَتْهُ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'مسند أحمد | صحيح الجامع | صحيح الألباني',ensrc:"Musnad Ahmad | Sahih Al-Jami'",num:'—',ennum:'—',kp:'إِذَا غَابَ عَنْهَا حَفِظَتْهُ — أَغْلَى كَنْزٍ',kpClass:'kp7r',note:'✅ المرأة الحافظة لزوجها في غيابه = أغلى كنز'},
+    {id:12,t:'المَرْأَةُ عَوْرَةٌ، فَإِذَا خَرَجَتِ اسْتَشْرَفَهَا الشَّيْطَانُ.',nar:'عبد الله بن مسعود ـ رضي الله عنه',ennar:"Ibn Mas'ud (RA)",src:'سنن الترمذي',ensrc:'Sahih Al-Tirmidhi',num:'1173',ennum:'1173',kp:'إِذَا خَرَجَتِ اسْتَشْرَفَهَا الشَّيْطَانُ',kpClass:'kp8',note:'🔥 الشيطان يتربص بها حين تخرج بلا إذن'},
+    {id:13,t:'لَا يَشْكُرُ اللَّهَ مَنْ لَا يَشْكُرُ النَّاسَ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'سنن الترمذي (1954) | صحيح أبي داود',ensrc:'Sahih Al-Tirmidhi (1954) | Sahih Abi Dawud',num:'1954',ennum:'1954',kp:'لَا يَشْكُرُ اللَّهَ مَنْ لَا يَشْكُرُ النَّاسَ — شُكْرُ الزَّوْجِ شَرْطٌ',kpClass:'kp7r',note:'✅ شكر الزوج شرط لشكر الله'},
+    {id:14,t:'أَيُّمَا امْرَأَةٍ سَأَلَتْ زَوْجَهَا طَلَاقًا مِنْ غَيْرِ مَا بَأْسٍ، فَحَرَامٌ عَلَيْهَا رَائِحَةُ الجَنَّةِ.',nar:'ثوبان ـ رضي الله عنه',ennar:'Thawban (RA)',src:'سنن الترمذي (1187) | سنن أبي داود',ensrc:'Sahih Al-Tirmidhi (1187) | Sunan Abi Dawud',num:'2226',ennum:'2226',kp:'حَرَامٌ عَلَيْهَا رَائِحَةُ الجَنَّةِ',kpClass:'kp8',note:'🔥 حرام عليها رائحة الجنة'},
+    {id:15,t:'وَالمَرْأَةُ رَاعِيَةٌ عَلَى بَيْتِ زَوْجِهَا وَمَسْؤُولَةٌ عَنْ رَعِيَّتِهَا.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:"Ibn 'Umar (RA)",src:'صحيح البخاري (893) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (893) | Sahih Muslim',num:'1829',ennum:'1829',kp:'الزَّوْجَةُ رَاعِيَةٌ مَسْؤُولَةٌ — وَعَلَيْهَا حِسَابٌ وَأَجْرٌ',kpClass:'kp7r',note:'✅ الزوجة راعية مسؤولة — وعليها حساب وأجر'},
+    {id:16,t:'إِذَا أَنْفَقَتِ المَرْأَةُ مِنْ طَعَامِ بَيْتِهَا غَيْرَ مُفْسِدَةٍ، كَانَ لَهَا أَجْرُهَا بِمَا أَنْفَقَتْ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (1425) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (1425) | Sahih Muslim',num:'1024',ennum:'1024',kp:'كَانَ لَهَا أَجْرُهَا بِمَا أَنْفَقَتْ',kpClass:'kp7r',note:'✅ أجر كامل على الإنفاق من بيت الزوج بإذنه'},
+    {id:17,t:'إِنَّ اللَّهَ لَا يُحِبُّ الفَاحِشَ المُتَفَحِّشَ.',nar:'عبد الله بن عمرو ـ رضي الله عنهما',ennar:"Ibn 'Amr (RA)",src:'صحيح البخاري (6030) | سنن الترمذي',ensrc:'Sahih Al-Bukhari (6030) | Sahih Al-Tirmidhi',num:'6030',ennum:'6030',kp:'اللهُ لَا يُحِبُّ الفَاحِشَ المُتَفَحِّشَ',kpClass:'kp8',note:'🔥 الله لا يحب ذات اللسان الفاحش'},
+    {id:18,t:'أَلَا أُخْبِرُكُمْ بِنِسَائِكُمْ مِنْ أَهْلِ الجَنَّةِ؟ الوَدُودُ الوَلُودُ العَؤُودُ عَلَى زَوْجِهَا، الَّتِي إِذَا آذَتْ أَوْ أُوذِيَتْ جَاءَتْ حَتَّى تَأْخُذَ بِيَدِ زَوْجِهَا تَقُولُ: وَاللَّهِ لَا أَذُوقُ غَمْضًا حَتَّى تَرْضَى.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح ابن حبان | المعجم الكبير | صحيح الألباني',ensrc:'Sahih Ibn Hibban | Al-Mu\'jam Al-Kabir',num:'—',ennum:'—',kp:'لَا أَذُوقُ غَمْضًا حَتَّى تَرْضَى — مِنْ نِسَاءِ الجَنَّةِ',kpClass:'kp7r',note:'✅ من نساء الجنة: لا تنام حتى يرضى عنها زوجها'},
+    {id:19,t:'كُلُّ النَّاسِ يَغْدُو، فَبَائِعٌ نَفْسَهُ فَمُعْتِقُهَا أَوْ مُوبِقُهَا.',nar:'أبو مالك الأشعري ـ رضي الله عنه',ennar:"Abu Malik Al-Ash'ari (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'223',ennum:'223',kp:'الزَّوْجَةُ حَافِظَةُ الفَرْجِ تَعْتِقُ نَفْسَهَا',kpClass:'kp7r',note:'✅ الزوجة حافظة فرجها تعتق نفسها'},
+    {id:20,t:'مِنْ سَعَادَةِ ابْنِ آدَمَ ثَلَاثَةٌ: المَرْأَةُ الصَّالِحَةُ، وَالمَسْكَنُ الصَّالِحُ، وَالمَرْكَبُ الصَّالِحُ.',nar:'سعد بن أبي وقاص ـ رضي الله عنه',ennar:"Sa'd ibn Abi Waqqas (RA)",src:'مسند أحمد | صحيح الجامع | صحيح الألباني',ensrc:"Musnad Ahmad | Sahih Al-Jami'",num:'—',ennum:'—',kp:'الزَّوْجَةُ الصَّالِحَةُ ثُلُثُ سَعَادَةِ ابْنِ آدَمَ',kpClass:'kp7r',note:'✅ الزوجة الصالحة ثلث سعادة ابن آدم'},
+    {id:21,t:'لَا طَاعَةَ لِمَخْلُوقٍ فِي مَعْصِيَةِ الخَالِقِ.',nar:'علي بن أبي طالب ـ رضي الله عنه',ennar:"'Ali ibn Abi Talib (RA)",src:'مسند أحمد | صحيح الجامع | صحيح الألباني',ensrc:"Musnad Ahmad | Sahih Al-Jami'",num:'—',ennum:'—',kp:'لَا طَاعَةَ لِمَخْلُوقٍ فِي مَعْصِيَةِ الخَالِقِ',kpClass:'kp8',note:'🔥 الناشز تعصي الله قبل أن تعصي زوجها'},
+    {id:22,t:'إِذَا حَفِظَتِ المَرْأَةُ فَرْجَهَا، وَأَطَاعَتْ زَوْجَهَا، دَخَلَتِ الجَنَّةَ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'المعجم الأوسط | صحيح الترغيب | صحيح الألباني',ensrc:'Al-Mu\'jam Al-Awsat | Sahih Al-Targhib',num:'—',ennum:'—',kp:'حَفِظَتِ الفَرْجَ وَأَطَاعَتِ الزَّوْجَ — دَخَلَتِ الجَنَّةَ',kpClass:'kp7r',note:'✅ خصلتان فقط تضمنان الجنة'},
+    {id:23,t:'إِنَّ المَرْأَةَ إِذَا صَلَّتْ خَمْسَهَا وَحَفِظَتْ فَرْجَهَا وَأَطَاعَتْ بَعْلَهَا فَلَهَا الجَنَّةُ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'المعجم الأوسط | صحيح الترغيب',ensrc:'Al-Mu\'jam Al-Awsat | Sahih Al-Targhib',num:'—',ennum:'—',kp:'صَلَّتْ خَمْسَهَا وَحَفِظَتْ فَرْجَهَا وَأَطَاعَتْ بَعْلَهَا — فَلَهَا الجَنَّةُ',kpClass:'kp7r',note:'✅ ثلاث خصال = الجنة مضمونة'},
+    {id:24,t:'صِنْفَانِ مِنْ أَهْلِ النَّارِ لَمْ أَرَهُمَا... وَنِسَاءٌ كَاسِيَاتٌ عَارِيَاتٌ مُمِيلَاتٌ مَائِلَاتٌ، رُؤُوسُهُنَّ كَأَسْنِمَةِ البُخْتِ المَائِلَةِ، لَا يَدْخُلْنَ الجَنَّةَ وَلَا يَجِدْنَ رِيحَهَا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2128',ennum:'2128',kp:'لَا يَدْخُلْنَ الجَنَّةَ وَلَا يَجِدْنَ رِيحَهَا',kpClass:'kp8',note:'🔥 لا يدخلن الجنة ولا يجدن ريحها'},
+    {id:25,t:'اتَّقُوا اللَّهَ فِي النِّسَاءِ، فَإِنَّكُمْ أَخَذْتُمُوهُنَّ بِأَمَانَةِ اللَّهِ، وَاسْتَحْلَلْتُمْ فُرُوجَهُنَّ بِكَلِمَةِ اللَّهِ، وَلَهُنَّ عَلَيْكُمْ رِزْقُهُنَّ وَكِسْوَتُهُنَّ بِالمَعْرُوفِ.',nar:'جابر بن عبد الله ـ رضي الله عنه',ennar:'Jabir ibn Abdullah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'1218',ennum:'1218',kp:'لَهُنَّ عَلَيْكُمْ رِزْقُهُنَّ وَكِسْوَتُهُنَّ بِالمَعْرُوفِ',kpClass:'kp7r',note:'✅ حق الزوجة الطائعة: رزق وكسوة واجبان'},
+    {id:26,t:'تَزَوَّجُوا الوَدُودَ الوَلُودَ فَإِنِّي مُكَاثِرٌ بِكُمُ الأُمَمَ.',nar:'معقل بن يسار ـ رضي الله عنه',ennar:'Ma\'qil ibn Yasar (RA)',src:'سنن أبي داود (2050) | سنن النسائي',ensrc:"Sunan Abi Dawud (2050) | Sahih Al-Nasa'i",num:'2050',ennum:'2050',kp:'الزَّوْجَةُ الوَدُودَةُ الوَلُودَةُ فَخْرُ النَّبِيِّ ﷺ بِأُمَّتِهِ',kpClass:'kp7r',note:'✅ الزوجة الودودة الولودة فخر النبي ﷺ بأمته'},
+    {id:27,t:'مَنْ خَادَعَنَا فَلَيْسَ مِنَّا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'101',ennum:'101',kp:'مَنْ خَادَعَنَا فَلَيْسَ مِنَّا — الخَادِعَةُ خَارِجَةٌ مِنْ مِلَّةِ الأَمَانَةِ',kpClass:'kp8',note:'🔥 الخادعة لزوجها خارجة من ملة الأمانة'},
+    {id:28,t:'الدُّنْيَا كُلُّهَا مَتَاعٌ، وَخَيْرُ المَتَاعِ المَرْأَةُ الصَّالِحَةُ، إِنْ نَظَرَ إِلَيْهَا سَرَّتْهُ وَإِنْ أَمَرَهَا أَطَاعَتْهُ وَإِنْ غَابَ عَنْهَا حَفِظَتْهُ.',nar:'عبد الله بن عمرو ـ رضي الله عنهما',ennar:"Ibn 'Amr (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'1467',ennum:'1467',kp:'تَسُرُّ وَتُطِيعُ وَتَحْفَظُ — ثُلَاثِيَّةُ الزَّوْجَةِ الكَامِلَةِ',kpClass:'kp7r',note:'✅ ثلاثية الزوجة الكاملة: تَسُرّ وتُطيع وتَحفظ'},
+    {id:29,t:'لَوْ كُنْتُ آمِرًا أَحَدًا أَنْ يَسْجُدَ لِأَحَدٍ، لَأَمَرْتُ المَرْأَةَ أَنْ تَسْجُدَ لِزَوْجِهَا، وَلَوْ أَمَرَهَا أَنْ تَنْقُلَ مِنْ جَبَلٍ أَصْفَرَ إِلَى جَبَلٍ أَسْوَدَ، وَمِنْ جَبَلٍ أَسْوَدَ إِلَى جَبَلٍ أَبْيَضَ، لَكَانَ عَلَيْهَا أَنْ تَفْعَلَهُ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'مسند أحمد | صحيح ابن ماجه | صحيح الألباني',ensrc:'Musnad Ahmad | Sahih Ibn Majah',num:'—',ennum:'—',kp:'عِظَمُ حَقِّ الزَّوْجِ — لَوْ جَازَ السُّجُودُ لَكَانَ أَوْلَى بِهِ',kpClass:'kp8',note:'🔥 عِظَم حق الزوج — لو جاز السجود لكان أولى به'},
+    {id:30,t:'أَلَا أُخْبِرُكُمْ بِشَرِّ نِسَائِكُمْ؟ الذَّلِيلَةُ فِي أَهْلِهَا، العَزِيزَةُ عَلَى زَوْجِهَا، العَقِيمُ الحَقُودُ، الَّتِي لَا تُوقَى مِنَ الشَّرِّ، الَّتِي إِذَا رَأَى زَوْجُهَا قَبَضَتْ.',nar:'أبو أمامة ـ رضي الله عنه',ennar:'Abu Umamah (RA)',src:'المعجم الكبير للطبراني | صحيح الترغيب',ensrc:"Al-Mu'jam Al-Kabir | Sahih Al-Targhib",num:'—',ennum:'—',kp:'شَرُّ النِّسَاءِ — تَعِزُّ عَلَى زَوْجِهَا وَتَذِلُّ فِي أَهْلِهَا — وَإِذَا رَأَى زَوْجُهَا قَبَضَتْ',kpClass:'kp8',note:'🔥 شر النساء من تعزّ على زوجها وتذلّ في أهلها'},
+    {id:31,t:'إِذَا بَاتَتِ المَرْأَةُ هَاجِرَةً فِرَاشَ زَوْجِهَا، لَعَنَتْهَا المَلَائِكَةُ حَتَّى تَرْجِعَ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (3237) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (3237) | Sahih Muslim',num:'1436',ennum:'1436',kp:'لَعَنَتْهَا المَلَائِكَةُ حَتَّى تَرْجِعَ',kpClass:'kp8',note:'🔥 لعنة الملائكة مستمرة حتى ترجع عن عصيانها'}
+  ]
+},
+{
+  id:'nar', n:8, emoji:'🔥',
+  ar:'جزاؤها النار', en:'Deeds Leading to Hellfire',
+  color:'#B71C1C', grad:'linear-gradient(135deg,#B71C1C,#C62828)',
+  cc:'c8', kpc:'kp8',
+  kplar:'🔥 التحذير النبوي', kplen:'🔥 Prophetic Warning',
+  hadiths:[
+    {id:1,t:'مَنْ قَتَلَ نَفْسَهُ بِحَدِيدَةٍ، فَحَدِيدَتُهُ فِي يَدِهِ يَتَوَجَّأُ بِهَا فِي بَطْنِهِ فِي نَارِ جَهَنَّمَ خَالِدًا مُخَلَّدًا فِيهَا أَبَدًا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (5778) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (5778) | Sahih Muslim',num:'109',ennum:'109',kp:'خَالِدًا مُخَلَّدًا فِي نَارِ جَهَنَّمَ أَبَدًا',note:'🔥 خالداً مخلداً فيها أبداً'},
+    {id:2,t:'لَا يَدْخُلُ الجَنَّةَ مَنْ كَانَ فِي قَلْبِهِ مِثْقَالُ ذَرَّةٍ مِنْ كِبْرٍ.',nar:'عبد الله بن مسعود ـ رضي الله عنه',ennar:"Ibn Mas'ud (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'91',ennum:'91',kp:'مِثْقَالُ ذَرَّةٍ مِنَ الكِبْرِ تَحْجُبُ الجَنَّةَ',note:'🔥 ذرة من الكبر تحجب الجنة'},
+    {id:3,t:'لَا يَدْخُلُ الجَنَّةَ نَمَّامٌ.',nar:'حذيفة بن اليمان ـ رضي الله عنه',ennar:'Hudhayfah ibn Al-Yaman (RA)',src:'صحيح البخاري (6056) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6056) | Sahih Muslim',num:'105',ennum:'105',kp:'لَا يَدْخُلُ الجَنَّةَ نَمَّامٌ',note:'🔥 النمام محجوب عن الجنة'},
+    {id:4,t:'لَا يَدْخُلُ الجَنَّةَ قَاطِعُ رَحِمٍ.',nar:'جبير بن مطعم ـ رضي الله عنه',ennar:"Jubayr ibn Mut'im (RA)",src:'صحيح البخاري (5984) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (5984) | Sahih Muslim',num:'2556',ennum:'2556',kp:'لَا يَدْخُلُ الجَنَّةَ قَاطِعُ رَحِمٍ',note:'🔥 قاطع الرحم محجوب عن الجنة'},
+    {id:5,t:'مَنْ غَلَّ جَاءَ بِمَا غَلَّ يَوْمَ القِيَامَةِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (3073) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (3073) | Sahih Muslim',num:'1831',ennum:'1831',kp:'يَحْمِلُ مَا سَرَقَهُ فَوْقَ رَقَبَتِهِ يَوْمَ القِيَامَةِ',note:'🔥 يحمل ما سرقه فوق رقبته يوم القيامة'},
+    {id:6,t:'كُلُّ مُسْكِرٍ خَمْرٌ، وَكُلُّ خَمْرٍ حَرَامٌ، وَمَنْ شَرِبَ الخَمْرَ فِي الدُّنْيَا فَمَاتَ وَهُوَ مُدْمِنُهَا لَمْ يَتُبْ، لَمْ يَشْرَبْهَا فِي الآخِرَةِ.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:"Ibn 'Umar (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'2003',ennum:'2003',kp:'مَاتَ مُدْمِنَ الخَمْرِ لَمْ يَتُبْ — يُحْرَمُ مِنْ شَرَابِ الجَنَّةِ',note:'🔥 يُحرم من شراب الجنة في الآخرة'},
+    {id:7,t:'ثَلَاثَةٌ لَا يَدْخُلُونَ الجَنَّةَ: العَاقُّ لِوَالِدَيْهِ، وَالدَّيُّوثُ، وَرَجِلَةُ النِّسَاءِ.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:"Ibn 'Umar (RA)",src:'مسند أحمد | صحيح الترغيب | صحيح الألباني',ensrc:'Musnad Ahmad | Sahih Al-Targhib',num:'—',ennum:'—',kp:'العَاقُّ لِوَالِدَيْهِ لَا يَدْخُلُ الجَنَّةَ',note:'🔥 العاق لوالديه لا يدخل الجنة'},
+    {id:8,t:'مَرَّ النَّبِيُّ ﷺ بِقَبْرَيْنِ فَقَالَ: إِنَّهُمَا لَيُعَذَّبَانِ، وَمَا يُعَذَّبَانِ فِي كَبِيرٍ، أَمَّا أَحَدُهُمَا فَكَانَ لَا يَسْتَتِرُ مِنَ البَوْلِ، وَأَمَّا الآخَرُ فَكَانَ يَمْشِي بِالنَّمِيمَةِ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح البخاري (218) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (218) | Sahih Muslim',num:'292',ennum:'292',kp:'عَذَابُ القَبْرِ بِسَبَبِ النَّمِيمَةِ وَعَدَمِ التَّنَزُّهِ مِنَ البَوْلِ',note:'🔥 عذاب القبر بسبب النميمة وعدم التنزه من البول'},
+    {id:9,t:'إِنَّ الَّذِينَ يَأْكُلُونَ أَمْوَالَ اليَتَامَى ظُلْمًا إِنَّمَا يَأْكُلُونَ فِي بُطُونِهِمْ نَارًا وَسَيَصْلَوْنَ سَعِيرًا.',nar:'تفسير الآية — سورة النساء (10)',ennar:'Quranic Verse — Al-Nisa (10)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'2766',ennum:'2766',kp:'يَأْكُلُونَ فِي بُطُونِهِمْ نَارًا وَسَيَصْلَوْنَ سَعِيرًا',note:'🔥 يأكل ناراً في بطنه ويصلى سعيراً'},
+    {id:10,t:'لَعَنَ اللَّهُ الرَّاشِيَ وَالمُرْتَشِيَ.',nar:'عبد الله بن عمرو ـ رضي الله عنهما',ennar:"Ibn 'Amr (RA)",src:'سنن الترمذي (1336) | سنن أبي داود',ensrc:'Sahih Al-Tirmidhi (1336) | Sunan Abi Dawud',num:'3580',ennum:'3580',kp:'لَعَنَ اللَّهُ الرَّاشِيَ وَالمُرْتَشِيَ',note:'🔥 لعنة الله على الراشي والمرتشي'},
+    {id:11,t:'لَعَنَ اللَّهُ المُتَشَبِّهِينَ مِنَ الرِّجَالِ بِالنِّسَاءِ، وَالمُتَشَبِّهَاتِ مِنَ النِّسَاءِ بِالرِّجَالِ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'5885',ennum:'5885',kp:'لَعَنَ اللَّهُ المُتَشَبِّهِينَ مِنَ الرِّجَالِ بِالنِّسَاءِ وَالعَكْسِ',note:'🔥 لعنة الله عليهم'},
+    {id:12,t:'لَا يَزْنِي الزَّانِي حِينَ يَزْنِي وَهُوَ مُؤْمِنٌ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (2475) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (2475) | Sahih Muslim',num:'57',ennum:'57',kp:'يُنْزَعُ مِنْهُ الإِيمَانُ حِينَ الزِّنَا',note:'🔥 ينزع منه الإيمان حين الزنا'},
+    {id:13,t:'اجْتَنِبُوا السَّبْعَ المُوبِقَاتِ... وَأَكْلُ الرِّبَا.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (2766) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (2766) | Sahih Muslim',num:'89',ennum:'89',kp:'الرِّبَا مِنَ السَّبْعِ المُوبِقَاتِ المُهْلِكَاتِ',note:'🔥 من السبع الموبقات المهلكات'},
+    {id:14,t:'مَنْ كَذَبَ عَلَيَّ مُتَعَمِّدًا فَلْيَتَبَوَّأْ مَقْعَدَهُ مِنَ النَّارِ.',nar:'علي بن أبي طالب ـ رضي الله عنه',ennar:"'Ali ibn Abi Talib (RA)",src:'صحيح البخاري (110) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (110) | Sahih Muslim',num:'4',ennum:'4',kp:'فَلْيَتَبَوَّأْ مَقْعَدَهُ مِنَ النَّارِ مُبَاشَرَةً',note:'🔥 فليتبوأ مقعده من النار — مباشرة'},
+    {id:15,t:'وَاللَّهِ لَا يُؤْمِنُ، وَاللَّهِ لَا يُؤْمِنُ، وَاللَّهِ لَا يُؤْمِنُ، قِيلَ: وَمَنْ يَا رَسُولَ اللَّهِ؟ قَالَ: الَّذِي لَا يَأْمَنُ جَارُهُ بَوَائِقَهُ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (6016) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (6016) | Sahih Muslim',num:'46',ennum:'46',kp:'ثَلَاثُ قَسَمَاتٍ: لَا يُؤْمِنُ مَنْ لَا يَأْمَنُ جَارُهُ بَوَائِقَهُ',note:'🔥 ثلاث قسمات: لا يؤمن من يؤذي جاره'},
+    {id:16,t:'ثَلَاثٌ مُهْلِكَاتٌ: شُحٌّ مُطَاعٌ، وَهَوًى مُتَّبَعٌ، وَإِعْجَابُ المَرْءِ بِنَفْسِهِ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'مسند البزار | صحيح الجامع | صحيح الألباني',ensrc:"Musnad Al-Bazzar | Sahih Al-Jami'",num:'—',ennum:'—',kp:'شُحٌّ مُطَاعٌ وَهَوًى مُتَّبَعٌ وَإِعْجَابُ المَرْءِ بِنَفْسِهِ — المُهْلِكَاتُ الثَّلَاثُ',note:'🔥 من المهلكات الثلاث'},
+    {id:17,t:'اجْتَنِبُوا السَّبْعَ المُوبِقَاتِ... وَالسِّحْرُ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (2766) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (2766) | Sahih Muslim',num:'89',ennum:'89',kp:'السِّحْرُ مِنَ السَّبْعِ المُوبِقَاتِ',note:'🔥 السحر من السبع الموبقات'},
+    {id:18,t:'لِكُلِّ غَادِرٍ لِوَاءٌ يَوْمَ القِيَامَةِ يُرْفَعُ لَهُ بِقَدْرِ غَدْرَتِهِ، يُقَالُ هَذِهِ غَدْرَةُ فُلَانِ بْنِ فُلَانٍ.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:"Ibn 'Umar (RA)",src:'صحيح البخاري (3188) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (3188) | Sahih Muslim',num:'1735',ennum:'1735',kp:'يُفْضَحُ الغَادِرُ أَمَامَ الخَلَائِقِ يَوْمَ القِيَامَةِ',note:'🔥 يُفضح الغادر أمام الخلائق يوم القيامة'},
+    {id:19,t:'مَنْ قَتَلَ مُعَاهَدًا لَمْ يَرَحْ رَائِحَةَ الجَنَّةِ، وَإِنَّ رِيحَهَا لَيُوجَدُ مِنْ مَسِيرَةِ أَرْبَعِينَ عَامًا.',nar:'عبد الله بن عمرو ـ رضي الله عنهما',ennar:"Ibn 'Amr (RA)",src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'3166',ennum:'3166',kp:'لَا يَشُمُّ رَائِحَةَ الجَنَّةِ مِنْ مَسِيرَةِ أَرْبَعِينَ عَامًا',note:'🔥 لا يشم رائحة الجنة من مسيرة ٤٠ عاماً'},
+    {id:20,t:'بَيْنَ الرَّجُلِ وَبَيْنَ الشِّرْكِ وَالكُفْرِ تَرْكُ الصَّلَاةِ.',nar:'جابر بن عبد الله ـ رضي الله عنه',ennar:'Jabir ibn Abdullah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'82',ennum:'82',kp:'تَرْكُ الصَّلَاةِ حَدُّ الكُفْرِ وَالشِّرْكِ',note:'🔥 ترك الصلاة حد الكفر والشرك'},
+    {id:21,t:'مَنْ أَخَذَ أَمْوَالَ النَّاسِ يُرِيدُ أَدَاءَهَا أَدَّى اللَّهُ عَنْهُ، وَمَنْ أَخَذَهَا يُرِيدُ إِتْلَافَهَا أَتْلَفَهُ اللَّهُ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري',ensrc:'Sahih Al-Bukhari',num:'2387',ennum:'2387',kp:'مَنْ أَخَذَ أَمْوَالَ النَّاسِ يُرِيدُ إِتْلَافَهَا أَتْلَفَهُ اللَّهُ',note:'🔥 من أخذ أموال الناس ليتلفها أتلفه الله'},
+    {id:22,t:'دَخَلَتِ امْرَأَةٌ النَّارَ فِي هِرَّةٍ رَبَطَتْهَا، فَلَمْ تُطْعِمْهَا وَلَمْ تَدَعْهَا تَأْكُلُ مِنْ خَشَاشِ الأَرْضِ.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:"Ibn 'Umar (RA)",src:'صحيح البخاري (3318) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (3318) | Sahih Muslim',num:'2619',ennum:'2619',kp:'دَخَلَتِ النَّارَ بِسَبَبِ هِرَّةٍ وَاحِدَةٍ',note:'🔥 دخلت النار بسبب قطة واحدة'},
+    {id:23,t:'مَنْ آذَى المُسْلِمِينَ فِي طُرُقِهِمْ وَجَبَتْ عَلَيْهِ لَعْنَتُهُمْ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'المعجم الأوسط | صحيح الجامع | صحيح الألباني',ensrc:"Al-Mu'jam Al-Awsat | Sahih Al-Jami'",num:'—',ennum:'—',kp:'وَجَبَتْ عَلَيْهِ لَعْنَةُ المُسْلِمِينَ',note:'🔥 لعنة المسلمين واجبة عليه'},
+    {id:24,t:'لَيْسَ المُؤْمِنُ الَّذِي يَشْبَعُ وَجَارُهُ جَائِعٌ إِلَى جَنْبِهِ.',nar:'عبد الله بن عباس ـ رضي الله عنهما',ennar:"Ibn 'Abbas (RA)",src:'مسند البزار | صحيح الأدب المفرد | صحيح الألباني',ensrc:'Musnad Al-Bazzar | Sahih Al-Adab Al-Mufrad',num:'—',ennum:'—',kp:'لَيْسَ بِمُؤْمِنٍ مَنْ يَشْبَعُ وَجَارُهُ جَائِعٌ إِلَى جَنْبِهِ',note:'🔥 نفي الإيمان عمن يشبع وجاره جائع'},
+    {id:25,t:'مَنْ لَبِسَ الحَرِيرَ فِي الدُّنْيَا لَمْ يَلْبَسْهُ فِي الآخِرَةِ.',nar:'أنس بن مالك ـ رضي الله عنه',ennar:'Anas ibn Malik (RA)',src:'صحيح البخاري (5834) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (5834) | Sahih Muslim',num:'2069',ennum:'2069',kp:'مَنْ لَبِسَ الحَرِيرَ فِي الدُّنْيَا يُحْرَمُ مِنْهُ فِي الآخِرَةِ',note:'🔥 يُحرم من حرير الجنة في الآخرة'},
+    {id:26,t:'مَنْ جَرَّ ثَوْبَهُ خُيَلَاءَ لَمْ يَنْظُرِ اللَّهُ إِلَيْهِ يَوْمَ القِيَامَةِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح البخاري (5788) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (5788) | Sahih Muslim',num:'2085',ennum:'2085',kp:'لَا يَنْظُرُ اللَّهُ إِلَيْهِ يَوْمَ القِيَامَةِ',note:'🔥 لا ينظر الله إليه يوم القيامة'},
+    {id:27,t:'ثَلَاثَةٌ لَا يُكَلِّمُهُمُ اللَّهُ يَوْمَ القِيَامَةِ، وَلَا يَنْظُرُ إِلَيْهِمْ: المُسْبِلُ، وَالمَنَّانُ، وَالمُنَفِّقُ سِلْعَتَهُ بِالحَلِفِ الكَاذِبِ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'106',ennum:'106',kp:'لَا يُكَلِّمُهُمُ اللَّهُ وَلَا يَنْظُرُ إِلَيْهِمْ يَوْمَ القِيَامَةِ',note:'🔥 لا يكلمهم الله ولا ينظر إليهم يوم القيامة'},
+    {id:28,t:'مَا مِنْ صَاحِبِ ذَهَبٍ وَلَا فِضَّةٍ لَا يُؤَدِّي مِنْهَا حَقَّهَا إِلَّا إِذَا كَانَ يَوْمُ القِيَامَةِ صُفِّحَتْ لَهُ صَفَائِحُ مِنْ نَارٍ فَأُحْمِيَ عَلَيْهَا فِي نَارِ جَهَنَّمَ.',nar:'أبو هريرة ـ رضي الله عنه',ennar:'Abu Hurayrah (RA)',src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'987',ennum:'987',kp:'يُكْوَى بِصَفَائِحَ مِنَ النَّارِ يَوْمَ القِيَامَةِ',note:'🔥 يُكوى بصفائح من نار يوم القيامة'},
+    {id:29,t:'الظُّلْمُ ظُلُمَاتٌ يَوْمَ القِيَامَةِ.',nar:'عبد الله بن عمر ـ رضي الله عنهما',ennar:"Ibn 'Umar (RA)",src:'صحيح البخاري (2447) | صحيح مسلم',ensrc:'Sahih Al-Bukhari (2447) | Sahih Muslim',num:'2579',ennum:'2579',kp:'الظُّلْمُ ظُلُمَاتٌ يَوْمَ القِيَامَةِ',note:'🔥 الظالم في ظلمات يوم القيامة'},
+    {id:30,t:'مَا مِنْ أَمِيرٍ يَلِي أَمْرَ المُسْلِمِينَ ثُمَّ لَا يَجْهَدُ لَهُمْ وَيَنْصَحُ، إِلَّا لَمْ يَدْخُلْ مَعَهُمُ الجَنَّةَ.',nar:'معقل بن يسار ـ رضي الله عنه',ennar:"Ma'qil ibn Yasar (RA)",src:'صحيح مسلم',ensrc:'Sahih Muslim',num:'142',ennum:'142',kp:'الإِمَامُ الغَاشُّ لِرَعِيَّتِهِ لَا يَدْخُلُ مَعَهُمُ الجَنَّةَ',note:'🔥 لا يدخل الجنة مع رعيته التي خانها'}
+  ]
+}
+
+]; // end DB
+
+/* =============================================================
+   STATE
+   ============================================================= */
+let isNight=false,isLtr=false,curSec='home',fs='n';
+let favs=JSON.parse(localStorage.getItem('rawdat_f')||'[]');
+
+/* =============================================================
+   INIT
+   ============================================================= */
+function init(){
+  isNight=localStorage.getItem('rawdat_n')==='1'
+    ||(!localStorage.getItem('rawdat_n')&&matchMedia('(prefers-color-scheme:dark)').matches);
+  isLtr=localStorage.getItem('rawdat_l')==='1';
+  fs=localStorage.getItem('rawdat_fs')||'n';
+  applyNight();applyLang(false);applyFs();
+  buildCards();buildSections();updFavBdg();
+  window.addEventListener('scroll',onScroll);onScroll();
+  skipIntro(); // intro disabled
+}
+function skipIntro(){
+  const e=document.getElementById('intro');
+  if(e)e.style.display='none';
+}
+
+/* =============================================================
+   BUILD CATEGORY CARDS
+   ============================================================= */
+function buildCards(){
+  const g=document.getElementById('cgrid');g.innerHTML='';
+  DB.forEach(cat=>{
+    const d=document.createElement('div');
+    d.className=`cc ${cat.cc}`;d.tabIndex=0;d.setAttribute('role','button');
+    d.setAttribute('aria-label',cat.ar);
+    d.innerHTML=`<div class="cbdg">${cat.hadiths.length}</div>
+      <div class="cemoji">${cat.emoji}</div>
+      <div class="cnar">${cat.ar}</div>
+      <div class="cnen">${cat.en}</div>
+      <div class="cbar"></div>`;
+    d.onclick=()=>openCat(cat.id);
+    d.onkeydown=e=>{if(e.key==='Enter')openCat(cat.id);};
+    g.appendChild(d);
+  });
+}
+
+/* =============================================================
+   BUILD SECTIONS
+   ============================================================= */
+function buildSections(){
+  const w=document.getElementById('secs');w.innerHTML='';
+  DB.forEach(cat=>{
+    const s=document.createElement('div');
+    s.className='csec';s.id=`s-${cat.id}`;
+    s.innerHTML=`
+      <div class="shdr" style="background:${cat.grad}">
+        <h2>
+          <span class="shdr-ar">${cat.emoji} ${cat.ar}</span>
+          <span class="shdr-en">${cat.emoji} ${cat.en}</span>
+        </h2>
+        <p>${cat.en} · ${cat.ar}</p>
+      </div>
+      <button class="bbtn" style="background:${cat.color}" onclick="showHome()">
+        <i class="fas fa-arrow-right"></i>
+        <span class="btar">العودة للقائمة الرئيسية</span>
+        <span class="bten">← Back to Main Menu</span>
+      </button>
+      <div id="hl-${cat.id}">${cat.hadiths.map((h,i)=>mkCard(h,cat,i)).join('')}</div>
+      <button class="bbtn" style="background:${cat.color};margin-top:8px" onclick="showHome()">
+        <i class="fas fa-arrow-right"></i>
+        <span class="btar">العودة للقائمة الرئيسية</span>
+        <span class="bten">← Back to Main Menu</span>
+      </button>`;
+    w.appendChild(s);
+  });
+}
+
+function mkCard(h,cat,i){
+  const fav=favs.includes(`${cat.id}-${h.id}`);
+  const kpc=h.kpClass||cat.kpc;
+  const kplar=h.kplar||cat.kplar;
+  return `<div class="hc" id="hc-${cat.id}-${h.id}" style="border-right-color:${cat.color}">
+  <div class="hhd">
+    <span class="hnum">#${i+1}</span>
+    <span>${cat.emoji}</span>
+    <button class="hfav${fav?' act':''}" onclick="togFav('${cat.id}','${h.id}',this)">
+      <i class="fa${fav?'s':'r'} fa-heart"></i>
+    </button>
+  </div>
+  <div class="hbdy">
+    <div class="hintro"><span class="hintro-ar">قَالَ رَسُولُ اللَّهِ ﷺ:</span><span class="hintro-en">The Prophet ﷺ said:</span></div>
+    <div class="htxt">«${h.t}»</div>
+  </div>
+  <div class="hmeta">
+    <div class="hnar">
+      <span>📌</span>
+      <span class="hlbl-ar">الراوي: </span>
+      <span class="hlbl-en">Narrator: </span>
+      <strong class="hnar-ar">${h.nar}</strong>
+      <strong class="hnar-en">${h.ennar}</strong>
+    </div>
+    <div class="hsrc">
+      <span>📖</span>
+      <strong class="hsrc-ar">${h.src} (${h.num})</strong>
+      <strong class="hsrc-en">${h.ensrc} (${h.ennum})</strong>
+    </div>
+  </div>
+  <div class="kpb ${kpc}">
+    <div class="kplbl">
+      <span class="kplbl-ar">${kplar}</span>
+      <span class="kplbl-en">Key Phrase</span>
+    </div>
+    <div class="kptxt">${h.kp}</div>
+  </div>
+  <div class="srow">
+    <button class="sbtn sw" onclick="shr('wa','${cat.id}','${h.id}')"><i class="fab fa-whatsapp"></i> <span class="slbl-ar">واتساب</span><span class="slbl-en">WhatsApp</span></button>
+    <button class="sbtn sf" onclick="shr('fb','${cat.id}','${h.id}')"><i class="fab fa-facebook-f"></i> <span class="slbl-ar">فيسبوك</span><span class="slbl-en">Facebook</span></button>
+    <button class="sbtn stw" onclick="shr('tw','${cat.id}','${h.id}')"><i class="fab fa-x-twitter"></i> X</button>
+    <button class="sbtn stg" onclick="shr('tg','${cat.id}','${h.id}')"><i class="fab fa-telegram-plane"></i> <span class="slbl-ar">تيليجرام</span><span class="slbl-en">Telegram</span></button>
+    <button class="sbtn sc" onclick="cpyH('${cat.id}','${h.id}',this)"><i class="fas fa-copy"></i> <span class="clbl"><span class="slbl-ar">نسخ</span><span class="slbl-en">Copy</span></span></button>
+    <button class="sbtn si" onclick="shr('ig','${cat.id}','${h.id}')"><i class="fab fa-instagram"></i> <span class="slbl-ar">إنستجرام</span><span class="slbl-en">Instagram</span></button>
+  </div>
+</div>`;
+}
+/* =============================================================
+   NAVIGATION
+   ============================================================= */
+function showHome(){
+  curSec='home';
+  show('ng');show('hero');
+  hide('ssec');hide('fsec');
+  document.querySelectorAll('.csec').forEach(s=>s.classList.remove('act'));
+  document.getElementById('bc').classList.remove('vis');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openCat(id){
+  const cat=DB.find(c=>c.id===id);curSec=id;
+  hide('ng');hide('hero');hide('ssec');hide('fsec');
+  document.querySelectorAll('.csec').forEach(s=>s.classList.remove('act'));
+  document.getElementById(`s-${id}`).classList.add('act');
+  setBc(`${cat.emoji} ${isLtr?cat.en:cat.ar}`);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showFavs(){
+  curSec='favs';
+  hide('ng');hide('hero');hide('ssec');
+  document.querySelectorAll('.csec').forEach(s=>s.classList.remove('act'));
+  show('fsec');setBc(isLtr?'❤️ Favourites':'❤️ المفضلة');
+  renderFavs();window.scrollTo({top:0,behavior:'smooth'});
+}
+function setBc(txt){
+  document.getElementById('bc').classList.add('vis');
+  document.getElementById('bc-c').textContent=txt;
+}
+function renderFavs(){
+  const c=document.getElementById('fcon');
+  if(!favs.length){
+    c.innerHTML=`<div class="efav"><i class="far fa-heart"></i><p class="efav-ar">لا توجد مفضلات بعد. اضغط ♡ على أي حديث.</p><p class="efav-en">No bookmarks yet. Tap ♡ on any hadith.</p></div>`;
+    return;
+  }
+  c.innerHTML=favs.map(fid=>{
+    const[cid,hid]=fid.split('-');
+    const cat=DB.find(x=>x.id===cid);if(!cat)return'';
+    const h=cat.hadiths.find(x=>String(x.id)===hid);if(!h)return'';
+    return mkCard(h,cat,cat.hadiths.indexOf(h));
+  }).join('');
+}
+function show(id){document.getElementById(id).style.display='';}
+function hide(id){document.getElementById(id).style.display='none';}
+
+/* =============================================================
+   SEARCH
+   ============================================================= */
+function doSearch(q){
+  q=q.trim();
+  document.getElementById('scnt').textContent='';
+  if(!q){showHome();return;}
+  hide('ng');hide('hero');hide('fsec');
+  document.querySelectorAll('.csec').forEach(s=>s.classList.remove('act'));
+  show('ssec');
+  const res=[];
+  DB.forEach(cat=>cat.hadiths.forEach(h=>{
+    if(h.t.includes(q)||h.nar.includes(q)||h.src.includes(q)||
+       h.ennar.toLowerCase().includes(q.toLowerCase())||
+       h.ensrc.toLowerCase().includes(q.toLowerCase()))
+      res.push({cat,h});
+  }));
+  const ar=`وُجِدَ ${res.length} حديث لـ: «${q}»`;
+  const en=`Found ${res.length} hadith(s) for: "${q}"`;
+  document.getElementById('stitle-ar').textContent=ar;
+  document.getElementById('stitle-en').textContent=en;
+  document.getElementById('scnt').textContent=isLtr?en:ar;
+  if(!res.length){
+    document.getElementById('sres').innerHTML=`<div class="nores"><span class="nores-ar">لا توجد نتائج.</span><span class="nores-en">No results found.</span></div>`;
+    return;
+  }
+  document.getElementById('sres').innerHTML=res.map(r=>mkCard(r.h,r.cat,r.cat.hadiths.indexOf(r.h))).join('');
+  const re=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  document.querySelectorAll('#sres .htxt').forEach(el=>{
+    el.innerHTML=el.innerHTML.replace(re,'<mark>$1</mark>');
+  });
+}
+
+/* =============================================================
+   SHARE
+   ============================================================= */
+function shrTxt(cid,hid){
+  const cat=DB.find(c=>c.id===cid),h=cat.hadiths.find(x=>String(x.id)===hid);
+  return`قَالَ رَسُولُ اللَّهِ ﷺ:\n\n«${h.t}»\n\n📌 الراوي: ${h.nar} رضي الله عنه\n📖 ${h.src} (${h.num})\n\n━━━━━━━━━━━━━━━━━━━━\nموسوعة روضة الأحاديث\n━━━━━━━━━━━━━━━━━━━━`;
+}
+function shr(p,cid,hid){
+  const t=encodeURIComponent(shrTxt(cid,hid));
+  const u={wa:`https://wa.me/?text=${t}`,fb:`https://www.facebook.com/sharer/sharer.php?quote=${t}`,tw:`https://twitter.com/intent/tweet?text=${t}`,tg:`https://t.me/share/url?text=${t}`};
+  if(p==='ig'){cpyTxt(decodeURIComponent(t));alert(isLtr?'Copied! Paste as Instagram caption.':'تم النسخ! الصقه كتعليق إنستجرام.');return;}
+  window.open(u[p],'_blank','noopener');
+}
+function cpyH(cid,hid,btn){
+  cpyTxt(shrTxt(cid,hid));
+  const l=btn.querySelector('.clbl'),o=l.textContent;
+  l.textContent=isLtr?'Copied!':'تم!';btn.style.background='#388E3C';
+  setTimeout(()=>{l.textContent=o;btn.style.background='#607D8B';},2000);
+}
+function cpyTxt(t){
+  if(navigator.clipboard)navigator.clipboard.writeText(t);
+  else{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);}
+}
+
+/* =============================================================
+   FAVOURITES
+   ============================================================= */
+function togFav(cid,hid,btn){
+  const k=`${cid}-${hid}`;
+  if(favs.includes(k)){favs=favs.filter(f=>f!==k);}
+  else{favs.push(k);}
+  localStorage.setItem('rawdat_f',JSON.stringify(favs));updFavBdg();
+  // sync all matching buttons
+  document.querySelectorAll('.hfav').forEach(b=>{
+    const card=b.closest('.hc');
+    if(card&&card.id===`hc-${cid}-${hid}`){
+      const on=favs.includes(k);
+      b.classList.toggle('act',on);
+      b.querySelector('i').className=on?'fas fa-heart':'far fa-heart';
+    }
+  });
+}
+function updFavBdg(){
+  const b=document.getElementById('fbdg');
+  b.textContent=favs.length;
+  b.style.display=favs.length?'flex':'none';
+}
+
+/* =============================================================
+   NIGHT MODE  — CSS classes handle everything
+   ============================================================= */
+function applyNight(){
+  document.body.classList.toggle('night',isNight);
+  const nb=document.getElementById('nbtn');
+  if(nb)nb.textContent=isNight?'☀️':'🌙';
+}
+function togNight(){isNight=!isNight;localStorage.setItem('rawdat_n',isNight?'1':'0');applyNight();}
+
+/* =============================================================
+   LANGUAGE — CSS classes handle all show/hide
+   The key insight: body.ltr CSS rules handle every element.
+   JS only needs to flip the class, update dir/lang, and
+   update the few text nodes that can't be handled by CSS.
+   ============================================================= */
+function applyLang(rebuild){
+  document.body.classList.toggle('ltr',isLtr);
+  document.documentElement.dir=isLtr?'ltr':'rtl';
+  document.documentElement.lang=isLtr?'en':'ar';
+  
+  document.getElementById('hlogo').textContent=isLtr?'Rawdat Al-Ahadith':'روضة الأحاديث';
+  const lb=document.getElementById('lbtn');
+  if(lb)lb.textContent=isLtr?'🇸🇦 عربي':'🇬🇧 EN';
+  document.getElementById('htit').textContent=isLtr?'Rawdat Al-Ahadith':'روضة الأحاديث';
+  document.getElementById('hsub').textContent=isLtr?'A Perpetual Charity for My Mother and All Deceased Muslims':'صدقة جارية عن أمي وكل أموات المسلمين';
+  document.getElementById('hvers').textContent=isLtr
+    ?'﴿Indeed We give life to the dead and record what they put forth﴾ — Surah Yasin: 12'
+    :'﴿إِنَّا نَحْنُ نُحْيِ المَوْتَى وَنَكْتُبُ مَا قَدَّمُوا وَآثَارَهُمْ﴾ — سورة يس: ١٢';
+  document.getElementById('ntit').textContent=isLtr?'Encyclopedia Chapters':'أبواب الموسوعة';
+  document.getElementById('bch').textContent=isLtr?'Home':'الرئيسية';
+  document.getElementById('srch').placeholder=isLtr?'Search hadiths...':'ابحث في الأحاديث...';
+  // Update breadcrumb current if open
+  if(curSec&&curSec!=='home'&&curSec!=='favs'){
+    const cat=DB.find(c=>c.id===curSec);
+    if(cat)document.getElementById('bc-c').textContent=`${cat.emoji} ${isLtr?cat.en:cat.ar}`;
+  }
+  if(curSec==='favs')document.getElementById('bc-c').textContent=isLtr?'❤️ Favourites':'❤️ المفضلة';
+  // Rebuild sections if language changes after build (handles hadith intro line)
+  if(rebuild){buildSections();}
+}
+function togLang(){isLtr=!isLtr;localStorage.setItem('rawdat_l',isLtr?'1':'0');applyLang(true);}
+
+/* =============================================================
+   FONT SIZE
+   ============================================================= */
+function applyFs(){
+  document.body.classList.remove('fsl','fsxl');
+  if(fs==='l')document.body.classList.add('fsl');
+  if(fs==='x')document.body.classList.add('fsxl');
+  ['fsn','fsl','fsx'].forEach(id=>document.getElementById(id)?.classList.remove('act'));
+  ({n:'fsn',l:'fsl',x:'fsx'})[fs] && document.getElementById(({n:'fsn',l:'fsl',x:'fsx'})[fs])?.classList.add('act');
+}
+function setFs(s){fs=s;localStorage.setItem('rawdat_fs',s);applyFs();}
+
+/* =============================================================
+   SCROLL
+   ============================================================= */
+function onScroll(){
+  const st=window.scrollY,mx=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('pgb').style.width=(mx>0?st/mx*100:0)+'%';
+  document.getElementById('fab').classList.toggle('vis',st>280);
+}
+
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
